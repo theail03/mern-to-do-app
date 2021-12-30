@@ -24,6 +24,14 @@ export default function Featured({ type, setGenre }) {
   }, [type]);
 
   console.log(content);
+  var img;
+  var imgTitle;
+  var desc;
+  if (content) {
+    img = content.img;
+    imgTitle = content.imgTitle;
+    desc = content.desc;
+  }
   return (
     <div className="featured">
       {type && (
@@ -51,10 +59,10 @@ export default function Featured({ type, setGenre }) {
           </select>
         </div>
       )}
-      <img src={content.img} alt="" />
+      <img src={img} alt="" />
       <div className="info">
-        <img src={content.imgTitle} alt="" />
-        <span className="desc">{content.desc}</span>
+        <img src={imgTitle} alt="" />
+        <span className="desc">{desc}</span>
         <div className="buttons">
           <button className="play">
             <PlayArrow />

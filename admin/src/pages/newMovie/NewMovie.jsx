@@ -3,6 +3,7 @@ import "./newMovie.css";
 import storage from "../../firebase";
 import { createMovie } from "../../context/movieContext/apiCalls";
 import { MovieContext } from "../../context/movieContext/MovieContext";
+import { useHistory } from "react-router-dom";
 
 export default function NewMovie() {
   const [movie, setMovie] = useState(null);
@@ -12,6 +13,7 @@ export default function NewMovie() {
   const [trailer, setTrailer] = useState(null);
   const [video, setVideo] = useState(null);
   const [uploaded, setUploaded] = useState(0);
+  const history = useHistory();
 
   const { dispatch } = useContext(MovieContext);
 
@@ -60,6 +62,7 @@ export default function NewMovie() {
   const handleSubmit = (e) => {
     e.preventDefault();
     createMovie(movie, dispatch);
+    history.push("/movies")
   };
 
   return (

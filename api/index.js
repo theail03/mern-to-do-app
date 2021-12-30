@@ -22,10 +22,10 @@ mongoose
 
 app.use(express.json());
 
-app.use("/api/auth", authRoute);
-app.use("/api/users", userRoute);
-app.use("/api/movies", movieRoute);
-app.use("/api/lists", listRoute);
+app.use("/auth", authRoute);
+app.use("/users", userRoute);
+app.use("/movies", movieRoute);
+app.use("/lists", listRoute);
 
 app.listen(8800, () => {
   console.log("Backend server is running!");
