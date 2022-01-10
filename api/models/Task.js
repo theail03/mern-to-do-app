@@ -5,14 +5,18 @@ const TaskSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    description: {
-        type: String,
-        required: false
-    },
     completed: {
         type: Boolean,
         default: false
-    }
+    },
+    tags: [{
+        type: String,
+        required: false
+    }],
+    customFields: [{
+        type: Object,
+        required: false
+    }],
 }, {
     timestamps: true,
     strict: true
