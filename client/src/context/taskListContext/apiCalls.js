@@ -26,10 +26,10 @@ export const getTaskLists = async (dispatch) => {
 };
 
 //create
-export const createTaskList = async (list, dispatch) => {
+export const createTaskList = async (taskList, dispatch) => {
   dispatch(createTaskListStart());
   try {
-    const res = await axios.post("/taskLists", list, {
+    const res = await axios.post("/taskLists", taskList, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },

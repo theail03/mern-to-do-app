@@ -1,20 +1,20 @@
-const ListReducer = (state, action) => {
+const TaskListReducer = (state, action) => {
   switch (action.type) {
     case "GET_TASK_LISTS_START":
       return {
-        lists: [],
+        taskLists: [],
         isFetching: true,
         error: false,
       };
     case "GET_TASK_LISTS_SUCCESS":
       return {
-        lists: action.payload,
+        taskLists: action.payload,
         isFetching: false,
         error: false,
       };
     case "GET_TASK_LISTS_FAILURE":
       return {
-        lists: [],
+        taskLists: [],
         isFetching: false,
         error: true,
       };
@@ -26,7 +26,7 @@ const ListReducer = (state, action) => {
       };
     case "CREATE_TASK_LIST_SUCCESS":
       return {
-        lists: [...state.lists, action.payload],
+        taskLists: [...state.taskLists, action.payload],
         isFetching: false,
         error: false,
       };
@@ -44,8 +44,8 @@ const ListReducer = (state, action) => {
       };
     case "UPDATE_TASK_LIST_SUCCESS":
       return {
-        lists: state.lists.map(
-          (list) => list._id === action.payload._id && action.payload
+        taskLists: state.taskLists.map(
+          (taskList) => taskList._id === action.payload._id && action.payload
         ),
         isFetching: false,
         error: false,
@@ -64,7 +64,7 @@ const ListReducer = (state, action) => {
       };
     case "DELETE_TASK_LIST_SUCCESS":
       return {
-        lists: state.lists.filter((list) => list._id !== action.payload),
+        taskLists: state.taskLists.filter((taskList) => taskList._id !== action.payload),
         isFetching: false,
         error: false,
       };
@@ -79,4 +79,4 @@ const ListReducer = (state, action) => {
   }
 };
 
-export default ListReducer;
+export default TaskListReducer;

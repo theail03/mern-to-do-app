@@ -5,7 +5,9 @@ const verify = require("../verifyToken");
 // CREATE
 router.post("/", verify, async (req, res) => {
     if (req.user) {
-        const newTaskList = new TaskList(req.body);
+        const taskList = req.body;
+        taskList.user = req.user.id;
+        const newTaskList = new TaskList(taskList);
         try {
             const savedTaskList = await newTaskList.save();
             res.status(201).json(savedTaskList);
