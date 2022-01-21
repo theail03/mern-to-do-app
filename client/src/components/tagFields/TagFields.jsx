@@ -21,9 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 function TagFields() {
   const classes = useStyles()
-  const [tagFields, setTagFields] = useState([
-    { id: uuidv4(), tag: '' },
-  ]);
+  const [tagFields, setTagFields] = useState([]);
 
   const handleChangeTag = (id, event) => {
     const newTagField = tagFields.map(i => {
@@ -49,6 +47,9 @@ function TagFields() {
   return (
     <Container>
       <label>Tags</label>
+        <IconButton onClick={handleAddFields}>
+            <AddIcon />
+        </IconButton>
         { tagFields.map(tagField => (
           <div key={tagField.id}>
             <input
@@ -57,12 +58,10 @@ function TagFields() {
               value={tagField.tag}
               onChange={event => handleChangeTag(tagField.id, event)}
             />
-            <IconButton disabled={tagFields.length === 1} onClick={() => handleRemoveFields(tagField.id)}>
+            <IconButton onClick={() => handleRemoveFields(tagField.id)}>
               <RemoveIcon />
             </IconButton>
-            <IconButton
-              onClick={handleAddFields}
-            >
+            <IconButton onClick={handleAddFields}>
               <AddIcon />
             </IconButton>
           </div>

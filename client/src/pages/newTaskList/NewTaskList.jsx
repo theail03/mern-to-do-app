@@ -36,11 +36,11 @@ export default function NewTaskList() {
               onChange={handleChange}
             />
           </div>
-        </div>
-        <TagFields />
-        <button className="addProductButton" onClick={handleSubmit}>
+          <TagFields />
+          <button className="addProductButton" onClick={handleSubmit}>
           Create
-        </button>
+          </button>
+        </div>
       </form>
     </div>
   );
