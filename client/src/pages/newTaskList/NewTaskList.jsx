@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import "./newTaskList.css";
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { createTaskList } from "../../context/taskListContext/apiCalls";
+import TagFields from "../../components/tagFields/TagFields";
 import { useHistory } from "react-router-dom";
 
 export default function NewTaskList() {
@@ -36,6 +37,7 @@ export default function NewTaskList() {
             />
           </div>
         </div>
+        <TagFields />
         <button className="addProductButton" onClick={handleSubmit}>
           Create
         </button>
