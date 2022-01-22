@@ -20,7 +20,11 @@ function TagFields(props) {
       return i;
     })
     setTagFields(newTagFields);
-    props.test();
+    // get only tags of tagFields, remove empty tags and avoid repeating tags
+    let tags = newTagFields.map(i => i.tag);
+    tags = tags.filter(i => i !== "");
+    const uniqueTags = [...new Set(tags)];
+    props.handleTagFieldsChange(uniqueTags);
   }
 
   const handleAddFields = () => {

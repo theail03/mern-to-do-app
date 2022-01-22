@@ -11,19 +11,19 @@ export default function NewTaskList() {
 
   const { dispatch } = useContext(TaskListContext);
 
-  const handleChange = (e) => {
+  const handleTitleChange = (e) => {
     const value = e.target.value;
     setTaskList({ ...taskList, [e.target.name]: value });
+  };
+
+  const handleTagFieldsChange = (tagFields) => {
+    setTaskList({ ...taskList, tags: tagFields});
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     createTaskList(taskList, dispatch);
     history.push("/");
-  };
-
-  const test = () => {
-    console.log("test");
   };
 
   return (
@@ -37,10 +37,10 @@ export default function NewTaskList() {
               type="text"
               placeholder="To do list"
               name="title"
-              onChange={handleChange}
+              onChange={handleTitleChange}
             />
           </div>
-          <TagFields test={test} />
+          <TagFields handleTagFieldsChange={handleTagFieldsChange} />
           <button className="addProductButton" onClick={handleSubmit}>
           Create
           </button>
