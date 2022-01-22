@@ -9,29 +9,18 @@ import Icon from '@material-ui/core/Icon';
 import { v4 as uuidv4 } from 'uuid';
 import "./tagFields.css";
 
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-    },
-  }
-}))
-
-function TagFields() {
-  const classes = useStyles()
+function TagFields(props) {
   const [tagFields, setTagFields] = useState([]);
 
   const handleChangeTag = (id, event) => {
-    const newTagField = tagFields.map(i => {
+    const newTagFields = tagFields.map(i => {
       if(id === i.id) {
         i[event.target.name] = event.target.value
       }
       return i;
     })
-    
-    setTagFields(newTagField);
+    setTagFields(newTagFields);
+    props.test();
   }
 
   const handleAddFields = () => {

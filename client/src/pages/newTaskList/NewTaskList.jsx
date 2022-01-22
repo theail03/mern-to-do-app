@@ -22,6 +22,10 @@ export default function NewTaskList() {
     history.push("/");
   };
 
+  const test = () => {
+    console.log("test");
+  };
+
   return (
     <div className="newProduct">
       <h1 className="addProductTitle">New Task List</h1>
@@ -36,7 +40,7 @@ export default function NewTaskList() {
               onChange={handleChange}
             />
           </div>
-          <TagFields />
+          <TagFields test={test} />
           <button className="addProductButton" onClick={handleSubmit}>
           Create
           </button>
