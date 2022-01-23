@@ -1,0 +1,29 @@
+.customField {
+    display: flex;
+    margin-bottom: 25px;
+    justify-content: space-between;
+}
+
+.customFieldAttributes {
+    display: flex;
+    flex-direction: column;
+}
+
+.customFieldAttribute {
+    display: flex;
+    align-items: center;
+}
+
+.customFieldAttribute > label {
+    width: 75px;
+}
+
+.customFieldButtons {
+    margin-top: 15px;
+}
+
+.attribute {
+    width: 200px;
+    margin-bottom: 10px;
+}
+

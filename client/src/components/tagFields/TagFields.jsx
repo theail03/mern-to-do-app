@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
-import Icon from '@material-ui/core/Icon';
+import Input from '@material-ui/core/Input';
+import FormLabel from '@material-ui/core/FormLabel';
 import { v4 as uuidv4 } from 'uuid';
 import "./tagFields.css";
 
@@ -39,13 +38,13 @@ function TagFields(props) {
 
   return (
     <Container>
-      <label>Tags</label>
+      <FormLabel>Tags</FormLabel>
         <IconButton onClick={handleAddFields}>
             <AddIcon />
         </IconButton>
         { tagFields.map(tagField => (
           <div key={tagField.id}>
-            <input
+            <Input
               name="tag"
               type="text"
               value={tagField.tag}

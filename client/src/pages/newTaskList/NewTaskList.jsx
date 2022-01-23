@@ -3,6 +3,9 @@ import "./newTaskList.css";
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { createTaskList } from "../../context/taskListContext/apiCalls";
 import TagFields from "../../components/tagFields/TagFields";
+import CustomFields from "../../components/customFields/customFields";
+import Input from '@material-ui/core/Input';
+import FormLabel from '@material-ui/core/FormLabel';
 import { useHistory } from "react-router-dom";
 
 export default function NewTaskList() {
@@ -30,20 +33,27 @@ export default function NewTaskList() {
     <div className="newProduct">
       <h1 className="addProductTitle">New Task List</h1>
       <form className="addProductForm">
-        <div className="formLeft">
-          <div className="addProductItem">
-            <label>Title</label>
-            <input
-              type="text"
-              placeholder="To do list"
+        <div className="addProductItem">
+          <FormLabel>Title</FormLabel>
+          <div className="titleAndCreate">
+            <Input
+              className="titleInput"
               name="title"
+              type="text"
               onChange={handleTitleChange}
             />
+            <button className="addProductButton" onClick={handleSubmit}>
+              Create
+            </button>
           </div>
-          <TagFields handleTagFieldsChange={handleTagFieldsChange} />
-          <button className="addProductButton" onClick={handleSubmit}>
-          Create
-          </button>
+        </div>
+        <div className="tagsAndCustomFields">
+          <div className="formLeft">
+            <TagFields handleTagFieldsChange={handleTagFieldsChange} />
+          </div>
+          <div className="formRight">
+            <CustomFields />
+          </div>
         </div>
       </form>
     </div>

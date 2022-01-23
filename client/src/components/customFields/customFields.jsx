@@ -1,0 +1,82 @@
+import React, { useState } from 'react';
+import Container from '@material-ui/core/Container';
+import IconButton from '@material-ui/core/IconButton';
+import RemoveIcon from '@material-ui/icons/Remove';
+import AddIcon from '@material-ui/icons/Add';
+import Select from '@material-ui/core/Select';
+import Input from '@material-ui/core/Input';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormLabel from '@material-ui/core/FormLabel';
+import { v4 as uuidv4 } from 'uuid';
+import "./customFields.css";
+
+function CustomFields(props) {
+  const [customFields, setCustomFields] = useState([]);
+
+  const handleChangeCustomField = (id, event) => {
+    const newCustomFields = customFields.map(i => {
+      if(id === i.id) {
+        i[event.target.name] = event.target.value
+      }
+      return i;
+    })
+    setCustomFields(newCustomFields);
+  }
+
+  const handleAddFields = () => {
+    setCustomFields([...customFields, { id: uuidv4(),  name: '' }])
+  }
+
+  const handleRemoveFields = id => {
+    const values  = [...customFields];
+    values.splice(values.findIndex(value => value.id === id), 1);
+    setCustomFields(values);
+  }
+
+  return (
+    <Container>
+      <FormLabel>Custom Fields</FormLabel>
+        <IconButton onClick={handleAddFields}>
+            <AddIcon />
+        </IconButton>
+        { customFields.map(customField => (
+          <div className="customField" key={customField.id}>
+            <div className="customFieldAttributes">
+                <div className="customFieldAttribute">
+                    <label>Type</label>
+                    <Select 
+                        className="attribute"
+                        name="type"
+                        value={customField.type ?? 'string'}
+                        onChange={event => handleChangeCustomField(customField.id, event)}
+                    >
+                        <MenuItem value={'string'}>String</MenuItem>
+                        <MenuItem value={'number'}>Number</MenuItem>
+                    </Select>
+                </div>
+                <div className="customFieldAttribute">
+                    <label>Name</label>
+                    <Input
+                        className="attribute"
+                        name="name"
+                        type="text"
+                        value={customField.name}
+                        onChange={event => handleChangeCustomField(customField.id, event)}
+                    />
+                </div>
+            </div>
+            <div className="customFieldButtons">
+                <IconButton onClick={() => handleRemoveFields(customField.id)}>
+                    <RemoveIcon />
+                </IconButton>
+                <IconButton onClick={handleAddFields}>
+                    <AddIcon />
+                </IconButton>
+            </div>
+          </div>
+        )) }
+    </Container>
+  );
+}
+
+export default CustomFields;

@@ -5,6 +5,7 @@
 .addProductForm {
   margin-top: 10px;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 
@@ -17,8 +18,8 @@
 
 .addProductItem > label {
   color: gray;
-  font-weight: 600;
-  margin-bottom: 10px;
+  font-weight: 1;
+  margin-bottom: 0px;
 }
 
 .addProductItem > input {
@@ -40,4 +41,28 @@
   font-weight: 600;
   cursor: pointer;
   align-self: center;
+}
+
+.titleAndCreate {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+} 
+
+.titleInput {
+  width: 200px;
+}
+
+.formLeft {
+  width: 400px;
+}
+
+.formRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tagsAndCustomFields {
+  display: flex;
 }
