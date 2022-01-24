@@ -30,13 +30,14 @@ function CustomFields(props) {
   }
 
   const handleAddFields = () => {
-    setCustomFields([...customFields, { id: uuidv4(),  name: '', type: 'string', min: '', max: '' }])
+    setCustomFields([...customFields, { id: uuidv4(),  name: '', type: 'string', min: NaN, max: NaN }])
   }
 
   const handleRemoveFields = id => {
     const values  = [...customFields];
     values.splice(values.findIndex(value => value.id === id), 1);
     setCustomFields(values);
+    props.handleCustomFieldsChange(customFields);
   }
 
   return (

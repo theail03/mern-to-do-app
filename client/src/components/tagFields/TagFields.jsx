@@ -31,6 +31,7 @@ function TagFields(props) {
     const values  = [...tagFields];
     values.splice(values.findIndex(value => value.id === id), 1);
     setTagFields(values);
+    props.handleTagFieldsChange(tagFields);
   }
 
   return (

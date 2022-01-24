@@ -9,7 +9,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import { useHistory } from "react-router-dom";
 
 export default function NewTaskList() {
-  const [taskList, setTaskList] = useState(null);
+  const [taskList, setTaskList] = useState({ title: "", tags: [], customFields: [] });
   const history = useHistory()
 
   const { dispatch } = useContext(TaskListContext);
@@ -29,8 +29,24 @@ export default function NewTaskList() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createTaskList(taskList, dispatch);
-    history.push("/");
+    const tags = taskList.tags.map(i => i.tag);
+    const customFields = taskList.customFields.map(i => i.name);
+    // check if title is empty
+    if (taskList.title === "") {
+      alert("Please enter a title for your task list");
+    } 
+    // see if taskList.tags has any repeated tags
+    else if (tags.length !== new Set(tags).size) {
+      alert("Please remove repeated tags");
+    }
+    // see if taskList.customFields has any repeated custom fields 
+    else if (customFields.length !== new Set(customFields).size) {
+      alert("Please remove repeated custom fields");
+    }
+    else {
+      createTaskList(taskList, dispatch);
+      history.push("/");
+    }
   };
 
   return (
