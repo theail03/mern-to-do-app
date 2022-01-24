@@ -23,6 +23,10 @@ export default function NewTaskList() {
     setTaskList({ ...taskList, tags: tagFields});
   };
 
+  const handleCustomFieldsChange = (customFields) => {
+    setTaskList({ ...taskList, customFields: customFields});
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     createTaskList(taskList, dispatch);
@@ -52,7 +56,7 @@ export default function NewTaskList() {
             <TagFields handleTagFieldsChange={handleTagFieldsChange} />
           </div>
           <div className="formRight">
-            <CustomFields />
+            <CustomFields handleCustomFieldsChange={handleCustomFieldsChange} />
           </div>
         </div>
       </form>

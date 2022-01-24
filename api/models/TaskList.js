@@ -14,7 +14,7 @@ const TaskListSchema = new moongose.Schema({
         required: false
     }],
     tags: [{
-        type: String,
+        type: Object,
         required: false
     }],
     user: {

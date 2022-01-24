@@ -19,11 +19,8 @@ function TagFields(props) {
       return i;
     })
     setTagFields(newTagFields);
-    // get only tags of tagFields, remove empty tags and avoid repeating tags
-    let tags = newTagFields.map(i => i.tag);
-    tags = tags.filter(i => i !== "");
-    const uniqueTags = [...new Set(tags)];
-    props.handleTagFieldsChange(uniqueTags);
+    const tags = tagFields.filter(i => i.tag !== "");
+    props.handleTagFieldsChange(tags);
   }
 
   const handleAddFields = () => {

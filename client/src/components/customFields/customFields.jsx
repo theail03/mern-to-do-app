@@ -25,10 +25,12 @@ function CustomFields(props) {
       return i;
     })
     setCustomFields(newCustomFields);
+    const fields = customFields.filter(i => i.name !== "");
+    props.handleCustomFieldsChange(fields);
   }
 
   const handleAddFields = () => {
-    setCustomFields([...customFields, { id: uuidv4(),  name: '' }])
+    setCustomFields([...customFields, { id: uuidv4(),  name: '', type: 'string', min: '', max: '' }])
   }
 
   const handleRemoveFields = id => {
@@ -51,7 +53,7 @@ function CustomFields(props) {
                     <Select 
                         className="attribute"
                         name="type"
-                        value={customField.type ?? 'string'}
+                        value={customField.type}
                         onChange={event => handleChangeCustomField(customField.id, event)}
                     >
                         <MenuItem value={'string'}>String</MenuItem>
