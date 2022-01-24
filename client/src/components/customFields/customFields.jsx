@@ -16,7 +16,11 @@ function CustomFields(props) {
   const handleChangeCustomField = (id, event) => {
     const newCustomFields = customFields.map(i => {
       if(id === i.id) {
-        i[event.target.name] = event.target.value
+        let value = event.target.value;
+        if(event.target.name === "min" || event.target.name === "max") {
+          value = parseInt(value);
+        }
+        i[event.target.name] = value;
       }
       return i;
     })
@@ -51,7 +55,7 @@ function CustomFields(props) {
                         onChange={event => handleChangeCustomField(customField.id, event)}
                     >
                         <MenuItem value={'string'}>String</MenuItem>
-                        <MenuItem value={'number'}>Number</MenuItem>
+                        <MenuItem value={'integer'}>Integer</MenuItem>
                     </Select>
                 </div>
                 <div className="customFieldAttribute">
@@ -65,14 +69,14 @@ function CustomFields(props) {
                     />
                 </div>
                 {/* if type is number add min and max attributes */}
-                {customField.type === 'number' && ( <>
+                {customField.type === 'integer' && ( <>
                     <div className="customFieldAttribute">
                         <label>Min</label>
                         <Input
                             className="attribute"
                             name="min"
                             type="number"
-                            value={customField.lowerBound}
+                            value={customField.min}
                             onChange={event => handleChangeCustomField(customField.id, event)}
                         />
                     </div>
@@ -82,7 +86,7 @@ function CustomFields(props) {
                             className="attribute"
                             name="max"
                             type="number"
-                            value={customField.upperBound}
+                            value={customField.max}
                             onChange={event => handleChangeCustomField(customField.id, event)}
                         />
                     </div>    
