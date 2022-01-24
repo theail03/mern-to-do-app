@@ -64,6 +64,29 @@ function CustomFields(props) {
                         onChange={event => handleChangeCustomField(customField.id, event)}
                     />
                 </div>
+                {/* if type is number add min and max attributes */}
+                {customField.type === 'number' && ( <>
+                    <div className="customFieldAttribute">
+                        <label>Min</label>
+                        <Input
+                            className="attribute"
+                            name="min"
+                            type="number"
+                            value={customField.lowerBound}
+                            onChange={event => handleChangeCustomField(customField.id, event)}
+                        />
+                    </div>
+                    <div className="customFieldAttribute">
+                        <label>Max</label>
+                        <Input
+                            className="attribute"
+                            name="max"
+                            type="number"
+                            value={customField.upperBound}
+                            onChange={event => handleChangeCustomField(customField.id, event)}
+                        />
+                    </div>    
+                </> )}
             </div>
             <div className="customFieldButtons">
                 <IconButton onClick={() => handleRemoveFields(customField.id)}>
