@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/Remove';
@@ -37,8 +37,11 @@ function CustomFields(props) {
     const values  = [...customFields];
     values.splice(values.findIndex(value => value.id === id), 1);
     setCustomFields(values);
-    props.handleCustomFieldsChange(customFields);
   }
+
+  useEffect(() => {
+    props.handleCustomFieldsChange(customFields);
+  }, [customFields]);
 
   return (
     <Container>

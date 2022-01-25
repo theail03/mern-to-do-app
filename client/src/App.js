@@ -66,6 +66,9 @@ function App() {
               <Route path="/newTaskList">
                 <NewTaskList />
               </Route>
+              <Route path="/taskList/:taskListId">
+                <NewTaskList />
+              </Route>
             </div>
           </>
         )}

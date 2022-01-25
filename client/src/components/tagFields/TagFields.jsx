@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/Remove';
@@ -31,8 +31,11 @@ function TagFields(props) {
     const values  = [...tagFields];
     values.splice(values.findIndex(value => value.id === id), 1);
     setTagFields(values);
-    props.handleTagFieldsChange(tagFields);
   }
+
+  useEffect(() => {
+    props.handleTagFieldsChange(tagFields);
+  }, [tagFields]);
 
   return (
     <Container>
