@@ -5,6 +5,7 @@ import { AuthContextProvider } from "./context/authContext/AuthContext";
 import { MovieContextProvider } from "./context/movieContext/MovieContext";
 import { ListContextProvider } from "./context/listContext/ListContext";
 import { TaskListContextProvider } from "./context/taskListContext/TaskListContext";
+import { TaskContextProvider } from "./context/taskContext/TaskContext";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,7 +13,9 @@ ReactDOM.render(
       <MovieContextProvider>
         <ListContextProvider>
           <TaskListContextProvider>
-            <App />
+            <TaskContextProvider>
+              <App />
+            </TaskContextProvider>
           </TaskListContextProvider>
         </ListContextProvider>
       </MovieContextProvider>
