@@ -76,7 +76,7 @@ export default function TaskListForm(props) {
               onChange={handleTitleChange}
             />
             <button className="addProductButton" onClick={handleSubmit}>
-              Create
+              Save
             </button>
           </div>
         </div>

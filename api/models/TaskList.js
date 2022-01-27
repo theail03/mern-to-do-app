@@ -5,10 +5,6 @@ const TaskListSchema = new moongose.Schema({
         type: String,
         required: true
     },
-    tasks: [{
-        type: moongose.Schema.Types.ObjectId,
-        ref: 'Task'
-    }],
     customFields: [{
         type: Object,
         required: false

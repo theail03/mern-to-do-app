@@ -5,6 +5,11 @@ const TaskSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    taskList: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "TaskList",
+        required: true
+    },
     completed: {
         type: Boolean,
         default: false
