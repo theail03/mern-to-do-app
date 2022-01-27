@@ -11,6 +11,19 @@ export const getTaskListsFailure = () => ({
   type: "GET_TASK_LISTS_FAILURE",
 });
 
+export const getTaskListStart = () => ({
+  type: "GET_TASK_LIST_START",
+});
+
+export const getTaskListSuccess = (taskList) => ({
+  type: "GET_TASK_LIST_SUCCESS",
+  payload: taskList,
+});
+
+export const getTaskListFailure = () => ({
+  type: "GET_TASK_LIST_FAILURE",
+});
+
 export const createTaskListStart = () => ({
   type: "CREATE_TASK_LIST_START",
 });

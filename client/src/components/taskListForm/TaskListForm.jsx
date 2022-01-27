@@ -1,18 +1,18 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./taskListForm.css";
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
-import { createTaskList } from "../../context/taskListContext/apiCalls";
+import { getTaskList } from "../../context/taskListContext/apiCalls";
 import TagFields from "../tagFields/TagFields";
 import CustomFields from "../customFields/customFields";
 import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
 import { useHistory } from "react-router-dom";
 
-export default function TaskListForm() {
+export default function TaskListForm(props) {
   const [taskList, setTaskList] = useState({ title: "", tags: [], customFields: [] });
   const history = useHistory()
 
-  const { dispatch } = useContext(TaskListContext);
+  const { taskLists, dispatch } = useContext(TaskListContext);
 
   const handleTitleChange = (e) => {
     const value = e.target.value;
@@ -26,6 +26,20 @@ export default function TaskListForm() {
   const handleCustomFieldsChange = (customFields) => {
     setTaskList({ ...taskList, customFields: customFields});
   };
+
+  useEffect(() => {
+    if (props.taskListId) {
+      getTaskList(dispatch, props.taskListId);
+    }
+  }, []);
+
+  useEffect(() => {
+    // set only title, tags and customFields
+    if (taskLists[0]) {
+      const taskListFromDb = taskLists[0];
+      setTaskList(taskListFromDb);
+    }
+  }, [taskLists]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,7 +58,7 @@ export default function TaskListForm() {
       alert("Please remove repeated custom fields");
     }
     else {
-      createTaskList(taskList, dispatch);
+      props.save(taskList, dispatch);
       history.push("/");
     }
   };
@@ -58,6 +72,7 @@ export default function TaskListForm() {
               className="titleInput"
               name="title"
               type="text"
+              value={taskList.title}
               onChange={handleTitleChange}
             />
             <button className="addProductButton" onClick={handleSubmit}>

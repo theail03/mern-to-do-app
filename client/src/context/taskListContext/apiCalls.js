@@ -9,8 +9,15 @@ import {
   getTaskListsFailure,
   getTaskListsStart,
   getTaskListsSuccess,
+  getTaskListFailure,
+  getTaskListStart,
+  getTaskListSuccess,
+  updateTaskListFailure,
+  updateTaskListStart,
+  updateTaskListSuccess
 } from "./TaskListActions";
 
+// get all task lists
 export const getTaskLists = async (dispatch) => {
   dispatch(getTaskListsStart());
   try {
@@ -25,7 +32,22 @@ export const getTaskLists = async (dispatch) => {
   }
 };
 
-//create
+// get
+export const getTaskList = async (dispatch, id) => {
+  dispatch(getTaskListStart());
+  try {
+    const res = await axios.get(`/taskLists/${id}`, {
+      headers: {
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+      },
+    });
+    dispatch(getTaskListSuccess([res.data]));
+  } catch (err) {
+    dispatch(getTaskListFailure());
+  }
+};
+
+// create
 export const createTaskList = async (taskList, dispatch) => {
   dispatch(createTaskListStart());
   try {
@@ -40,7 +62,22 @@ export const createTaskList = async (taskList, dispatch) => {
   }
 };
 
-//delete
+// update
+export const updateTaskList = async (taskList, dispatch) => {
+  dispatch(updateTaskListStart());
+  try {
+    const res = await axios.put(`/taskLists/${taskList._id}`, taskList, {
+      headers: {
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+      },
+    });
+    dispatch(updateTaskListSuccess(res.data));
+  } catch (err) {
+    dispatch(updateTaskListFailure());
+  }
+};
+
+// delete
 export const deleteTaskList = async (id, dispatch) => {
   dispatch(deleteTaskListStart());
   try {

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/Remove';
@@ -12,6 +13,8 @@ import "./customFields.css";
 
 function CustomFields(props) {
   const [customFields, setCustomFields] = useState([]);
+
+  const { taskLists, dispatch } = useContext(TaskListContext);
 
   const handleChangeCustomField = (id, event) => {
     const newCustomFields = customFields.map(i => {
@@ -38,6 +41,13 @@ function CustomFields(props) {
     values.splice(values.findIndex(value => value.id === id), 1);
     setCustomFields(values);
   }
+
+  useEffect(() => {
+    if (taskLists[0]) {
+      const customFieldsFromDb = taskLists[0].customFields;
+      setCustomFields(customFieldsFromDb);
+    }
+  }, [taskLists]);
 
   useEffect(() => {
     props.handleCustomFieldsChange(customFields);

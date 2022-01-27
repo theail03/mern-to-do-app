@@ -18,6 +18,24 @@ const TaskListReducer = (state, action) => {
         isFetching: false,
         error: true,
       };
+      case "GET_TASK_LIST_START":
+        return {
+          taskLists: [],
+          isFetching: true,
+          error: false,
+        };
+      case "GET_TASK_LIST_SUCCESS":
+        return {
+          taskLists: action.payload,
+          isFetching: false,
+          error: false,
+        };
+      case "GET_TASK_LIST_FAILURE":
+        return {
+          taskLists: [],
+          isFetching: false,
+          error: true,
+        };
     case "CREATE_TASK_LIST_START":
       return {
         ...state,

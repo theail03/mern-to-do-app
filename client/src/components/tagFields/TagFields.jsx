@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { TaskListContext } from '../../context/taskListContext/TaskListContext';
 import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/Remove';
@@ -10,6 +11,8 @@ import "./tagFields.css";
 
 function TagFields(props) {
   const [tagFields, setTagFields] = useState([]);
+
+  const { taskLists, dispatch } = useContext(TaskListContext);
 
   const handleChangeTag = (id, event) => {
     const newTagFields = tagFields.map(i => {
@@ -32,6 +35,13 @@ function TagFields(props) {
     values.splice(values.findIndex(value => value.id === id), 1);
     setTagFields(values);
   }
+
+  useEffect(() => {
+    if (taskLists[0]) {
+      const tagsFromDb = taskLists[0].tags;
+      setTagFields(tagsFromDb);
+    }
+  }, [taskLists]);
 
   useEffect(() => {
     props.handleTagFieldsChange(tagFields);
