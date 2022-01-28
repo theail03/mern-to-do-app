@@ -22,6 +22,7 @@ import { Movie } from "@material-ui/icons";
 import NewMovie from "./pages/newMovie/NewMovie";
 import NewTaskList from "./pages/newTaskList/NewTaskList";
 import TaskList from "./pages/taskList/TaskList";
+import NewTask from "./pages/newTask/NewTask";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -69,6 +70,9 @@ function App() {
               </Route>
               <Route path="/taskList/:taskListId">
                 <TaskList />
+              </Route>
+              <Route path="/newTask">
+                <NewTask />
               </Route>
             </div>
           </>
