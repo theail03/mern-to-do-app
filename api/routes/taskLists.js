@@ -71,7 +71,7 @@ router.get("/:id", verify, async (req, res) => {
 router.get("/", verify, async (req, res) => {
     if (req.user) {
         try {
-            const taskLists = await TaskList.find();
+            const taskLists = await TaskList.find({ user: req.user.id });
             res.status(200).json(taskLists.reverse());
         } catch (err) {
             res.status(500).json(err);

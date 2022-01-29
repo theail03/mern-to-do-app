@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import "./taskForm.css";
 import { TaskContext } from "../../context/taskContext/TaskContext";
+import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { getTask } from "../../context/taskContext/apiCalls";
+import { getTaskLists } from "../../context/taskListContext/apiCalls";
 import TagFields from "../tagFields/TagFields";
 import CustomFields from "../customFields/customFields";
 import Input from '@material-ui/core/Input';
@@ -13,12 +15,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { Container } from "@material-ui/core";
 
 export default function TaskForm(props) {
-  const [task, setTask] = useState({ title: "", tags: [], customFields: [] });
+  const [task, setTask] = useState({ title: "", tags: [], customFields: [], taskListId: "" });
   const history = useHistory();
 
-  const [food, setFood] = useState([{name: "Option 1", id: 1},{name: 'Option 2', id: 2}]);
+  const [tags, setTags] = useState([]);
 
   const { tasks, dispatch } = useContext(TaskContext);
+
+  const { taskLists, dispatch: dispatchTaskList } = useContext(TaskListContext);
 
   const handleTitleChange = (e) => {
     const value = e.target.value;
@@ -33,6 +37,18 @@ export default function TaskForm(props) {
     setTask({ ...task, customFields: customFields});
   };
 
+  const handleTaskListChange = (e) => {
+    const value = e.target.value;
+    setTask({ ...task, taskListId: value});
+    // select task list
+    const taskList = taskLists.find(i => i._id === value);
+    setTags(taskList.tags);
+  };
+
+  const handleTagsChange = (e) => {
+    setTask({ ...task, tags: e.map(i => i.id)});
+  }
+
   useEffect(() => {
     if (props.taskId) {
       getTask(dispatch, props.taskId);
@@ -46,6 +62,10 @@ export default function TaskForm(props) {
       setTask(taskFromDb);
     }
   }, [tasks]);
+
+  useEffect(() => {
+    getTaskLists(dispatchTaskList);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -92,27 +112,22 @@ export default function TaskForm(props) {
                 <FormLabel className="formLabel">Task List</FormLabel>
                 <Select 
                     className="selectTaskList"
-                    name="type"
-                    value={'string'}
-                    onChange={event => console.log(event)}
+                    name="taskList"
+                    onChange={handleTaskListChange}
                 >
-                    <MenuItem value={'string'}>String</MenuItem>
-                    <MenuItem value={'integer'}>Integer</MenuItem>
+                    {taskLists.map(taskList => (
+                        <MenuItem value={taskList._id}>{taskList.title}</MenuItem>
+                    ))}
                 </Select>
             </div>  
             <div className="addProductItem">
                 <FormLabel className="formLabel">Tags</FormLabel>
                 <Multiselect
-                  selectedValues={[{name: "Option 1", id: 1}]}
-                  onRemove={(event) => {
-                    console.log(event);
-                  }}
-                  onSelect={(event) => {
-                    console.log(event);
-                  }}
-                  options={food}
+                  onRemove={handleTagsChange}
+                  onSelect={handleTagsChange}
+                  options={tags}
                   avoidHighlightFirstOption={true}
-                  displayValue="name"
+                  displayValue="tag"
                   placeholder="Choose tags"
                 />
             </div>           
