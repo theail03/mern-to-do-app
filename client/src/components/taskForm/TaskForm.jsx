@@ -39,7 +39,7 @@ export default function TaskForm(props) {
 
   const handleTaskListChange = (e) => {
     const value = e.target.value;
-    setTask({ ...task, taskListId: value});
+    setTask({ ...task, taskListId: value, tags: [], customFields: [] });
     // select task list
     const taskList = taskLists.find(i => i._id === value);
     setTags(taskList.tags);
@@ -75,13 +75,9 @@ export default function TaskForm(props) {
     if (task.title === "") {
       alert("Please enter a title for your task list");
     } 
-    // see if task.tags has any repeated tags
-    else if (tags.length !== new Set(tags).size) {
-      alert("Please remove repeated tags");
-    }
-    // see if task.customFields has any repeated custom fields 
-    else if (customFields.length !== new Set(customFields).size) {
-      alert("Please remove repeated custom fields");
+    // check if task list is empty
+    else if (task.taskListId === "") {
+      alert("Please select a task list");
     }
     else {
       props.save(task, dispatch);
@@ -123,6 +119,8 @@ export default function TaskForm(props) {
             <div className="addProductItem">
                 <FormLabel className="formLabel">Tags</FormLabel>
                 <Multiselect
+                  // set selected values if tag id is in task.tags
+                  selectedValues={tags.filter(i => task.tags.includes(i.id))}
                   onRemove={handleTagsChange}
                   onSelect={handleTagsChange}
                   options={tags}
