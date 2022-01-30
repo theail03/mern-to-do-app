@@ -1,0 +1,39 @@
+.taskCustomField {
+    display: flex; 
+    align-items: center;
+    justify-content: end;
+}
+
+.customFields {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    margin-top: 10px;
+}
+
+.customFieldAttributes {
+    display: flex;
+    flex-direction: column;
+}
+
+.customFieldAttribute {
+    display: flex;
+    align-items: center;
+}
+
+.taskCustomField > label {
+    margin-right: 25px;
+}
+
+.customFieldButtons {
+    margin-top: 15px;
+}
+
+.attribute {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.customFieldsLabel {
+    height: 25px;
+}

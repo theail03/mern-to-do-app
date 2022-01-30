@@ -5,7 +5,7 @@ import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { getTask } from "../../context/taskContext/apiCalls";
 import { getTaskLists } from "../../context/taskListContext/apiCalls";
 import TagFields from "../tagFields/TagFields";
-import CustomFields from "../customFields/customFields";
+import TaskCustomFields from "../taskCustomFields/TaskCustomFields";
 import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
 import { useHistory } from "react-router-dom";
@@ -19,6 +19,7 @@ export default function TaskForm(props) {
   const history = useHistory();
 
   const [tags, setTags] = useState([]);
+  const [customFields, setCustomFields] = useState([]);
 
   const { tasks, dispatch } = useContext(TaskContext);
 
@@ -33,16 +34,27 @@ export default function TaskForm(props) {
     setTask({ ...task, tags: tagFields});
   };
 
-  const handleCustomFieldsChange = (customFields) => {
-    setTask({ ...task, customFields: customFields});
+  const handleCustomFieldsChange = (id, event) => {
+    const newCustomFields = task.customFields.map(i => {
+      if(id === i.id) {
+        let value = event.target.value;
+        if(event.target.type === "number") {
+          value = parseInt(value);
+        }
+        i[event.target.name] = value;
+      }
+      return i;
+    });
+    setTask({ ...task, customFields: newCustomFields});
   };
 
   const handleTaskListChange = (e) => {
     const value = e.target.value;
-    setTask({ ...task, taskListId: value, tags: [], customFields: [] });
     // select task list
     const taskList = taskLists.find(i => i._id === value);
+    setTask({ ...task, taskListId: value, tags: [], customFields: taskList.customFields.map(i => { return { id: i.id, value: null} }) });
     setTags(taskList.tags);
+    setCustomFields(taskList.customFields);
   };
 
   const handleTagsChange = (e) => {
@@ -69,6 +81,7 @@ export default function TaskForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(task);
     const tags = task.tags.map(i => i.tag);
     const customFields = task.customFields.map(i => i.name);
     // check if title is empty
@@ -131,7 +144,7 @@ export default function TaskForm(props) {
             </div>           
           </div>
           <div className="formRight">
-            <CustomFields handleCustomFieldsChange={handleCustomFieldsChange} />
+            <TaskCustomFields customFields={customFields} task={task} handleCustomFieldsChange={handleCustomFieldsChange} />
           </div>
         </div>
       </form>
