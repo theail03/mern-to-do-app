@@ -13,7 +13,7 @@ import "./taskCustomFields.css";
 
 function TaskCustomFields(props) {
   return (
-    <Container>
+    <Container className="customFieldsContainer">
       <FormLabel className="customFieldsLabel">Custom Fields</FormLabel>
       <div className="customFields">
         { props.customFields.map(customField => (
@@ -24,7 +24,7 @@ function TaskCustomFields(props) {
                   name="value"
                   type={customField.type === 'integer' ? 'number' : 'text'} 
                   value={props.task.customFields.find(i => i.id === customField.id).value}
-                  onChange={event => props.handleChangeCustomField(customField.id, event)}
+                  onChange={event => props.handleCustomFieldsChange(customField.id, event)}
               />
           </div>
         )) }
