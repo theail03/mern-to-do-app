@@ -38,8 +38,15 @@ export default function TaskForm(props) {
     const newCustomFields = task.customFields.map(i => {
       if(id === i.id) {
         let value = event.target.value;
+        // get custom field max and min from customFields
+        const customField = customFields.find(i => i.id === id);
         if(event.target.type === "number") {
           value = parseInt(value);
+          // check if value is within custom field range
+          if(value < customField.min || value > customField.max) {
+            alert("Please enter a value between " + customField.min + " and " + customField.max);
+            value = i.value || "";
+          }
         }
         i[event.target.name] = value;
       }
