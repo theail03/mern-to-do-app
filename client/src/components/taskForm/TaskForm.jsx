@@ -15,7 +15,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { Container } from "@material-ui/core";
 
 export default function TaskForm(props) {
-  const [task, setTask] = useState({ title: "", tags: [], customFields: [], taskListId: "" });
+  const [task, setTask] = useState({ title: "", tags: [], customFields: [], taskList: "" });
   const history = useHistory();
 
   const [tags, setTags] = useState([]);
@@ -52,7 +52,7 @@ export default function TaskForm(props) {
     const value = e.target.value;
     // select task list
     const taskList = taskLists.find(i => i._id === value);
-    setTask({ ...task, taskListId: value, tags: [], customFields: taskList.customFields.map(i => { return { id: i.id, value: null} }) });
+    setTask({ ...task, taskList: value, tags: [], customFields: taskList.customFields.map(i => { return { id: i.id, value: null} }) });
     setTags(taskList.tags);
     setCustomFields(taskList.customFields);
   };
@@ -89,7 +89,7 @@ export default function TaskForm(props) {
       alert("Please enter a title for your task list");
     } 
     // check if task list is empty
-    else if (task.taskListId === "") {
+    else if (task.taskList === "") {
       alert("Please select a task list");
     }
     else {
