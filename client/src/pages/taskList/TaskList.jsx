@@ -11,8 +11,8 @@ export default function TaskList() {
     }
 
     return (
-        <div className="newProduct">
-            <h1 className="addProductTitle">Edit Task List</h1>
+        <div className="editTaskList">
+            <h1>Edit Task List</h1>
             <TaskListForm taskListId={taskListId} save={save}/>
         </div>
     );

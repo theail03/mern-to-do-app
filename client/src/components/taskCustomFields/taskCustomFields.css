@@ -4,36 +4,21 @@
     justify-content: end;
 }
 
-.customFields {
+.taskCustomFields {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     margin-top: 10px;
-}
-
-.customFieldAttributes {
-    display: flex;
-    flex-direction: column;
-}
-
-.customFieldAttribute {
-    display: flex;
-    align-items: center;
 }
 
 .taskCustomField > label {
     margin-right: 25px;
 }
 
-.customFieldButtons {
-    margin-top: 15px;
-}
-
-.attribute {
+.taskCustomFieldInput {
     width: 200px;
     margin-bottom: 10px;
 }
 
-.customFieldsLabel {
+.taskCustomFieldsLabel {
     height: 25px;
 }

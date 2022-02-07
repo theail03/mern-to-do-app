@@ -65,7 +65,7 @@ function CustomFields(props) {
                 <div className="customFieldAttribute">
                     <label>Type</label>
                     <Select 
-                        className="attribute"
+                        className="customFieldInput"
                         name="type"
                         value={customField.type}
                         onChange={event => handleChangeCustomField(customField.id, event)}
@@ -77,7 +77,7 @@ function CustomFields(props) {
                 <div className="customFieldAttribute">
                     <label>Name</label>
                     <Input
-                        className="attribute"
+                        className="customFieldInput"
                         name="name"
                         type="text"
                         value={customField.name}
@@ -89,7 +89,7 @@ function CustomFields(props) {
                     <div className="customFieldAttribute">
                         <label>Min</label>
                         <Input
-                            className="attribute"
+                            className="customFieldInput"
                             name="min"
                             type="number"
                             value={customField.min}
@@ -99,7 +99,7 @@ function CustomFields(props) {
                     <div className="customFieldAttribute">
                         <label>Max</label>
                         <Input
-                            className="attribute"
+                            className="customFieldInput"
                             name="max"
                             type="number"
                             value={customField.max}

@@ -1,13 +1,4 @@
-.message{
-    color: #D8000C;
-}
-
-.taskLists {
-    display: flex;
-    align-items: center;
-}
-
-.formLabel {
+.taskFormLabel {
     width: 100px;
     height: 20px;
 }
@@ -16,35 +7,35 @@
     width: 200px;
 }
 
-.addProductForm {
+.taskForm {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 }
 
-.addProductItem {
+.taskFormSection {
     width: 400px;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
 }
 
-.addProductItem > label {
+.taskFormSection > label {
     color: gray;
     font-weight: 1;
     margin-bottom: 0px;
 }
 
-.addProductItem > input {
+.taskFormSection > input {
     padding: 10px;
 }
 
-.addProductItem > select {
+.taskFormSection > select {
     padding: 10px;
 }
 
-.addProductButton {
+.taskSaveButton {
     height: 30px;
     margin-top: 10px;
     padding: 7px 10px;
@@ -57,21 +48,21 @@
     align-self: center;
 }
 
-.titleAndCreate {
+.taskTitleAndCreate {
     display: flex;
     justify-content: space-between;
     width: 500px;
 } 
 
-.titleInput {
+.taskTitleInput {
     width: 400px;
 }
 
-.formLeft {
+.taskFormLeft {
     width: 440px;
 }
 
-.formRight {
+.taskFormRight {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

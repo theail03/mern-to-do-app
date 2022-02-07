@@ -64,27 +64,27 @@ export default function TaskListForm(props) {
   };
 
   return (
-      <form className="addProductForm">
-        <div className="addProductItem">
+      <form className="taskListForm">
+        <div className="taskListFormSection">
           <FormLabel>Title</FormLabel>
-          <div className="titleAndCreate">
+          <div className="taskListTitleAndCreate">
             <Input
-              className="titleInput"
+              className="taskListTitleInput"
               name="title"
               type="text"
               value={taskList.title}
               onChange={handleTitleChange}
             />
-            <button className="addProductButton" onClick={handleSubmit}>
+            <button className="taskListSaveButton" onClick={handleSubmit}>
               Save
             </button>
           </div>
         </div>
         <div className="tagsAndCustomFields">
-          <div className="formLeft">
+          <div className="taskListFormLeft">
             <TagFields handleTagFieldsChange={handleTagFieldsChange} />
           </div>
-          <div className="formRight">
+          <div className="taskListFormRight">
             <CustomFields handleCustomFieldsChange={handleCustomFieldsChange} />
           </div>
         </div>

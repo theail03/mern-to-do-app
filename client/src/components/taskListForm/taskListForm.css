@@ -1,32 +1,32 @@
-.addProductForm {
+.taskListForm {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 }
 
-.addProductItem {
+.taskListFormSection {
     width: 400px;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
 }
 
-.addProductItem > label {
+.taskListFormSection > label {
     color: gray;
     font-weight: 1;
     margin-bottom: 0px;
 }
 
-.addProductItem > input {
+.taskListFormSection > input {
     padding: 10px;
 }
 
-.addProductItem > select {
+.taskListFormSection > select {
     padding: 10px;
 }
 
-.addProductButton {
+.taskListSaveButton {
     height: 30px;
     margin-top: 10px;
     padding: 7px 10px;
@@ -39,21 +39,21 @@
     align-self: center;
 }
 
-.titleAndCreate {
+.taskListTitleAndCreate {
     display: flex;
     justify-content: space-between;
     width: 300px;
 } 
 
-.titleInput {
+.taskListTitleInput {
     width: 200px;
 }
 
-.formLeft {
+.taskListFormLeft {
     width: 400px;
 }
 
-.formRight {
+.taskListFormRight {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

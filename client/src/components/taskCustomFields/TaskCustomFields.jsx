@@ -13,14 +13,14 @@ import "./taskCustomFields.css";
 
 function TaskCustomFields(props) {
   return (
-    <Container className="customFieldsContainer">
-      <FormLabel className="customFieldsLabel">Custom Fields</FormLabel>
-      <div className="customFields">
+    <Container className="taskCustomFieldsContainer">
+      <FormLabel className="taskCustomFieldsLabel">Custom Fields</FormLabel>
+      <div className="taskCustomFields">
         { props.customFields.map(customField => (
           <div className="taskCustomField" key={customField.id}>
               <label>{customField.name}</label>
               <Input
-                  className="attribute"
+                  className="taskCustomFieldInput"
                   name="value"
                   type={customField.type === 'integer' ? 'number' : 'text'} 
                   value={props.task.customFields.find(i => i.id === customField.id).value}

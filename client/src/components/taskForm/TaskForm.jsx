@@ -99,26 +99,26 @@ export default function TaskForm(props) {
   };
 
   return (
-      <form className="addProductForm">
-        <div className="addProductItem">
+      <form className="taskForm">
+        <div className="taskFormSection">
           <FormLabel>Name</FormLabel>
-          <div className="titleAndCreate">
+          <div className="taskTitleAndCreate">
             <Input
-              className="titleInput"
+              className="taskTitleInput"
               name="title"
               type="text"
               value={task.title}
               onChange={handleTitleChange}
             />
-            <button className="addProductButton" onClick={handleSubmit}>
+            <button className="taskSaveButton" onClick={handleSubmit}>
               Save
             </button>
           </div>
         </div>
         <div className="taskInfo">
-          <div className="formLeft">    
-            <div className="addProductItem">
-                <FormLabel className="formLabel">Task List</FormLabel>
+          <div className="taskFormLeft">    
+            <div className="taskFormSection">
+                <FormLabel className="taskFormLabel">Task List</FormLabel>
                 <Select 
                     className="selectTaskList"
                     name="taskList"
@@ -129,8 +129,8 @@ export default function TaskForm(props) {
                     ))}
                 </Select>
             </div>  
-            <div className="addProductItem">
-                <FormLabel className="formLabel">Tags</FormLabel>
+            <div className="taskFormSection">
+                <FormLabel className="taskFormLabel">Tags</FormLabel>
                 <Multiselect
                   // set selected values if tag id is in task.tags
                   selectedValues={tags.filter(i => task.tags.includes(i.id))}
@@ -143,7 +143,7 @@ export default function TaskForm(props) {
                 />
             </div>           
           </div>
-          <div className="formRight">
+          <div className="taskFormRight">
             <TaskCustomFields customFields={customFields} task={task} handleCustomFieldsChange={handleCustomFieldsChange} />
           </div>
         </div>

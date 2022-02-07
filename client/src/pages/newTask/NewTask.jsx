@@ -8,8 +8,8 @@ export default function NewTask() {
   }
 
   return (
-    <div className="newProduct">
-      <h1 className="addProductTitle">New Task</h1>
+    <div className="newTask">
+      <h1>New Task</h1>
       <TaskForm save={save}/>
     </div>
   );
