@@ -75,16 +75,21 @@ export default function TaskForm(props) {
   }, []);
 
   useEffect(() => {
+    getTaskLists(dispatchTaskList);
+  }, []);
+
+  useEffect(() => {
     // set only title, tags and customFields
     if (tasks[0]) {
       const taskFromDb = tasks[0];
       setTask(taskFromDb);
+      const taskList = taskLists.find(i => i._id === taskFromDb.taskList);
+      if (taskList) {
+        setTags(taskList.tags);
+        setCustomFields(taskList.customFields);
+      }
     }
-  }, [tasks]);
-
-  useEffect(() => {
-    getTaskLists(dispatchTaskList);
-  }, []);
+  }, [tasks, taskLists]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -130,6 +135,7 @@ export default function TaskForm(props) {
                     className="selectTaskList"
                     name="taskList"
                     onChange={handleTaskListChange}
+                    value={task.taskList}
                 >
                     {taskLists.map(taskList => (
                         <MenuItem value={taskList._id}>{taskList.title}</MenuItem>

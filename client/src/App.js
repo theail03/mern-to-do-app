@@ -23,6 +23,7 @@ import NewMovie from "./pages/newMovie/NewMovie";
 import NewTaskList from "./pages/newTaskList/NewTaskList";
 import TaskList from "./pages/taskList/TaskList";
 import NewTask from "./pages/newTask/NewTask";
+import Task from "./pages/task/Task";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -73,6 +74,9 @@ function App() {
               </Route>
               <Route path="/newTask">
                 <NewTask />
+              </Route>
+              <Route path="/task/:taskId">
+                <Task />
               </Route>
             </div>
           </>
