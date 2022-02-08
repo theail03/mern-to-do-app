@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Task = require("../models/Task");
+const TaskList = require("../models/TaskList");
 const verify = require("../verifyToken");
 
 // CREATE
@@ -52,6 +53,7 @@ router.delete("/:id", verify, async (req, res) => {
 });
   
 // GET
+// still doesn't check if the user is the owner of the task
 router.get("/:id", verify, async (req, res) => {
     if (req.user) {
         try {
@@ -69,8 +71,27 @@ router.get("/:id", verify, async (req, res) => {
 router.get("/", verify, async (req, res) => {
     if (req.user) {
         try {
-            const task = await Task.find();
-            res.status(200).json(task.reverse());
+            const tasks = await Task.find();
+            res.status(200).json(tasks.reverse());
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    } else {
+        res.status(403).json("You are not allowed!");
+    }
+});
+
+// GET ALL
+router.get("/taskList/:id", verify, async (req, res) => {
+    if (req.user) {
+        try {
+            const taskList = await TaskList.find({ user: req.user.id, _id: req.params.id });
+            if (taskList.length > 0) {
+                const tasks = await Task.find({ taskList: req.params.id });
+                res.status(200).json(tasks.reverse());
+            } else {
+                res.status(404).json("Task list not found or you are not allowed!");
+            }
         } catch (err) {
             res.status(500).json(err);
         }

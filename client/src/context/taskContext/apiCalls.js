@@ -17,11 +17,11 @@ import {
   updateTaskSuccess
 } from "./TaskActions";
 
-// get all task lists
-export const getTasks = async (dispatch) => {
+// get all tasks
+export const getTasks = async (dispatch, taskListId) => {
   dispatch(getTasksStart());
   try {
-    const res = await axios.get("/tasks", {
+    const res = await axios.get(`/tasks/taskList/${taskListId}`, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
