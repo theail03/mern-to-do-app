@@ -15,11 +15,17 @@ export default function TaskTable() {
   const [ taskList, setTaskList ] = useState([]);
   const [ tableColumns, setTableColumns ] = useState([]);
 
-  const transformCustomFields = (task) => {
+  const transformTask = (task) => {
     task.customFields.forEach(customField => {
       // append custom field to task
       task[customField.id] = customField.value;
     });
+    if (taskList){
+      // get tag names from taskList that are in task
+      const tagNames = taskList.tags.filter(tag => task.tags.includes(tag.id));
+      // append tag names to task
+      task.tagNames = tagNames.map(tag => tag.tag);
+    }
     return task;
   }
 
@@ -59,7 +65,6 @@ export default function TaskTable() {
   }, [taskList]);
 
   const handleDelete = (id) => {
-    console.log(tasks);
     window.confirm("Are you sure you want to delete this task?") &&
     deleteTask(id, dispatch);
   };
@@ -67,6 +72,7 @@ export default function TaskTable() {
   const defaultColumns = [
     { field: "_id", headerName: "ID", width: 90 },
     { field: "title", headerName: "Title", width: 150 },
+    { field: "tagNames", headerName: "Tags", width: 200 },
     {
       field: "action",
       headerName: "Action",
@@ -92,11 +98,10 @@ export default function TaskTable() {
   return (
     <div className="taskTable">
       <DataGrid
-        rows={tasks.map(transformCustomFields)}
+        rows={tasks.map(transformTask)}
         disableSelectionOnClick
         columns={tableColumns}
         pageSize={8}
-        checkboxSelection
         getRowId={(r) => r._id}
       />
     </div>
