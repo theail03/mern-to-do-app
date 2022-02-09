@@ -1,8 +1,17 @@
 import React from "react";
 import "./topbar.css";
-import { NotificationsNone, Language, Settings } from "@material-ui/icons";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import { useHistory } from "react-router-dom";
 
 export default function Topbar() {
+  const { dispatch } = useContext(AuthContext);
+  const history = useHistory();
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+    history.push("/");
+  };
+
   return (
     <div className="topbar">
       <div className="topbarWrapper">
@@ -10,18 +19,9 @@ export default function Topbar() {
           <span className="logo">TO-DO-APP</span>
         </div>
         <div className="topRight">
-          <div className="topbarIconContainer">
-            <NotificationsNone />
-            <span className="topIconBadge">2</span>
-          </div>
-          <div className="topbarIconContainer">
-            <Language />
-            <span className="topIconBadge">2</span>
-          </div>
-          <div className="topbarIconContainer">
-            <Settings />
-          </div>
-          <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="" className="topAvatar" />
+            <button className="logoutButton" onClick={handleLogout}>
+              Sign out
+            </button>
         </div>
       </div>
     </div>
