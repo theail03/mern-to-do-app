@@ -22,9 +22,11 @@ export default function TaskTable() {
     });
     if (taskList){
       // get tag names from taskList that are in task
-      const tagNames = taskList.tags.filter(tag => task.tags.includes(tag.id));
-      // append tag names to task
-      task.tagNames = tagNames.map(tag => tag.tag);
+      if (taskList.tags) {
+        const tagNames = taskList.tags.filter(tag => task.tags.includes(tag.id));
+        // append tag names to task
+        task.tagNames = tagNames.map(tag => tag.tag);
+      }
     }
     return task;
   }
@@ -70,7 +72,7 @@ export default function TaskTable() {
   };
 
   const defaultColumns = [
-    { field: "_id", headerName: "ID", width: 90 },
+    { field: "_id", headerName: "ID", width: 190 },
     { field: "title", headerName: "Title", width: 150 },
     { field: "tagNames", headerName: "Tags", width: 200 },
     {

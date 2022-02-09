@@ -1,0 +1,9 @@
+.taskTableSeeTasks{
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+    margin-right: 20px;
+}

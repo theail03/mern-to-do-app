@@ -25,6 +25,7 @@ import TaskList from "./pages/taskList/TaskList";
 import NewTask from "./pages/newTask/NewTask";
 import Task from "./pages/task/Task";
 import TaskTable from "./pages/taskTable/TaskTable";
+import TaskListTable from "./pages/taskListTable/TaskListTable";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -81,6 +82,9 @@ function App() {
               </Route>
               <Route path="/tasks/:taskListId">
                 <TaskTable />
+              </Route>
+              <Route path="/taskLists">
+                <TaskListTable />
               </Route>
             </div>
           </>
