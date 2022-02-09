@@ -1,5 +1,6 @@
 .taskTable{
     flex: 4;
+    margin-right: 25px;
 }
 
 .taskItem{
