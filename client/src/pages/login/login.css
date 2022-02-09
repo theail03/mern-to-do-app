@@ -22,4 +22,16 @@
   color: white;
   padding: 5px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
+
+.goToButton {
+  background-color: purple;
+  border: none;
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+

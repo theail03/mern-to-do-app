@@ -93,7 +93,6 @@ export default function TaskForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(task);
     const tags = task.tags.map(i => i.tag);
     const customFields = task.customFields.map(i => i.name);
     // check if title is empty

@@ -1,12 +1,14 @@
 import React, { useContext, useState } from "react";
 import { login } from "../../context/authContext/apiCalls";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import { useHistory } from "react-router-dom";
 import "./login.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { isFetching, dispatch } = useContext(AuthContext);
+  const history = useHistory();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -34,6 +36,12 @@ export default function Login() {
           disabled={isFetching}
         >
           Login
+        </button>
+        <button
+          className="goToButton"
+          onClick={() => history.push("/register")}
+        >
+          Go to Register
         </button>
       </form>
     </div>

@@ -12,6 +12,7 @@ import UserList from "./pages/userList/UserList";
 import User from "./pages/user/User";
 import NewUser from "./pages/newUser/NewUser";
 import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
 import { AuthContext } from "./context/authContext/AuthContext";
 import { useContext } from "react";
 import ListList from "./pages/listList/ListList";
@@ -33,7 +34,8 @@ function App() {
     <Router>
       <Switch>
         <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
-        {user && (
+        <Route path="/register">{user ? <Redirect to="/" /> : <Register />}</Route>
+        {user ? (
           <>
             <Topbar />
             <div className="container">
@@ -88,6 +90,10 @@ function App() {
               </Route>
             </div>
           </>
+        ) : (
+          <Route exact path="/">
+            <Redirect to="/login" />
+          </Route>     
         )}
       </Switch>
     </Router>
