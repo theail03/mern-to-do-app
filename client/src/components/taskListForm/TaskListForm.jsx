@@ -35,7 +35,7 @@ export default function TaskListForm(props) {
 
   useEffect(() => {
     // set only title, tags and customFields
-    if (taskLists[0]) {
+    if (taskLists[0] && props.taskListId) {
       const taskListFromDb = taskLists[0];
       setTaskList(taskListFromDb);
     }

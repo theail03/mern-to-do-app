@@ -80,7 +80,7 @@ export default function TaskForm(props) {
 
   useEffect(() => {
     // set only title, tags and customFields
-    if (tasks[0]) {
+    if (tasks[0] && props.taskId) {
       const taskFromDb = tasks[0];
       setTask(taskFromDb);
       const taskList = taskLists.find(i => i._id === taskFromDb.taskList);
