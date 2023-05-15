@@ -13,6 +13,8 @@ import Multiselect from 'multiselect-react-dropdown';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Container } from "@material-ui/core";
+import * as FileSaver from 'file-saver';
+import * as XLSX from 'xlsx';
 
 export default function TaskForm(props) {
   const [task, setTask] = useState({ title: "", tags: [], customFields: [], taskList: "" });
@@ -97,7 +99,30 @@ export default function TaskForm(props) {
     const customFields = task.customFields.map(i => i.name);
     // check if title is empty
     if (task.title === "") {
-      alert("Please enter a title for your task list");
+      alert("Please enter a title for your task list. Proceeding to export something as a test.");
+
+      const rows = [
+        {
+          title: "The End",
+          description: "Book about the end"
+        },
+        {
+          title: "The Start",
+          desc: "Book about the start"
+        },
+      ];
+
+      /* generate worksheet and workbook */
+      const worksheet = XLSX.utils.json_to_sheet(rows);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, "Books");
+      XLSX.utils.book_append_sheet(workbook, worksheet, "Books Copy");
+
+      /* fix headers */
+      XLSX.utils.sheet_add_aoa(worksheet, [["TheTitle", "TheDesc"]], { origin: "A1" })
+
+      /* create an XLSX file and try to save to Presidents.xlsx */
+      XLSX.writeFile(workbook, "Books.xlsx", { compression: true });
     } 
     // check if task list is empty
     else if (task.taskList === "") {
