@@ -25,7 +25,7 @@ export default function TaskListTable() {
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 270,
       renderCell: (params) => {
         return (
           <>
@@ -34,6 +34,7 @@ export default function TaskListTable() {
             >
               <button className="taskTableSeeTasks">See tasks</button>
             </Link>
+            <button className="taskTableExport">Export</button>
             <Link
               to={{ pathname: "/taskList/" + params.row._id }}
             >
