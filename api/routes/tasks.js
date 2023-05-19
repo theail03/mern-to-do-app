@@ -71,7 +71,10 @@ router.get("/:id", verify, async (req, res) => {
 router.get("/", verify, async (req, res) => {
     if (req.user) {
         try {
-            const tasks = await Task.find();
+            // find all tasks from lists that belong to the user
+            const taskLists = await TaskList.find({ user: req.user.id });
+            const taskListIds = taskLists.map((taskList) => taskList._id);
+            const tasks = await Task.find({ taskList: { $in: taskListIds } });
             res.status(200).json(tasks.reverse());
         } catch (err) {
             res.status(500).json(err);
@@ -81,7 +84,7 @@ router.get("/", verify, async (req, res) => {
     }
 });
 
-// GET ALL
+// GET ALL TASKS FROM A LIST
 router.get("/taskList/:id", verify, async (req, res) => {
     if (req.user) {
         try {

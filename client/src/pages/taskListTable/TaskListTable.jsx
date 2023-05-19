@@ -8,12 +8,13 @@ import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { deleteTaskList, getTaskLists } from "../../context/taskListContext/apiCalls";
 import * as XLSX from 'xlsx';
 import { TaskContext } from "../../context/taskContext/TaskContext";
-import { getTasks } from "../../context/taskContext/apiCalls";
+import { getTasks, getAllTasks } from "../../context/taskContext/apiCalls";
 
 export default function TaskListTable() {
   const { taskLists, dispatch } = useContext(TaskListContext);
   const { tasks: exportTasks, dispatch: dispatchExportTasks } = useContext(TaskContext);
   const [ exporting, setExporting ] = useState(false);
+  const [ exportingAll, setExportingAll ] = useState(false);
   const [ exportTaskListId, setExportTaskListId ] = useState(null);
 
   useEffect(() => {
@@ -25,6 +26,7 @@ export default function TaskListTable() {
     deleteTaskList(id, dispatch);
   };
 
+  /* export a single task list */
   const handleExport = async (id) => {
     if (window.confirm("Are you sure you want to export this task list?")) {
       await getTasks(dispatchExportTasks, id);
@@ -33,34 +35,67 @@ export default function TaskListTable() {
     }
   };
 
+  /* export a single task list */
   useEffect(() => {
     if (exporting) {
-      const taskList = taskLists.find(taskList => taskList._id === exportTaskListId); 
-      const taskRows = exportTasks.map(task => { 
-        const row = { title: task.title };
-
-        /* get tag names from taskList */
-        row.tags = task.tags.map(taskTag => 
-          taskList.tags.find(taskListTag => taskTag === taskListTag.id).tag).join(";");
-
-        taskList.customFields.forEach(cf => {
-          row[cf.name] = task.customFields.find(tcf => tcf.id === cf.id).value;
-        });
-        return row;
-      });
 
       /* Info from https://docs.sheetjs.com/docs/getting-started/example/ */
-
-      /* generate worksheet and workbook */
-      const worksheet = XLSX.utils.json_to_sheet(taskRows);
+      /* generate workbook */
       const workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, taskList.title);
+
+      const taskList = taskLists.find(taskList => taskList._id === exportTaskListId); 
+      appendTasksToSheet(workbook, [taskList]);
 
       /* create an XLSX file */
-      XLSX.writeFile(workbook, taskList.title + Date.now() + ".xlsx", { compression: true });
+      XLSX.writeFile(workbook, taskList.title + " " + Date.now() + ".xlsx", { compression: true });
       setExporting(false);
     }
   }, [exporting]);
+
+  /* export all task lists */
+  const handleExportAll = async () => {
+    if (window.confirm("Are you sure you want to export all task lists?")) {
+      await getAllTasks(dispatchExportTasks);
+      setExportingAll(true); 
+    }
+  };
+
+  /* export all task lists */
+  useEffect(() => {
+    if (exportingAll) {
+      const workbook = XLSX.utils.book_new();
+      appendTasksToSheet(workbook, taskLists);
+
+      /* create an XLSX file */
+      XLSX.writeFile(workbook, "all lists " + Date.now() + ".xlsx", { compression: true });
+      setExportingAll(false);
+    }
+  }, [exportingAll]);
+
+  /* append tasks to a sheet */
+  const appendTasksToSheet = (workbook, taskLists) => {
+    taskLists.forEach(taskList => {
+      const taskRows = exportTasks
+        .filter(task => task.taskList === taskList._id)
+        .map(task => { 
+          const row = { title: task.title };
+
+          /* get tag names from taskList */
+          row.tags = task.tags.map(taskTag => 
+            taskList.tags.find(taskListTag => taskTag === taskListTag.id).tag).join(";");
+
+          taskList.customFields.forEach(cf => {
+            row[cf.name] = task.customFields.find(tcf => tcf.id === cf.id).value;
+          });
+          return row;
+        });
+
+      /* Info from https://docs.sheetjs.com/docs/getting-started/example/ */
+      /* generate worksheet and workbook */
+      const worksheet = XLSX.utils.json_to_sheet(taskRows);
+      XLSX.utils.book_append_sheet(workbook, worksheet, taskList.title);
+    });
+  };
 
   const columns = [
     { field: "_id", headerName: "ID", width: 190 },
@@ -96,7 +131,7 @@ export default function TaskListTable() {
   return (
     <div className="taskTable">
       <div className="tableActions">
-        <button className="simpleButton exportButton">
+        <button className="simpleButton exportButton" onClick={() => handleExportAll()}>
           Export All Lists
         </button>
         <button className="simpleButton importButton">
