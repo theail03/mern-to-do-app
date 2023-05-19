@@ -7,3 +7,9 @@
     text-decoration: none;
     color: inherit;
 }
+
+.simpleButton {
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}

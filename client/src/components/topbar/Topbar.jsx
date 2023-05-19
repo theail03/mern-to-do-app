@@ -19,7 +19,7 @@ export default function Topbar() {
           <span className="logo">TO-DO-APP</span>
         </div>
         <div className="topRight">
-            <button className="logoutButton" onClick={handleLogout}>
+            <button className="simpleButton logoutButton" onClick={handleLogout}>
               Sign out
             </button>
         </div>

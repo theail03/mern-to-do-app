@@ -17,3 +17,22 @@
     cursor: pointer;
     margin-right: 20px;
 }
+
+.tableActions{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.exportButton{
+    background-color: lightpink;
+    color: white;
+    margin-right: 20px;
+}
+
+.importButton{
+    background-color: lightskyblue;
+    color: white;
+    margin-right: 20px;
+}

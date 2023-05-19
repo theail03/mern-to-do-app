@@ -95,6 +95,14 @@ export default function TaskListTable() {
 
   return (
     <div className="taskTable">
+      <div className="tableActions">
+        <button className="simpleButton exportButton">
+          Export All Lists
+        </button>
+        <button className="simpleButton importButton">
+          Import from .xlsx
+        </button>
+      </div>
       <DataGrid
         rows={taskLists}
         disableSelectionOnClick
