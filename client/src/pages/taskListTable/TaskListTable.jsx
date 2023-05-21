@@ -5,14 +5,19 @@ import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
-import { deleteTaskList, getTaskLists } from "../../context/taskListContext/apiCalls";
+import { 
+  deleteTaskList, 
+  getTaskLists, 
+  createTaskListWithTasks
+} from "../../context/taskListContext/apiCalls";
 import * as XLSX from 'xlsx';
 import { TaskContext } from "../../context/taskContext/TaskContext";
 import { getTasks, getAllTasks } from "../../context/taskContext/apiCalls";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function TaskListTable() {
   const { taskLists, dispatch } = useContext(TaskListContext);
-  const { tasks: exportTasks, dispatch: dispatchExportTasks } = useContext(TaskContext);
+  const { tasks: exportTasks, dispatch: dispatchTasks } = useContext(TaskContext);
   const [ exporting, setExporting ] = useState(false);
   const [ exportingAll, setExportingAll ] = useState(false);
   const [ exportTaskListId, setExportTaskListId ] = useState(null);
@@ -29,7 +34,7 @@ export default function TaskListTable() {
   /* export a single task list */
   const handleExport = async (id) => {
     if (window.confirm("Are you sure you want to export this task list?")) {
-      await getTasks(dispatchExportTasks, id);
+      await getTasks(dispatchTasks, id);
       setExportTaskListId(id);
       setExporting(true); 
     }
@@ -55,7 +60,7 @@ export default function TaskListTable() {
   /* export all task lists */
   const handleExportAll = async () => {
     if (window.confirm("Are you sure you want to export all task lists?")) {
-      await getAllTasks(dispatchExportTasks);
+      await getAllTasks(dispatchTasks);
       setExportingAll(true); 
     }
   };
@@ -128,15 +133,82 @@ export default function TaskListTable() {
     },
   ];
 
+  const handleImport = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const data = new Uint8Array(e.target.result);
+      const workbook = XLSX.read(data, { type: "array" });
+      const taskLists = [];
+      workbook.SheetNames.forEach(sheetName => {
+        const taskList = { title: sheetName, tags: [], customFields: [] };
+        const tasks = [];
+        const sheet = workbook.Sheets[sheetName];
+        const rows = XLSX.utils.sheet_to_json(sheet);
+
+        /* get tags and custom fields */
+        rows.forEach(row => {
+          Object.keys(row).forEach(key => {
+            if (key !== "title") {
+              if (key === "tags") {
+                row[key].split(";").forEach(tag => {
+                  if (!taskList.tags.find(taskListTag => taskListTag.tag === tag)) {
+                    taskList.tags.push({
+                      id: uuidv4(),
+                      tag: tag
+                    });
+                  }
+                });
+              } else {
+                if (!taskList.customFields.find(cf => cf.name === key)) {
+                  taskList.customFields.push({
+                    id: uuidv4(),
+                    name: key,
+                    type: "string"
+                  });       
+                }
+              }
+            }
+          });
+        });
+
+        rows.forEach(row => {
+          const task = { title: row.title, tags: [], customFields: [] };
+          Object.keys(row).forEach(key => {
+            if (key !== "title") {
+              if (key === "tags") {
+                row[key].split(";").forEach(tag => {
+                  task.tags.push(taskList.tags.find(taskListTag => taskListTag.tag === tag).id);
+                });
+              } else {
+                task.customFields.push({ id: taskList.customFields.find(cf => cf.name === key).id, value: row[key] });
+              }
+            }
+          });
+          tasks.push(task);
+        });
+        createTaskListWithTasks(taskList, dispatch, tasks, dispatchTasks);
+      });
+    };
+    reader.readAsArrayBuffer(file);
+  };
+
   return (
     <div className="taskTable">
       <div className="tableActions">
         <button className="simpleButton exportButton" onClick={() => handleExportAll()}>
           Export All Lists
         </button>
-        <button className="simpleButton importButton">
+        <label htmlFor="importInput" className="simpleButton importButton">
           Import from .xlsx
-        </button>
+        </label>
+        <input 
+          id="importInput" 
+          type="file" 
+          className="importInput" 
+          accept=".xlsx" 
+          onChange={(e) => handleImport(e)}
+        />
       </div>
       <DataGrid
         rows={taskLists}

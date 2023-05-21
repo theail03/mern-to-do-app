@@ -16,6 +16,7 @@ import {
   updateTaskListStart,
   updateTaskListSuccess
 } from "./TaskListActions";
+import { createTask } from "../taskContext/apiCalls";
 
 // get all task lists
 export const getTaskLists = async (dispatch) => {
@@ -59,6 +60,30 @@ export const createTaskList = async (taskList, dispatch) => {
     dispatch(createTaskListSuccess(res.data));
   } catch (err) {
     dispatch(createTaskListFailure());
+  }
+};
+
+// create with tasks
+export const createTaskListWithTasks = async (taskList, dispatchTaskList, tasks, dispatchTask) => {
+  dispatchTaskList(createTaskListStart());
+  try {
+    const res = await axios.post("/taskLists", taskList, {
+      headers: {
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+      },
+    });
+    dispatchTaskList(createTaskListSuccess(res.data));
+    tasks = tasks.map((task) => {
+      return { 
+        ...task, 
+        taskList: res.data._id 
+      };
+    });
+    tasks.forEach((task) => {
+      createTask(task, dispatchTask);
+    });
+  } catch (err) {
+    dispatchTaskList(createTaskListFailure());
   }
 };
 
