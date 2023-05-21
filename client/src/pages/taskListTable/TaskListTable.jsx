@@ -79,7 +79,9 @@ export default function TaskListTable() {
 
   /* append tasks to a sheet */
   const appendTasksToSheet = (workbook, taskLists) => {
-    taskLists.forEach(taskList => {
+    /* copy task lists to avoid modifying the original array */
+    const exportTaskLists = JSON.parse(JSON.stringify(taskLists));
+    exportTaskLists.forEach(taskList => {
       const taskRows = exportTasks
         .filter(task => task.taskList === taskList._id)
         .map(task => { 
@@ -98,6 +100,14 @@ export default function TaskListTable() {
       /* Info from https://docs.sheetjs.com/docs/getting-started/example/ */
       /* generate worksheet and workbook */
       const worksheet = XLSX.utils.json_to_sheet(taskRows);
+      /* add number to task list title to avoid duplicate sheet names */
+      if (workbook.SheetNames.some(sheetName => sheetName === taskList.title)) {
+        let titleNumber = 2;
+        while (exportTaskLists.some(tl => tl.title === `${taskList.title} (${titleNumber})`)) {
+          titleNumber++;
+        }
+        taskList.title = `${taskList.title} (${titleNumber})`;
+      }
       XLSX.utils.book_append_sheet(workbook, worksheet, taskList.title);
     });
   };
