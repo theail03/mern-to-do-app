@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const TaskList = require("../models/TaskList");
+const Task = require("../models/Task");
 const verify = require("../verifyToken");
 
 // CREATE
@@ -44,6 +45,8 @@ router.delete("/:id", verify, async (req, res) => {
     if (req.user) {
         try {
             await TaskList.findByIdAndDelete(req.params.id);
+            // delete all tasks in the taskList
+            await Task.deleteMany({ taskList: req.params.id });
             res.status(200).json("The taskList has been deleted...");
         } catch (err) {
             res.status(500).json(err);
