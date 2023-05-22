@@ -109,7 +109,25 @@ export default function TaskListTable() {
         taskList.title = `${taskList.title} (${titleNumber})`;
       }
       XLSX.utils.book_append_sheet(workbook, worksheet, taskList.title);
+      worksheet['!cols'] = fitToColumn(taskRows);
     });
+  };
+
+  const fitToColumn = (rows) => {
+    // get maximum length of each column
+    const maxLengths = rows.reduce((acc, row) => {
+      Object.keys(row).forEach(key => {
+        acc[key] = Math.max(acc[key] || 0, Math.max(key.length, row[key]?.toString().length));
+      });
+      return acc;
+    }
+    , {});
+
+    // convert to array
+    const maxLengthsArray = Object.keys(maxLengths).map(key => maxLengths[key]);
+  
+    // add 2 to each length for padding
+    return maxLengthsArray.map(length => ({ width: length + 2 }));
   };
 
   const columns = [
