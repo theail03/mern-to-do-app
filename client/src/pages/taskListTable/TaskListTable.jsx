@@ -182,7 +182,7 @@ export default function TaskListTable() {
           });
         });
 
-        rows.forEach(row => {
+        rows.reverse().forEach(row => {
           const task = { title: row.title, tags: [], customFields: [] };
           Object.keys(row).forEach(key => {
             if (key !== "title") {
@@ -201,6 +201,8 @@ export default function TaskListTable() {
       });
     };
     reader.readAsArrayBuffer(file);
+    /* clear input */
+    e.target.value = null;
   };
 
   return (

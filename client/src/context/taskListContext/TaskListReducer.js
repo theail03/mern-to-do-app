@@ -44,7 +44,7 @@ const TaskListReducer = (state, action) => {
       };
     case "CREATE_TASK_LIST_SUCCESS":
       return {
-        taskLists: [...state.taskLists, action.payload],
+        taskLists: [action.payload, ...state.taskLists],
         isFetching: false,
         error: false,
       };

@@ -44,7 +44,7 @@ const TaskReducer = (state, action) => {
       };
     case "CREATE_TASK_SUCCESS":
       return {
-        tasks: [...state.tasks, action.payload],
+        tasks: [action.payload, ...state.tasks],
         isFetching: false,
         error: false,
       };
