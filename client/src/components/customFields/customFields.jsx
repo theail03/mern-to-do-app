@@ -43,7 +43,7 @@ function CustomFields(props) {
   }
 
   useEffect(() => {
-    if (taskLists[0]) {
+    if (taskLists[0] && props.taskListId === taskLists[0]._id) {
       const customFieldsFromDb = taskLists[0].customFields;
       setCustomFields(customFieldsFromDb);
     }

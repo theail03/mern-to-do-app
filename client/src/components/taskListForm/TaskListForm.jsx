@@ -35,7 +35,7 @@ export default function TaskListForm(props) {
 
   useEffect(() => {
     // set only title, tags and customFields
-    if (taskLists[0] && props.taskListId) {
+    if (taskLists[0] && props.taskListId === taskLists[0]._id) {
       const taskListFromDb = taskLists[0];
       setTaskList(taskListFromDb);
     }
@@ -82,10 +82,10 @@ export default function TaskListForm(props) {
         </div>
         <div className="tagsAndCustomFields">
           <div className="taskListFormLeft">
-            <TagFields handleTagFieldsChange={handleTagFieldsChange} />
+            <TagFields taskListId={props.taskListId} handleTagFieldsChange={handleTagFieldsChange} />
           </div>
           <div className="taskListFormRight">
-            <CustomFields handleCustomFieldsChange={handleCustomFieldsChange} />
+            <CustomFields taskListId={props.taskListId} handleCustomFieldsChange={handleCustomFieldsChange} />
           </div>
         </div>
       </form>

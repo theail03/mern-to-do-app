@@ -37,7 +37,7 @@ function TagFields(props) {
   }
 
   useEffect(() => {
-    if (taskLists[0]) {
+    if (taskLists[0] && props.taskListId === taskLists[0]._id) {
       const tagsFromDb = taskLists[0].tags;
       setTagFields(tagsFromDb);
     }
