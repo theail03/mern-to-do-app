@@ -63,7 +63,7 @@ const TaskReducer = (state, action) => {
     case "UPDATE_TASK_SUCCESS":
       return {
         tasks: state.tasks.map(
-          (task) => task._id === action.payload._id && action.payload
+          (task) => task._id === action.payload._id ? action.payload : task
         ),
         isFetching: false,
         error: false,

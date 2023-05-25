@@ -63,7 +63,7 @@ const TaskListReducer = (state, action) => {
     case "UPDATE_TASK_LIST_SUCCESS":
       return {
         taskLists: state.taskLists.map(
-          (taskList) => taskList._id === action.payload._id && action.payload
+          (taskList) => taskList._id === action.payload._id ? action.payload : taskList
         ),
         isFetching: false,
         error: false,
