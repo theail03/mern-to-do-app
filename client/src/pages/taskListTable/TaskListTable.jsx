@@ -89,7 +89,7 @@ export default function TaskListTable() {
 
           /* get tag names from taskList */
           row.tags = task.tags.map(taskTag => 
-            taskList.tags.find(taskListTag => taskTag === taskListTag.id).tag).join(";");
+            taskList.tags.find(taskListTag => taskTag === taskListTag.id).tag).join(",");
 
           taskList.customFields.forEach(cf => {
             row[cf.name] = task.customFields.find(tcf => tcf.id === cf.id).value;
@@ -179,7 +179,7 @@ export default function TaskListTable() {
           Object.keys(row).forEach(key => {
             if (key !== "title") {
               if (key === "tags") {
-                row[key].split(";").forEach(tag => {
+                row[key].split(",").forEach(tag => {
                   if (!taskList.tags.find(taskListTag => taskListTag.tag === tag)) {
                     taskList.tags.push({
                       id: uuidv4(),
@@ -205,7 +205,7 @@ export default function TaskListTable() {
           Object.keys(row).forEach(key => {
             if (key !== "title") {
               if (key === "tags") {
-                row[key].split(";").forEach(tag => {
+                row[key].split(",").forEach(tag => {
                   task.tags.push(taskList.tags.find(taskListTag => taskListTag.tag === tag).id);
                 });
               } else {
