@@ -16,7 +16,10 @@ import {
   updateTaskListStart,
   updateTaskListSuccess
 } from "./TaskListActions";
-import { createTask } from "../taskContext/apiCalls";
+import { 
+  createTask,
+  updateTask
+} from "../taskContext/apiCalls";
 
 // get all task lists
 export const getTaskLists = async (dispatch) => {
@@ -87,18 +90,38 @@ export const createTaskListWithTasks = async (taskList, dispatchTaskList, tasks,
   }
 };
 
+// update without dispatch
+export const updateTaskListWithoutDispatch = async (taskList) => {
+  const res = await axios.put(`/taskLists/${taskList._id}`, taskList, {
+    headers: {
+      token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+    },
+  });
+  return res;
+};
+
 // update
 export const updateTaskList = async (taskList, dispatch) => {
   dispatch(updateTaskListStart());
   try {
-    const res = await axios.put(`/taskLists/${taskList._id}`, taskList, {
-      headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      },
-    });
+    const res = await updateTaskListWithoutDispatch(taskList);
     dispatch(updateTaskListSuccess(res.data));
   } catch (err) {
     dispatch(updateTaskListFailure());
+  }
+};
+
+// update and remove tags and custom fields from tasks
+export const updateTaskListAndTasks = async (taskList, dispatchTaskList, tasks, dispatchTask) => {
+  dispatchTaskList(updateTaskListStart());
+  try {
+    const res = await updateTaskListWithoutDispatch(taskList);
+    dispatchTaskList(updateTaskListSuccess(res.data));
+    tasks.forEach((task) => {
+      updateTask(task, dispatchTask);
+    });
+  } catch (err) {
+    dispatchTaskList(updateTaskListFailure());
   }
 };
 
