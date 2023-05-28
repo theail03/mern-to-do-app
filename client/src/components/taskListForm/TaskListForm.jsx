@@ -45,6 +45,12 @@ export default function TaskListForm(props) {
     e.preventDefault();
     const tags = taskList.tags.map(i => i.tag);
     const customFields = taskList.customFields.map(i => i.name);
+    const customFieldNameRestrictions = [
+      "title", 
+      "tags", 
+      "createdAt", 
+      "updatedAt"
+    ];
     // check if title is empty
     if (taskList.title === "") {
       alert("Please enter a title for your task list");
@@ -56,6 +62,10 @@ export default function TaskListForm(props) {
     // see if taskList.customFields has any repeated custom fields 
     else if (customFields.length !== new Set(customFields).size) {
       alert("Please remove repeated custom fields");
+    }
+    // see if taskList.customFields has any restricted custom fields
+    else if (customFields.some(i => customFieldNameRestrictions.includes(i))) {
+      alert("The following custom field names are not allowed: title, tags, createdAt, updatedAt");
     }
     else {
       props.save(taskList, dispatch);
