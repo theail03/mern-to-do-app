@@ -217,6 +217,12 @@ export default function TaskListTable() {
               }
             }
           });
+          // add missing custom fields
+          taskList.customFields.forEach(cf => {
+            if (!task.customFields.find(tcf => tcf.id === cf.id)) {
+              task.customFields.push({ id: cf.id, value: null });
+            }
+          });
           tasks.push(task);
         });
         createTaskListWithTasks(taskList, dispatch, tasks, dispatchTasks);
