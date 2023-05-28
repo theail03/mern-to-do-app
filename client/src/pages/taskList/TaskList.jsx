@@ -18,6 +18,17 @@ export default function TaskList() {
             task.customFields = task.customFields.filter(customField => 
                 taskList.customFields.map(customField => customField.id).includes(customField.id));
         });
+        // add new custom fields to tasks
+        taskList.customFields.forEach(customField => {
+            tasks.forEach(task => {
+                if (!task.customFields.map(customField => customField.id).includes(customField.id)) {
+                    task.customFields.push({
+                        id: customField.id,
+                        value: null
+                    });
+                }
+            });
+        });
         updateTaskListAndTasks(taskList, dispatch, tasks, dispatchTask);
     }
 
