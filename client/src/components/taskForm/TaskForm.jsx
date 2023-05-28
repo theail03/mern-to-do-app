@@ -35,22 +35,11 @@ export default function TaskForm(props) {
   };
 
   const handleCustomFieldsChange = (id, event) => {
-    const newCustomFields = task.customFields.map(i => {
-      if(id === i.id) {
-        let value = event.target.value;
-        // get custom field max and min from customFields
-        const customField = customFields.find(i => i.id === id);
-        if(event.target.type === "number") {
-          value = parseInt(value);
-          // check if value is within custom field range
-          if(value < customField.min || value > customField.max) {
-            alert("Please enter a value between " + customField.min + " and " + customField.max);
-            value = i.value || "";
-          }
-        }
-        i[event.target.name] = value;
+    const newCustomFields = task.customFields.map(taskCustomField => {
+      if(id === taskCustomField.id) {
+        taskCustomField[event.target.name] = event.target.value;
       }
-      return i;
+      return taskCustomField;
     });
     setTask({ ...task, customFields: newCustomFields});
   };
@@ -93,8 +82,6 @@ export default function TaskForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const tags = task.tags.map(i => i.tag);
-    const customFields = task.customFields.map(i => i.name);
     // check if title is empty
     if (task.title === "") {
       alert("Please enter a title for your task list");
@@ -104,8 +91,32 @@ export default function TaskForm(props) {
       alert("Please select a task list");
     }
     else {
-      props.save(task, dispatch);
-      history.push("/");
+      // check for each number custom field if it is on range
+      let valid = true;
+      task.customFields.forEach(taskCustomField => {
+        const customField = customFields.find(customField => customField.id === taskCustomField.id);
+        if (customField.type === "integer") {
+          // parse int
+          taskCustomField.value = parseInt(taskCustomField.value);
+          if (
+            (customField.min !== null && taskCustomField.value < customField.min) || 
+            (customField.max !== null && taskCustomField.value > customField.max)
+          ) {
+            valid = false;
+            if (customField.min === null) {
+              alert(`Please enter a number less than ${customField.max} for ${customField.name}`);
+            } else if (customField.max === null) {
+              alert(`Please enter a number greater than ${customField.min} for ${customField.name}`);
+            } else {
+              alert(`Please enter a number between ${customField.min} and ${customField.max} for ${customField.name}`);
+            }
+          }
+        }
+      });
+      if (valid) {
+        props.save(task, dispatch);
+        history.push("/");
+      }
     }
   };
 
