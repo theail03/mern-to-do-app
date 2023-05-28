@@ -117,7 +117,7 @@ export default function TaskListTable() {
     // get maximum length of each column
     const maxLengths = rows.reduce((acc, row) => {
       Object.keys(row).forEach(key => {
-        acc[key] = Math.max(acc[key] || 0, Math.max(key.length, row[key]?.toString().length));
+        acc[key] = Math.max(acc[key] || 0, Math.max(key.length, row[key]?.toString().length || 0));
       });
       return acc;
     }
