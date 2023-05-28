@@ -179,14 +179,16 @@ export default function TaskListTable() {
           Object.keys(row).forEach(key => {
             if (key !== "title") {
               if (key === "tags") {
-                row[key].split(",").forEach(tag => {
-                  if (!taskList.tags.find(taskListTag => taskListTag.tag === tag)) {
-                    taskList.tags.push({
-                      id: uuidv4(),
-                      tag: tag
-                    });
-                  }
-                });
+                if (row[key] !== "") {
+                  row[key].split(",").forEach(tag => {
+                    if (!taskList.tags.find(taskListTag => taskListTag.tag === tag)) {
+                      taskList.tags.push({
+                        id: uuidv4(),
+                        tag: tag
+                      });
+                    }
+                  });
+                }
               } else {
                 if (!taskList.customFields.find(cf => cf.name === key)) {
                   taskList.customFields.push({
@@ -205,9 +207,11 @@ export default function TaskListTable() {
           Object.keys(row).forEach(key => {
             if (key !== "title") {
               if (key === "tags") {
-                row[key].split(",").forEach(tag => {
-                  task.tags.push(taskList.tags.find(taskListTag => taskListTag.tag === tag).id);
-                });
+                if (row[key] !== "") {
+                  row[key].split(",").forEach(tag => {
+                    task.tags.push(taskList.tags.find(taskListTag => taskListTag.tag === tag).id);
+                  });
+                }
               } else {
                 task.customFields.push({ id: taskList.customFields.find(cf => cf.name === key).id, value: row[key] });
               }
