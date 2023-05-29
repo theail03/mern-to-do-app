@@ -91,6 +91,10 @@ export default function TaskListTable() {
           row.tags = task.tags.map(taskTag => 
             taskList.tags.find(taskListTag => taskTag === taskListTag.id).tag).join(",");
 
+          // add created at and updated at
+          row.createdAt = task.createdAt;
+          row.updatedAt = task.updatedAt;
+
           taskList.customFields.forEach(cf => {
             row[cf.name] = task.customFields.find(tcf => tcf.id === cf.id).value;
           });
@@ -179,7 +183,7 @@ export default function TaskListTable() {
         // get column names from sheet to create custom fields
         const headers = XLSX.utils.sheet_to_json(sheet, { header: 1 })[0];
         headers.forEach(header => {
-          if (header !== "title" && header !== "tags") {
+          if (header !== "title" && header !== "tags" && header !== "createdAt" && header !== "updatedAt") {
             // check if custom field is integer
             const isInt = rows.every(row => Number.isInteger(row[header]) || 
               row[header] === undefined || 
@@ -216,7 +220,7 @@ export default function TaskListTable() {
         rows.reverse().forEach(row => {
           const task = { title: row.title, tags: [], customFields: [] };
           Object.keys(row).forEach(key => {
-            if (key !== "title") {
+            if (key !== "title" && key !== "createdAt" && key !== "updatedAt") {
               if (key === "tags") {
                 if (row[key] !== "") {
                   row[key].split(",").forEach(tag => {
