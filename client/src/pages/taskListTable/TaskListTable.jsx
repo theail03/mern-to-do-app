@@ -174,29 +174,38 @@ export default function TaskListTable() {
         const sheet = workbook.Sheets[sheetName];
         const rows = XLSX.utils.sheet_to_json(sheet);
 
+        // get column names from sheet to create custom fields
+        const headers = XLSX.utils.sheet_to_json(sheet, { header: 1 })[0];
+        headers.forEach(header => {
+          if (header !== "title" && header !== "tags") {
+            // check if custom field is integer
+            const isInt = rows.every(row => Number.isInteger(row[header]) || 
+              row[header] === undefined || 
+              row[header] === null || 
+              row[header] === ""
+            ) && rows.some(row => Number.isInteger(row[header]));
+            const type = isInt ? "integer" : "string";
+            taskList.customFields.push({
+              id: uuidv4(),
+              name: header,
+              type: type
+            });
+          }
+        });
+
         /* get tags and custom fields */
         rows.forEach(row => {
           Object.keys(row).forEach(key => {
-            if (key !== "title") {
-              if (key === "tags") {
-                if (row[key] !== "") {
-                  row[key].split(",").forEach(tag => {
-                    if (!taskList.tags.find(taskListTag => taskListTag.tag === tag)) {
-                      taskList.tags.push({
-                        id: uuidv4(),
-                        tag: tag
-                      });
-                    }
-                  });
-                }
-              } else {
-                if (!taskList.customFields.find(cf => cf.name === key)) {
-                  taskList.customFields.push({
-                    id: uuidv4(),
-                    name: key,
-                    type: "string"
-                  });       
-                }
+            if (key === "tags") {
+              if (row[key] !== "") {
+                row[key].split(",").forEach(tag => {
+                  if (!taskList.tags.find(taskListTag => taskListTag.tag === tag)) {
+                    taskList.tags.push({
+                      id: uuidv4(),
+                      tag: tag
+                    });
+                  }
+                });
               }
             }
           });
