@@ -133,6 +133,8 @@ export default function TaskListTable() {
   const columns = [
     { field: "_id", headerName: "ID", width: 190 },
     { field: "title", headerName: "Title", width: 150 },
+    { field: "createdAt", headerName: "Created At", width: 200 },
+    { field: "updatedAt", headerName: "Updated At", width: 200 },
     {
       field: "action",
       headerName: "Action",
