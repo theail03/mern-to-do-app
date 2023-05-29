@@ -57,11 +57,23 @@ export default function TaskListForm(props) {
     } 
     // see if taskList.tags has any repeated tags
     else if (tags.length !== new Set(tags).size) {
-      alert("Please remove repeated tags");
+      alert("Please make sure there are no repeated tags");
+    }
+    // validate there are no empty tags
+    else if (tags.some(i => i === "")) {
+      alert("Please make sure all tags have a name");
+    }
+    // validate tags have no "," in them
+    else if (tags.some(i => i.includes(","))) {
+      alert("Please make sure all tags do not have a comma (,) in them");
     }
     // see if taskList.customFields has any repeated custom fields 
     else if (customFields.length !== new Set(customFields).size) {
-      alert("Please remove repeated custom fields");
+      alert("Please make sure there are no custom fields with the same name");
+    }
+    // validate there are no empty custom field names
+    else if (customFields.some(i => i === "")) {
+      alert("Please make sure all custom fields have a name");
     }
     // see if taskList.customFields has any restricted custom fields
     else if (customFields.some(i => customFieldNameRestrictions.includes(i))) {
