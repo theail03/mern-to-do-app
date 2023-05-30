@@ -9,6 +9,11 @@ router.post("/", verify, async (req, res) => {
     if (req.user) {
         const newTask = new Task(req.body);
         try {
+            // get task list to get user id
+            const taskList = await TaskList.findById(newTask.taskList);
+            if (taskList.user != req.user.id) {
+                return res.status(403).json("You are not allowed!");
+            }
             const savedTask = await newTask.save();
             return res.status(201).json(savedTask);
         } catch (err) {
@@ -20,36 +25,28 @@ router.post("/", verify, async (req, res) => {
 });
 
 // UPDATE
-router.put("/:id", verify, async (req, res) => {
-    if (req.user) {
-        try {
-            const updatedTask = await Task.findByIdAndUpdate(
-                req.params.id,
-                {
-                    $set: req.body,
-                },
-                { new: true }
-            );
-            return res.status(200).json(updatedTask);
-        } catch (err) {
-            return res.status(500).json(err);
-        }
-    } else {
-        return res.status(403).json("You are not allowed!");
+router.put("/:id", [verify, verifyTaskUser], async (req, res) => {
+    try {
+        const updatedTask = await Task.findByIdAndUpdate(
+            req.params.id,
+            {
+                $set: req.body,
+            },
+            { new: true }
+        );
+        return res.status(200).json(updatedTask);
+    } catch (err) {
+        return res.status(500).json(err);
     }
 });
   
 // DELETE
-router.delete("/:id", verify, async (req, res) => {
-    if (req.user) {
-        try {
-            await Task.findByIdAndDelete(req.params.id);
-            return res.status(200).json("The task has been deleted...");
-        } catch (err) {
-            return res.status(500).json(err);
-        }
-    } else {
-        return res.status(403).json("You are not allowed!");
+router.delete("/:id", [verify, verifyTaskUser], async (req, res) => {
+    try {
+        await Task.findByIdAndDelete(req.params.id);
+        return res.status(200).json("The task has been deleted...");
+    } catch (err) {
+        return res.status(500).json(err);
     }
 });
   

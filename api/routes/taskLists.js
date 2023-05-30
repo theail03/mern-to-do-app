@@ -24,14 +24,21 @@ router.post("/", verify, async (req, res) => {
 router.put("/:id", verify, async (req, res) => {
     if (req.user) {
         try {
-            const updatedTaskList = await TaskList.findByIdAndUpdate(
-                req.params.id,
+            const updatedTaskList = await TaskList.findOneAndUpdate(
+                {
+                    _id: req.params.id,
+                    user: req.user.id,
+                },
                 {
                     $set: req.body,
                 },
                 { new: true }
             );
-            return res.status(200).json(updatedTaskList);
+            if (updatedTaskList) {
+                return res.status(200).json(updatedTaskList);
+            } else {
+                return res.status(404).json("TaskList not found or you are not allowed!");
+            }
         } catch (err) {
             return res.status(500).json(err);
         }
@@ -44,10 +51,17 @@ router.put("/:id", verify, async (req, res) => {
 router.delete("/:id", verify, async (req, res) => {
     if (req.user) {
         try {
-            await TaskList.findByIdAndDelete(req.params.id);
+            const taskList = await TaskList.findOneAndDelete({
+                _id: req.params.id,
+                user: req.user.id,
+            });
             // delete all tasks in the taskList
-            await Task.deleteMany({ taskList: req.params.id });
-            return res.status(200).json("The taskList has been deleted...");
+            if (taskList) {
+                await Task.deleteMany({ taskList: req.params.id });
+                return res.status(200).json("The taskList has been deleted...");
+            } else {
+                return res.status(404).json("TaskList not found or you are not allowed!");
+            }
         } catch (err) {
             return res.status(500).json(err);
         }
@@ -60,7 +74,10 @@ router.delete("/:id", verify, async (req, res) => {
 router.get("/:id", verify, async (req, res) => {
     if (req.user) {
         try {
-            const taskList = await TaskList.findById(req.params.id);
+            const taskList = await TaskList.findOne({
+                _id: req.params.id,
+                user: req.user.id
+            });
             return res.status(200).json(taskList);
         } catch (err) {
             return res.status(500).json(err);
@@ -74,7 +91,9 @@ router.get("/:id", verify, async (req, res) => {
 router.get("/", verify, async (req, res) => {
     if (req.user) {
         try {
-            const taskLists = await TaskList.find({ user: req.user.id });
+            const taskLists = await TaskList.find({ 
+                user: req.user.id 
+            });
             return res.status(200).json(taskLists.reverse());
         } catch (err) {
             return res.status(500).json(err);
