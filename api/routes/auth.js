@@ -36,7 +36,7 @@ router.post("/login", async (req, res) => {
     const accessToken = jwt.sign(
       { id: user._id },
       process.env.SECRET_KEY,
-      // { expiresIn: "5d" }
+      // To set the expiration time of the token, you can use the expiresIn property like this: { expiresIn: "5d" }.
     );
 
     const { password, ...info } = user._doc;
