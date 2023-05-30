@@ -11,12 +11,12 @@ router.post("/", verify, async (req, res) => {
         const newTaskList = new TaskList(taskList);
         try {
             const savedTaskList = await newTaskList.save();
-            res.status(201).json(savedTaskList);
+            return res.status(201).json(savedTaskList);
         } catch (err) {
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     } else {
-        res.status(403).json("You are not allowed!");
+        return res.status(403).json("You are not allowed!");
     }
 });
 
@@ -31,12 +31,12 @@ router.put("/:id", verify, async (req, res) => {
                 },
                 { new: true }
             );
-            res.status(200).json(updatedTaskList);
+            return res.status(200).json(updatedTaskList);
         } catch (err) {
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     } else {
-        res.status(403).json("You are not allowed!");
+        return res.status(403).json("You are not allowed!");
     }
 });
   
@@ -47,12 +47,12 @@ router.delete("/:id", verify, async (req, res) => {
             await TaskList.findByIdAndDelete(req.params.id);
             // delete all tasks in the taskList
             await Task.deleteMany({ taskList: req.params.id });
-            res.status(200).json("The taskList has been deleted...");
+            return res.status(200).json("The taskList has been deleted...");
         } catch (err) {
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     } else {
-        res.status(403).json("You are not allowed!");
+        return res.status(403).json("You are not allowed!");
     }
 });
   
@@ -61,12 +61,12 @@ router.get("/:id", verify, async (req, res) => {
     if (req.user) {
         try {
             const taskList = await TaskList.findById(req.params.id);
-            res.status(200).json(taskList);
+            return res.status(200).json(taskList);
         } catch (err) {
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     } else {
-        res.status(403).json("You are not allowed!");
+        return res.status(403).json("You are not allowed!");
     }
 });
 
@@ -75,12 +75,12 @@ router.get("/", verify, async (req, res) => {
     if (req.user) {
         try {
             const taskLists = await TaskList.find({ user: req.user.id });
-            res.status(200).json(taskLists.reverse());
+            return res.status(200).json(taskLists.reverse());
         } catch (err) {
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     } else {
-        res.status(403).json("You are not allowed!");
+        return res.status(403).json("You are not allowed!");
     }
 });
 
