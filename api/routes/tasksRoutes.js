@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const verifyTaskUser = require("../helpers/tasksHelpers");
-const Task = require("../models/Task");
-const TaskList = require("../models/TaskList");
-const verify = require("../verifyToken");
+const Task = require("../models/TaskModel");
+const TaskList = require("../models/TaskListModel");
+const verify = require("../helpers/verifyToken");
 
 // CREATE
 router.post("/", verify, async (req, res) => {

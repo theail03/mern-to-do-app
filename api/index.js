@@ -2,10 +2,10 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const authRoute = require("./routes/auth");
-const userRoute = require("./routes/users");
-const taskRoute = require("./routes/tasks");
-const taskListRoute = require("./routes/taskLists");
+const authRoute = require("./routes/authRoutes");
+const userRoute = require("./routes/usersRoutes");
+const taskRoute = require("./routes/tasksRoutes");
+const taskListRoute = require("./routes/taskListsRoutes");
 
 
 dotenv.config();
