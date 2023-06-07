@@ -5,8 +5,8 @@ import { Link, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { TaskContext } from "../../context/taskContext/TaskContext";
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
-import { deleteTask, getTasks } from "../../context/taskContext/apiCalls";
-import { getTaskList } from "../../context/taskListContext/apiCalls";
+import { deleteTask, getTasks } from "../../context/taskContext/taskApiCalls";
+import { getTaskList } from "../../context/taskListContext/taskListApiCalls";
 
 export default function TaskTable() {
   const { tasks, dispatch } = useContext(TaskContext);

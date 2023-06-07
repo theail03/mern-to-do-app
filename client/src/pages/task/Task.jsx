@@ -1,7 +1,7 @@
 import "./task.css";
 import { useParams } from 'react-router-dom';
 import TaskForm from "../../components/taskForm/TaskForm";
-import { updateTask } from "../../context/taskContext/apiCalls";
+import { updateTask } from "../../context/taskContext/taskApiCalls";
 
 export default function Task() {
     const { taskId } = useParams();

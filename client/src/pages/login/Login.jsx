@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { login } from "../../context/authContext/apiCalls";
+import { login } from "../../context/authContext/authApiCalls";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { useHistory } from "react-router-dom";
 import "./login.css";

@@ -9,10 +9,10 @@ import {
   deleteTaskList, 
   getTaskLists, 
   createTaskListWithTasks
-} from "../../context/taskListContext/apiCalls";
+} from "../../context/taskListContext/taskListApiCalls";
 import * as XLSX from 'xlsx';
 import { TaskContext } from "../../context/taskContext/TaskContext";
-import { getTasks, getAllTasks } from "../../context/taskContext/apiCalls";
+import { getTasks, getAllTasks } from "../../context/taskContext/taskApiCalls";
 import { v4 as uuidv4 } from 'uuid';
 
 export default function TaskListTable() {

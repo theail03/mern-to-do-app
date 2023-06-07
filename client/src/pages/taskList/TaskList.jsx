@@ -1,10 +1,10 @@
 import "./taskList.css";
 import { useParams } from 'react-router-dom';
 import TaskListForm from "../../components/taskListForm/TaskListForm";
-import { updateTaskListAndTasks } from "../../context/taskListContext/apiCalls";
+import { updateTaskListAndTasks } from "../../context/taskListContext/taskListApiCalls";
 import { useContext } from "react";
 import { TaskContext } from "../../context/taskContext/TaskContext";
-import { getTasks } from "../../context/taskContext/apiCalls";
+import { getTasks } from "../../context/taskContext/taskApiCalls";
 
 export default function TaskList() {
     const { taskListId } = useParams();
