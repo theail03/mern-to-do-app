@@ -8,7 +8,6 @@ import {
   Redirect,
 } from "react-router-dom";
 import Login from "./pages/login/Login";
-import Register from "./pages/register/Register";
 import { AuthContext } from "./context/authContext/AuthContext";
 import { useContext } from "react";
 import NewTaskList from "./pages/newTaskList/NewTaskList";
@@ -24,7 +23,6 @@ function App() {
     <Router>
       <Switch>
         <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
-        <Route path="/register">{user ? <Redirect to="/" /> : <Register />}</Route>
         {user ? (
           <>
             <Topbar />
