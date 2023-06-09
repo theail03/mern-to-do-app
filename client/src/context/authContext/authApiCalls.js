@@ -8,7 +8,7 @@ export const login = async () => {
 export const getUser = async (dispatch) => {
   dispatch(loginStart());
   try {
-    const res = await axios.get("auth/getuser", { 
+    const res = await axios.get("/auth/getuser", { 
       withCredentials: true 
     });
     dispatch(loginSuccess(res.data));
@@ -18,9 +18,9 @@ export const getUser = async (dispatch) => {
   }
 };
 
-export const logout = () => {
+export const logout = (dispatch) => {
   try {
-    const res = axios.get("auth/logout", { 
+    const res = axios.get("/auth/logout", { 
       withCredentials: true 
     });
     dispatch(logout());

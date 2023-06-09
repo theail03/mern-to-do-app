@@ -3,12 +3,16 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const session = require('express-session');
+const passport = require('passport');
 const authRoute = require("./routes/authRoutes");
 const taskRoute = require("./routes/tasksRoutes");
 const taskListRoute = require("./routes/taskListsRoutes");
 
-
+// Load config
 dotenv.config();
+
+// Passport config (needs to be after dotenv.config())
+require('./config/passportConfig')(passport);
 
 mongoose
   .connect(process.env.MONGO_URL, {
