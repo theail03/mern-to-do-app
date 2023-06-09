@@ -1,13 +1,30 @@
 import axios from "axios";
 import { loginFailure, loginStart, loginSuccess } from "./AuthActions";
 
-export const login = async (user, dispatch) => {
+export const login = async () => {
+  window.open("http://localhost:8800/auth/google", "_self");
+};
+
+export const getUser = async (dispatch) => {
   dispatch(loginStart());
   try {
-    const res = await axios.post("auth/login", user);
+    const res = await axios.get("auth/getuser", { 
+      withCredentials: true 
+    });
     dispatch(loginSuccess(res.data));
   } catch (err) {
     dispatch(loginFailure());
     alert(err.response.data);
   }
 };
+
+export const logout = () => {
+  try {
+    const res = axios.get("auth/logout", { 
+      withCredentials: true 
+    });
+    dispatch(logout());
+  } catch (err) {
+    alert(err.response.data);
+  }
+}

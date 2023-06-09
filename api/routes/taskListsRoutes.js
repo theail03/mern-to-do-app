@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const TaskList = require("../models/TaskListModel");
 const Task = require("../models/TaskModel");
-const verify = require("../helpers/verifyToken");
+const { ensureAuth } = require("../middleware/authMiddleware");
 
 // CREATE
-router.post("/", verify, async (req, res) => {
+router.post("/", ensureAuth, async (req, res) => {
     if (req.user) {
         const taskList = req.body;
         taskList.user = req.user.id;
@@ -21,7 +21,7 @@ router.post("/", verify, async (req, res) => {
 });
 
 // UPDATE
-router.put("/:id", verify, async (req, res) => {
+router.put("/:id", ensureAuth, async (req, res) => {
     if (req.user) {
         try {
             const updatedTaskList = await TaskList.findOneAndUpdate(
@@ -48,7 +48,7 @@ router.put("/:id", verify, async (req, res) => {
 });
   
 // DELETE
-router.delete("/:id", verify, async (req, res) => {
+router.delete("/:id", ensureAuth, async (req, res) => {
     if (req.user) {
         try {
             const taskList = await TaskList.findOneAndDelete({
@@ -71,7 +71,7 @@ router.delete("/:id", verify, async (req, res) => {
 });
   
 // GET
-router.get("/:id", verify, async (req, res) => {
+router.get("/:id", ensureAuth, async (req, res) => {
     if (req.user) {
         try {
             const taskList = await TaskList.findOne({
@@ -88,7 +88,7 @@ router.get("/:id", verify, async (req, res) => {
 });
 
 // GET ALL
-router.get("/", verify, async (req, res) => {
+router.get("/", ensureAuth, async (req, res) => {
     if (req.user) {
         try {
             const taskLists = await TaskList.find({ 

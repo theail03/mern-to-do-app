@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const verifyTaskUser = require("../helpers/tasksHelpers");
+const verifyTaskUser = require("../middleware/tasksMiddleware");
 const Task = require("../models/TaskModel");
 const TaskList = require("../models/TaskListModel");
-const verify = require("../helpers/verifyToken");
+const { ensureAuth } = require("../middleware/authMiddleware");
 
 // CREATE
-router.post("/", verify, async (req, res) => {
+router.post("/", ensureAuth, async (req, res) => {
     if (req.user) {
         const newTask = new Task(req.body);
         try {
@@ -25,7 +25,7 @@ router.post("/", verify, async (req, res) => {
 });
 
 // UPDATE
-router.put("/:id", [verify, verifyTaskUser], async (req, res) => {
+router.put("/:id", [ensureAuth, verifyTaskUser], async (req, res) => {
     try {
         const updatedTask = await Task.findByIdAndUpdate(
             req.params.id,
@@ -41,7 +41,7 @@ router.put("/:id", [verify, verifyTaskUser], async (req, res) => {
 });
   
 // DELETE
-router.delete("/:id", [verify, verifyTaskUser], async (req, res) => {
+router.delete("/:id", [ensureAuth, verifyTaskUser], async (req, res) => {
     try {
         await Task.findByIdAndDelete(req.params.id);
         return res.status(200).json("The task has been deleted...");
@@ -51,7 +51,7 @@ router.delete("/:id", [verify, verifyTaskUser], async (req, res) => {
 });
   
 // GET
-router.get("/:id", [verify, verifyTaskUser], async (req, res) => {
+router.get("/:id", [ensureAuth, verifyTaskUser], async (req, res) => {
     try {
         const task = await Task.findById(req.params.id);
         return res.status(200).json(task);
@@ -61,7 +61,7 @@ router.get("/:id", [verify, verifyTaskUser], async (req, res) => {
 });
 
 // GET ALL
-router.get("/", verify, async (req, res) => {
+router.get("/", ensureAuth, async (req, res) => {
     if (req.user) {
         try {
             // find all tasks from lists that belong to the user
@@ -78,7 +78,7 @@ router.get("/", verify, async (req, res) => {
 });
 
 // GET ALL TASKS FROM A LIST
-router.get("/taskList/:id", verify, async (req, res) => {
+router.get("/taskList/:id", ensureAuth, async (req, res) => {
     if (req.user) {
         try {
             const taskList = await TaskList.find({ user: req.user.id, _id: req.params.id });

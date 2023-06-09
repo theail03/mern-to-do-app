@@ -22,9 +22,7 @@ export const getTasks = async (dispatch, taskListId) => {
   dispatch(getTasksStart());
   try {
     const res = await axios.get(`/tasks/taskList/${taskListId}`, {
-      headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      },
+      withCredentials: true
     });
     dispatch(getTasksSuccess(res.data));
   } catch (err) {
@@ -37,9 +35,7 @@ export const getAllTasks = async (dispatch) => {
   dispatch(getTasksStart());
   try {
     const res = await axios.get(`/tasks`, {
-      headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      },
+      withCredentials: true
     });
     dispatch(getTasksSuccess(res.data));
   } catch (err) {
@@ -52,9 +48,7 @@ export const getTask = async (dispatch, id) => {
   dispatch(getTaskStart());
   try {
     const res = await axios.get(`/tasks/${id}`, {
-      headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      },
+      withCredentials: true
     });
     dispatch(getTaskSuccess([res.data]));
   } catch (err) {
@@ -67,9 +61,7 @@ export const createTask = async (task, dispatch) => {
   dispatch(createTaskStart());
   try {
     const res = await axios.post("/tasks", task, {
-      headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      },
+      withCredentials: true
     });
     dispatch(createTaskSuccess(res.data));
   } catch (err) {
@@ -82,9 +74,7 @@ export const updateTask = async (task, dispatch) => {
   dispatch(updateTaskStart());
   try {
     const res = await axios.put(`/tasks/${task._id}`, task, {
-      headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      },
+      withCredentials: true
     });
     dispatch(updateTaskSuccess(res.data));
   } catch (err) {
@@ -97,9 +87,7 @@ export const deleteTask = async (id, dispatch) => {
   dispatch(deleteTaskStart());
   try {
     await axios.delete("/tasks/" + id, {
-      headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      },
+      withCredentials: true
     });
     dispatch(deleteTaskSuccess(id));
   } catch (err) {

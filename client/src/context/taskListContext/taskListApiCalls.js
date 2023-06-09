@@ -26,9 +26,7 @@ export const getTaskLists = async (dispatch) => {
   dispatch(getTaskListsStart());
   try {
     const res = await axios.get("/taskLists", {
-      headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      },
+      withCredentials: true
     });
     dispatch(getTaskListsSuccess(res.data));
   } catch (err) {
@@ -41,9 +39,7 @@ export const getTaskList = async (dispatch, id) => {
   dispatch(getTaskListStart());
   try {
     const res = await axios.get(`/taskLists/${id}`, {
-      headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      },
+      withCredentials: true
     });
     dispatch(getTaskListSuccess([res.data]));
   } catch (err) {
@@ -56,9 +52,7 @@ export const createTaskList = async (taskList, dispatch) => {
   dispatch(createTaskListStart());
   try {
     const res = await axios.post("/taskLists", taskList, {
-      headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      },
+      withCredentials: true
     });
     dispatch(createTaskListSuccess(res.data));
   } catch (err) {
@@ -71,9 +65,7 @@ export const createTaskListWithTasks = async (taskList, dispatchTaskList, tasks,
   dispatchTaskList(createTaskListStart());
   try {
     const res = await axios.post("/taskLists", taskList, {
-      headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      },
+      withCredentials: true
     });
     dispatchTaskList(createTaskListSuccess(res.data));
     tasks = tasks.map((task) => {
@@ -130,9 +122,7 @@ export const deleteTaskList = async (id, dispatch) => {
   dispatch(deleteTaskListStart());
   try {
     await axios.delete("/taskLists/" + id, {
-      headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      },
+      withCredentials: true
     });
     dispatch(deleteTaskListSuccess(id));
   } catch (err) {

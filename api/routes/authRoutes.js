@@ -1,50 +1,34 @@
-const router = require("express").Router();
-const User = require("../models/UserModel");
-const CryptoJS = require("crypto-js");
-const jwt = require("jsonwebtoken");
+const express = require('express');
+const passport = require('passport');
+const router = express.Router();
 
-//REGISTER
-router.post("/register", async (req, res) => {
-  const newUser = new User({
-    username: req.body.username,
-    email: req.body.email,
-    password: CryptoJS.AES.encrypt(
-      req.body.password,
-      process.env.SECRET_KEY
-    ).toString(),
-  });
-  try {
-    const user = await newUser.save();
-    return res.status(201).json(user);
-  } catch (err) {
-    return res.status(500).json(err);
+// @desc    Auth with Google
+// @route   GET /auth/google
+router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
+
+// @desc    Google auth callback
+// @route   GET /auth/google/callback
+router.get(
+  '/google/callback',
+  passport.authenticate('google', { failureRedirect: 'http://localhost:4000', session: true }),
+  (req, res) => {
+    res.redirect('http://localhost:4000');
+  }
+);
+
+// @desc    Logout user
+// @route   /auth/logout
+router.get('/logout', (req, res) => {
+  if (req.user) {
+    req.logout();
+    res.send("done");
   }
 });
 
-//LOGIN
-router.post("/login", async (req, res) => {
-  try {
-    const user = await User.findOne({ email: req.body.email });
-    if (!user) return res.status(401).json("Wrong password or username!");
-
-    const bytes = CryptoJS.AES.decrypt(user.password, process.env.SECRET_KEY);
-    const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
-
-    if (originalPassword !== req.body.password)
-      return res.status(401).json("Wrong password or username!");
-
-    const accessToken = jwt.sign(
-      { id: user._id },
-      process.env.SECRET_KEY,
-      // To set the expiration time of the token, you can use the expiresIn property like this: { expiresIn: "5d" }.
-    );
-
-    const { password, ...info } = user._doc;
-
-    return res.status(200).json({ ...info, accessToken });
-  } catch (err) {
-    return res.status(500).json(err);
-  }
+// @desc    Get user data
+// @route   /auth/getuser
+router.get("/getuser", (req, res) => {
+  res.send(req.user);
 });
 
 module.exports = router;

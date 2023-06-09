@@ -10,10 +10,6 @@ const TaskSchema = new mongoose.Schema({
         ref: "TaskList",
         required: true
     },
-    completed: {
-        type: Boolean,
-        default: false
-    },
     tags: [{
         type: String,
         required: false
