@@ -18,12 +18,14 @@ export const getUser = async (dispatch) => {
   }
 };
 
-export const logoutUser = (dispatch) => {
+export const logoutUser = async (dispatch) => {
   try {
-    const res = axios.get("/auth/logout", { 
+    const res = await axios.get("/auth/logout", { 
       withCredentials: true 
     });
-    dispatch(logout());
+    if (res.data === "done") {
+      dispatch(logout());
+    }
   } catch (err) {
     alert(err.response.data);
   }

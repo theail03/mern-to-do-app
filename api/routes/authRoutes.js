@@ -18,11 +18,11 @@ router.get(
 
 // @desc    Logout user
 // @route   /auth/logout
-router.get('/logout', (req, res) => {
-  if (req.user) {
-    req.logout();
-    res.send("done");
-  }
+router.get('/logout', (req, res, next) => {
+  req.logout((err) => {
+      if (err) { return next(err); }
+      res.send("done");
+  });
 });
 
 // @desc    Get user data
