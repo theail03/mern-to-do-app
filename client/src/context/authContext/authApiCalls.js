@@ -1,5 +1,5 @@
 import axios from "axios";
-import { loginFailure, loginStart, loginSuccess } from "./AuthActions";
+import { loginFailure, loginStart, loginSuccess, logout } from "./AuthActions";
 
 export const login = async () => {
   window.open("http://localhost:8800/auth/google", "_self");
@@ -18,7 +18,7 @@ export const getUser = async (dispatch) => {
   }
 };
 
-export const logout = (dispatch) => {
+export const logoutUser = (dispatch) => {
   try {
     const res = axios.get("/auth/logout", { 
       withCredentials: true 

@@ -3,13 +3,13 @@ import "./topbar.css";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { useHistory } from "react-router-dom";
-import { logout } from "../../context/authContext/authApiCalls";
+import { logoutUser } from "../../context/authContext/authApiCalls";
 
 export default function Topbar() {
   const { dispatch } = useContext(AuthContext);
   const history = useHistory();
   const handleLogout = () => {
-    logout(dispatch);
+    logoutUser(dispatch);
     history.push("/");
   };
 

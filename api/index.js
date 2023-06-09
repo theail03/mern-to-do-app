@@ -37,6 +37,10 @@ app.use(
 // Body parser
 app.use(express.json());
 
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Routes
 app.use("/auth", authRoute);
 app.use("/tasks", taskRoute);
