@@ -24,7 +24,7 @@ export const logoutUser = async (dispatch) => {
       withCredentials: true 
     });
     if (res.data === "done") {
-      dispatch(logout());
+      getUser(dispatch);
     }
   } catch (err) {
     alert(err.response.data);
