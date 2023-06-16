@@ -46,7 +46,7 @@ app.use("/auth", authRoute);
 app.use("/tasks", taskRoute);
 app.use("/taskLists", taskListRoute);
 
-const PORT = process.env.PORT || 8800
+const PORT = process.env.PORT || 8800;
 
 app.listen(PORT, () => {
   console.log("Backend server is running!");
