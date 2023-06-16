@@ -85,9 +85,7 @@ export const createTaskListWithTasks = async (taskList, dispatchTaskList, tasks,
 // update without dispatch
 export const updateTaskListWithoutDispatch = async (taskList) => {
   const res = await axios.put(`/taskLists/${taskList._id}`, taskList, {
-    headers: {
-      token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-    },
+    withCredentials: true
   });
   return res;
 };
