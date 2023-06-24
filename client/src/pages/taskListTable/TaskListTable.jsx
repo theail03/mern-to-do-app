@@ -48,7 +48,7 @@ export default function TaskListTable() {
       /* generate workbook */
       const workbook = XLSX.utils.book_new();
 
-      const taskList = taskLists.find(taskList => taskList._id === exportTaskListId); 
+      const taskList = taskLists.find(taskList => taskList._id === exportTaskListId);
       appendTasksToSheet(workbook, [taskList]);
 
       /* create an XLSX file */
@@ -101,9 +101,22 @@ export default function TaskListTable() {
           return row;
         });
 
+      // set header row
+      const headers = [
+        "title", 
+        "tags", 
+        "createdAt", 
+        "updatedAt", 
+        ...taskList.customFields.map(cf => cf.name)
+      ];
+
       /* Info from https://docs.sheetjs.com/docs/getting-started/example/ */
       /* generate worksheet and workbook */
       const worksheet = XLSX.utils.json_to_sheet(taskRows);
+
+      // add header row to worksheet 
+      XLSX.utils.sheet_add_aoa(worksheet, [headers], { origin: "A1" });
+
       /* add number to task list title to avoid duplicate sheet names */
       if (workbook.SheetNames.some(sheetName => sheetName === taskList.title)) {
         let titleNumber = 2;
@@ -112,20 +125,31 @@ export default function TaskListTable() {
         }
         taskList.title = `${taskList.title} (${titleNumber})`;
       }
+
+      // add worksheet to workbook
       XLSX.utils.book_append_sheet(workbook, worksheet, taskList.title);
-      worksheet['!cols'] = fitToColumn(taskRows);
+      worksheet['!cols'] = fitToColumn(taskRows, headers);
     });
   };
 
-  const fitToColumn = (rows) => {
-    // get maximum length of each column
-    const maxLengths = rows.reduce((acc, row) => {
-      Object.keys(row).forEach(key => {
-        acc[key] = Math.max(acc[key] || 0, Math.max(key.length, row[key]?.toString().length || 0));
-      });
+  const fitToColumn = (rows, headers) => {
+    // get length of each header
+    let maxLengths = headers.reduce((acc, header) => {
+      acc[header] = Math.max(acc[header] || 0, header.length);
       return acc;
     }
     , {});
+
+    if (rows.length > 0) {
+      // get maximum length of each column
+      maxLengths = rows.reduce((acc, row) => {
+        Object.keys(row).forEach(key => {
+          acc[key] = Math.max(acc[key] || 0, Math.max(key.length, row[key]?.toString().length || 0));
+        });
+        return acc;
+      }
+      , {});
+    }
 
     // convert to array
     const maxLengthsArray = Object.keys(maxLengths).map(key => maxLengths[key]);
@@ -174,7 +198,7 @@ export default function TaskListTable() {
       const data = new Uint8Array(e.target.result);
       const workbook = XLSX.read(data, { type: "array" });
       const taskLists = [];
-      workbook.SheetNames.forEach(sheetName => {
+      workbook.SheetNames.reverse().forEach(sheetName => {
         const taskList = { title: sheetName, tags: [], customFields: [] };
         const tasks = [];
         const sheet = workbook.Sheets[sheetName];
@@ -182,7 +206,7 @@ export default function TaskListTable() {
 
         // get column names from sheet to create custom fields
         const headers = XLSX.utils.sheet_to_json(sheet, { header: 1 })[0];
-        headers.forEach(header => {
+        headers && headers.forEach(header => {
           if (header !== "title" && header !== "tags" && header !== "createdAt" && header !== "updatedAt") {
             // check if custom field is integer
             const isInt = rows.every(row => Number.isInteger(row[header]) || 
