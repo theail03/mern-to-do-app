@@ -31,7 +31,7 @@ export default function TaskListTable() {
     deleteTaskList(id, dispatch);
   };
 
-  /* export a single task list */
+  // export a single task list 
   const handleExport = async (id) => {
     if (window.confirm("Are you sure you want to export this task list?")) {
       await getTasks(dispatchTasks, id);
@@ -40,24 +40,24 @@ export default function TaskListTable() {
     }
   };
 
-  /* export a single task list */
+  // export a single task list 
   useEffect(() => {
     if (exporting) {
 
-      /* Info from https://docs.sheetjs.com/docs/getting-started/example/ */
-      /* generate workbook */
+      // Info from https://docs.sheetjs.com/docs/getting-started/example/ 
+      // generate workbook 
       const workbook = XLSX.utils.book_new();
 
       const taskList = taskLists.find(taskList => taskList._id === exportTaskListId);
       appendTasksToSheet(workbook, [taskList]);
 
-      /* create an XLSX file */
+      // create an XLSX file 
       XLSX.writeFile(workbook, taskList.title + " " + Date.now() + ".xlsx", { compression: true });
       setExporting(false);
     }
   }, [exporting]);
 
-  /* export all task lists */
+  // export all task lists 
   const handleExportAll = async () => {
     if (window.confirm("Are you sure you want to export all task lists?")) {
       await getAllTasks(dispatchTasks);
@@ -65,21 +65,21 @@ export default function TaskListTable() {
     }
   };
 
-  /* export all task lists */
+  // export all task lists 
   useEffect(() => {
     if (exportingAll) {
       const workbook = XLSX.utils.book_new();
       appendTasksToSheet(workbook, taskLists);
 
-      /* create an XLSX file */
+      // create an XLSX file 
       XLSX.writeFile(workbook, "all lists " + Date.now() + ".xlsx", { compression: true });
       setExportingAll(false);
     }
   }, [exportingAll]);
 
-  /* append tasks to a sheet */
+  // append tasks to a sheet 
   const appendTasksToSheet = (workbook, taskLists) => {
-    /* copy task lists to avoid modifying the original array */
+    // copy task lists to avoid modifying the original array 
     const exportTaskLists = JSON.parse(JSON.stringify(taskLists));
     exportTaskLists.forEach(taskList => {
       const taskRows = exportTasks
@@ -87,7 +87,7 @@ export default function TaskListTable() {
         .map(task => { 
           const row = { title: task.title };
 
-          /* get tag names from taskList */
+          // get tag names from taskList 
           row.tags = task.tags.map(taskTag => 
             taskList.tags.find(taskListTag => taskTag === taskListTag.id).tag).join(",");
 
@@ -110,14 +110,14 @@ export default function TaskListTable() {
         ...taskList.customFields.map(cf => cf.name)
       ];
 
-      /* Info from https://docs.sheetjs.com/docs/getting-started/example/ */
-      /* generate worksheet and workbook */
+      // Info from https://docs.sheetjs.com/docs/getting-started/example/ 
+      // generate worksheet and workbook 
       const worksheet = XLSX.utils.json_to_sheet(taskRows);
 
       // add header row to worksheet 
       XLSX.utils.sheet_add_aoa(worksheet, [headers], { origin: "A1" });
 
-      /* add number to task list title to avoid duplicate sheet names */
+      // add number to task list title to avoid duplicate sheet names 
       if (workbook.SheetNames.some(sheetName => sheetName === taskList.title)) {
         let titleNumber = 2;
         while (exportTaskLists.some(tl => tl.title === `${taskList.title} (${titleNumber})`)) {
@@ -223,7 +223,7 @@ export default function TaskListTable() {
           }
         });
 
-        /* get tags and custom fields */
+        // get tags and custom fields 
         rows.forEach(row => {
           Object.keys(row).forEach(key => {
             if (key === "tags") {
@@ -268,7 +268,7 @@ export default function TaskListTable() {
       });
     };
     reader.readAsArrayBuffer(file);
-    /* clear input */
+    // clear input 
     e.target.value = null;
   };
 
