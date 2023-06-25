@@ -47,13 +47,19 @@ export const getTaskList = async (dispatch, id) => {
   }
 };
 
+// create without dispatch
+export const createTaskListWithoutDispatch = async (taskList) => {
+  const res = await axios.post("/taskLists", taskList, {
+    withCredentials: true
+  });
+  return res;
+};
+
 // create
 export const createTaskList = async (taskList, dispatch) => {
   dispatch(createTaskListStart());
   try {
-    const res = await axios.post("/taskLists", taskList, {
-      withCredentials: true
-    });
+    const res = await createTaskListWithoutDispatch(taskList);
     dispatch(createTaskListSuccess(res.data));
   } catch (err) {
     dispatch(createTaskListFailure());
@@ -64,9 +70,7 @@ export const createTaskList = async (taskList, dispatch) => {
 export const createTaskListWithTasks = async (taskList, dispatchTaskList, tasks, dispatchTask) => {
   dispatchTaskList(createTaskListStart());
   try {
-    const res = await axios.post("/taskLists", taskList, {
-      withCredentials: true
-    });
+    const res = await createTaskListWithoutDispatch(taskList);
     dispatchTaskList(createTaskListSuccess(res.data));
     tasks = tasks.map((task) => {
       return { 
