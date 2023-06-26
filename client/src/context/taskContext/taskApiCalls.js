@@ -50,7 +50,7 @@ export const getTask = async (dispatch, id) => {
     const res = await axios.get(`/tasks/${id}`, {
       withCredentials: true
     });
-    dispatch(getTaskSuccess([res.data]));
+    dispatch(getTaskSuccess(res.data));
   } catch (err) {
     dispatch(getTaskFailure());
   }

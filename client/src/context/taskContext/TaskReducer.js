@@ -2,40 +2,46 @@ const TaskReducer = (state, action) => {
   switch (action.type) {
     case "GET_TASKS_START":
       return {
+        ...state,
         tasks: [],
         isFetching: true,
         error: false,
       };
     case "GET_TASKS_SUCCESS":
       return {
+        ...state,
         tasks: action.payload,
         isFetching: false,
         error: false,
       };
     case "GET_TASKS_FAILURE":
       return {
+        ...state,
         tasks: [],
         isFetching: false,
         error: true,
       };
-      case "GET_TASK_START":
-        return {
-          tasks: [],
-          isFetching: true,
-          error: false,
-        };
-      case "GET_TASK_SUCCESS":
-        return {
-          tasks: action.payload,
-          isFetching: false,
-          error: false,
-        };
-      case "GET_TASK_FAILURE":
-        return {
-          tasks: [],
-          isFetching: false,
-          error: true,
-        };
+    case "GET_TASK_START":
+      return {
+        ...state,
+        task: null,
+        isFetching: true,
+        error: false,
+      };
+    case "GET_TASK_SUCCESS":
+      return {
+        ...state,
+        task: action.payload,
+        isFetching: false,
+        error: false,
+      };
+    case "GET_TASK_FAILURE":
+      return {
+        ...state,
+        task: null,
+        isFetching: false,
+        error: true,
+      };
     case "CREATE_TASK_START":
       return {
         ...state,
@@ -44,6 +50,7 @@ const TaskReducer = (state, action) => {
       };
     case "CREATE_TASK_SUCCESS":
       return {
+        ...state,
         tasks: [action.payload, ...state.tasks],
         isFetching: false,
         error: false,
@@ -62,6 +69,7 @@ const TaskReducer = (state, action) => {
       };
     case "UPDATE_TASK_SUCCESS":
       return {
+        ...state,
         tasks: state.tasks.map(
           (task) => task._id === action.payload._id ? action.payload : task
         ),
@@ -82,6 +90,7 @@ const TaskReducer = (state, action) => {
       };
     case "DELETE_TASK_SUCCESS":
       return {
+        ...state,
         tasks: state.tasks.filter((task) => task._id !== action.payload),
         isFetching: false,
         error: false,

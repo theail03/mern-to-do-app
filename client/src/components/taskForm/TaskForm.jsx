@@ -21,7 +21,7 @@ export default function TaskForm(props) {
   const [tags, setTags] = useState([]);
   const [customFields, setCustomFields] = useState([]);
 
-  const { tasks, dispatch } = useContext(TaskContext);
+  const { task: taskFromContext, dispatch } = useContext(TaskContext);
 
   const { taskLists, dispatch: dispatchTaskList } = useContext(TaskListContext);
 
@@ -69,8 +69,8 @@ export default function TaskForm(props) {
 
   useEffect(() => {
     // set only title, tags and customFields
-    if (tasks[0] && props.taskId === tasks[0]._id) {
-      const taskFromDb = tasks[0];
+    if (taskFromContext && props.taskId === taskFromContext._id) {
+      const taskFromDb = taskFromContext;
       setTask(taskFromDb);
       const taskList = taskLists.find(i => i._id === taskFromDb.taskList);
       if (taskList) {
@@ -78,7 +78,7 @@ export default function TaskForm(props) {
         setCustomFields(taskList.customFields);
       }
     }
-  }, [tasks, taskLists]);
+  }, [taskFromContext, taskLists]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
