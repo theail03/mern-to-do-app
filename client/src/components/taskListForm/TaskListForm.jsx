@@ -12,7 +12,7 @@ export default function TaskListForm(props) {
   const [taskList, setTaskList] = useState({ title: "", tags: [], customFields: [] });
   const history = useHistory()
 
-  const { taskLists, dispatch } = useContext(TaskListContext);
+  const { taskList: taskListFromContext, dispatch } = useContext(TaskListContext);
 
   const handleTitleChange = (e) => {
     const value = e.target.value;
@@ -35,11 +35,10 @@ export default function TaskListForm(props) {
 
   useEffect(() => {
     // set only title, tags and customFields
-    if (taskLists[0] && props.taskListId === taskLists[0]._id) {
-      const taskListFromDb = taskLists[0];
-      setTaskList(taskListFromDb);
+    if (taskListFromContext && props.taskListId === taskListFromContext._id) {
+      setTaskList(taskListFromContext);
     }
-  }, [taskLists]);
+  }, [taskListFromContext]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

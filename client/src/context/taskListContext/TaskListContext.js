@@ -2,6 +2,7 @@ import TaskListReducer from "./TaskListReducer";
 import { createContext, useReducer } from "react";
 
 const INITIAL_STATE = {
+  taskList: null,
   taskLists: [],
   isFetching: false,
   error: false,
@@ -15,6 +16,7 @@ export const TaskListContextProvider = ({ children }) => {
   return (
     <TaskListContext.Provider
       value={{
+        taskList: state.taskList,
         taskLists: state.taskLists,
         isFetching: state.isFetching,
         error: state.error,

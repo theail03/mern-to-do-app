@@ -12,7 +12,7 @@ import "./tagFields.css";
 function TagFields(props) {
   const [tagFields, setTagFields] = useState([]);
 
-  const { taskLists, dispatch } = useContext(TaskListContext);
+  const { taskList: taskListFromContext, dispatch } = useContext(TaskListContext);
 
   const handleChangeTag = (id, event) => {
     const newTagFields = tagFields.map(i => {
@@ -37,11 +37,11 @@ function TagFields(props) {
   }
 
   useEffect(() => {
-    if (taskLists[0] && props.taskListId === taskLists[0]._id) {
-      const tagsFromDb = taskLists[0].tags;
+    if (taskListFromContext && props.taskListId === taskListFromContext._id) {
+      const tagsFromDb = taskListFromContext.tags;
       setTagFields(tagsFromDb);
     }
-  }, [taskLists]);
+  }, [taskListFromContext]);
 
   useEffect(() => {
     props.handleTagFieldsChange(tagFields);

@@ -41,7 +41,7 @@ export const getTaskList = async (dispatch, id) => {
     const res = await axios.get(`/taskLists/${id}`, {
       withCredentials: true
     });
-    dispatch(getTaskListSuccess([res.data]));
+    dispatch(getTaskListSuccess(res.data));
   } catch (err) {
     dispatch(getTaskListFailure());
   }

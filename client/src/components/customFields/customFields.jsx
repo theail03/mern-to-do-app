@@ -14,7 +14,7 @@ import "./customFields.css";
 function CustomFields(props) {
   const [customFields, setCustomFields] = useState([]);
 
-  const { taskLists, dispatch } = useContext(TaskListContext);
+  const { taskList: taskListFromContext, dispatch } = useContext(TaskListContext);
 
   const handleChangeCustomField = (id, event) => {
     const newCustomFields = customFields.map(i => {
@@ -43,11 +43,11 @@ function CustomFields(props) {
   }
 
   useEffect(() => {
-    if (taskLists[0] && props.taskListId === taskLists[0]._id) {
-      const customFieldsFromDb = taskLists[0].customFields;
+    if (taskListFromContext && props.taskListId === taskListFromContext._id) {
+      const customFieldsFromDb = taskListFromContext.customFields;
       setCustomFields(customFieldsFromDb);
     }
-  }, [taskLists]);
+  }, [taskListFromContext]);
 
   useEffect(() => {
     props.handleCustomFieldsChange(customFields);

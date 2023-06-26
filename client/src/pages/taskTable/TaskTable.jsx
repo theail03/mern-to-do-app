@@ -11,7 +11,7 @@ import { getTaskList } from "../../context/taskListContext/taskListApiCalls";
 export default function TaskTable() {
   const { tasks, dispatch } = useContext(TaskContext);
   const { taskListId } = useParams();
-  const { taskLists, dispatch: dispatchTaskLists } = useContext(TaskListContext);
+  const { taskList: taskListFromContext, dispatch: dispatchTaskLists } = useContext(TaskListContext);
   const [ taskList, setTaskList ] = useState([]);
   const [ tableColumns, setTableColumns ] = useState([]);
 
@@ -40,11 +40,10 @@ export default function TaskTable() {
   }, []);
 
   useEffect(() => {
-    if (taskLists) {
-      const taskList = taskLists[0];
-      setTaskList(taskList);
+    if (taskListFromContext) {
+      setTaskList(taskListFromContext);
     }
-  }, [taskLists]);
+  }, [taskListFromContext]);
 
   useEffect(() => { 
     if (taskList) {

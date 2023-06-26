@@ -2,37 +2,43 @@ const TaskListReducer = (state, action) => {
   switch (action.type) {
     case "GET_TASK_LISTS_START":
       return {
+        ...state,
         taskLists: [],
         isFetching: true,
         error: false,
       };
     case "GET_TASK_LISTS_SUCCESS":
       return {
+        ...state,
         taskLists: action.payload,
         isFetching: false,
         error: false,
       };
     case "GET_TASK_LISTS_FAILURE":
       return {
+        ...state,
         taskLists: [],
         isFetching: false,
         error: true,
       };
       case "GET_TASK_LIST_START":
         return {
-          taskLists: [],
+          ...state,
+          taskList: null,
           isFetching: true,
           error: false,
         };
       case "GET_TASK_LIST_SUCCESS":
         return {
-          taskLists: action.payload,
+          ...state,
+          taskList: action.payload,
           isFetching: false,
           error: false,
         };
       case "GET_TASK_LIST_FAILURE":
         return {
-          taskLists: [],
+          ...state,
+          taskList: null,
           isFetching: false,
           error: true,
         };
@@ -44,6 +50,7 @@ const TaskListReducer = (state, action) => {
       };
     case "CREATE_TASK_LIST_SUCCESS":
       return {
+        ...state,
         taskLists: [action.payload, ...state.taskLists],
         isFetching: false,
         error: false,
@@ -62,6 +69,7 @@ const TaskListReducer = (state, action) => {
       };
     case "UPDATE_TASK_LIST_SUCCESS":
       return {
+        ...state,
         taskLists: state.taskLists.map(
           (taskList) => taskList._id === action.payload._id ? action.payload : taskList
         ),
@@ -82,6 +90,7 @@ const TaskListReducer = (state, action) => {
       };
     case "DELETE_TASK_LIST_SUCCESS":
       return {
+        ...state,
         taskLists: state.taskLists.filter((taskList) => taskList._id !== action.payload),
         isFetching: false,
         error: false,
