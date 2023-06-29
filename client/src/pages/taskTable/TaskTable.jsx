@@ -1,12 +1,11 @@
-import "./taskTable.css";
 import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline } from "@material-ui/icons";
 import { Link, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { TaskContext } from "../../context/taskContext/TaskContext";
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { deleteTask, getTasks } from "../../context/taskContext/taskApiCalls";
 import { getTaskList } from "../../context/taskListContext/taskListApiCalls";
+import { DeleteButton, EditButton, Table } from "../../styles/Table.styles";
 
 export default function TaskTable() {
   const { tasks, dispatch } = useContext(TaskContext);
@@ -86,10 +85,9 @@ export default function TaskTable() {
             <Link
               to={{ pathname: "/task/" + params.row._id }}
             >
-              <button className="taskEdit">Edit</button>
+              <EditButton>Edit</EditButton>
             </Link>
-            <DeleteOutline
-              className="taskDelete"
+            <DeleteButton
               onClick={() => handleDelete(params.row._id)}
             />
           </>
@@ -99,7 +97,7 @@ export default function TaskTable() {
   ];
 
   return (
-    <div className="taskTable">
+    <Table>
       <DataGrid
         rows={tasks.map(transformTask)}
         disableSelectionOnClick
@@ -107,6 +105,6 @@ export default function TaskTable() {
         pageSize={8}
         getRowId={(r) => r._id}
       />
-    </div>
+    </Table>
   );
 }

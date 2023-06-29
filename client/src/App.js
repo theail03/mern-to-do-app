@@ -1,6 +1,5 @@
 import Sidebar from "./components/sidebar/Sidebar";
 import Topbar from "./components/topbar/Topbar";
-import "./app.css";
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,6 +15,7 @@ import NewTask from "./pages/newTask/NewTask";
 import Task from "./pages/task/Task";
 import TaskTable from "./pages/taskTable/TaskTable";
 import TaskListTable from "./pages/taskListTable/TaskListTable";
+import { RouteContainer } from "./styles/Container.styled";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -26,7 +26,7 @@ function App() {
         {user ? (
           <>
             <Topbar />
-            <div className="container">
+            <RouteContainer>
               <Sidebar />
               <Route exact path="/">
                 <TaskListTable />
@@ -49,7 +49,7 @@ function App() {
               <Route path="/taskLists">
                 <TaskListTable />
               </Route>
-            </div>
+            </RouteContainer>
           </>
         ) : (
           <Route exact path="/">

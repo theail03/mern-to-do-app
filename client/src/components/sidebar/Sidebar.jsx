@@ -1,38 +1,43 @@
-import "./sidebar.css";
 import {
-  List,
-  PlaylistAddTwoTone,
-} from "@material-ui/icons";
-import { Link } from "react-router-dom";
+  SidebarStyled,
+  SidebarWrapper,
+  SidebarMenu,
+  SidebarTitle,
+  SidebarList,
+  SidebarListItem,
+  SidebarListIcon,
+  SidebarAddIcon,
+} from "./Sidebar.styled";
+import { LinkStyled } from "../../styles/Link.styled";
 
 export default function Sidebar() {
   return (
-    <div className="sidebar">
-      <div className="sidebarWrapper">
-        <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Menu</h3>
-          <ul className="sidebarList">
-            <Link to="/taskLists" className="link">
-              <li className="sidebarListItem">
-                <List className="sidebarIcon" />
+    <SidebarStyled>
+      <SidebarWrapper>
+        <SidebarMenu>
+          <SidebarTitle>Menu</SidebarTitle>
+          <SidebarList>
+            <LinkStyled to="/taskLists">
+              <SidebarListItem>
+                <SidebarListIcon/>
                 Task Lists
-              </li>
-            </Link>
-            <Link to="/newTaskList" className="link">
-              <li className="sidebarListItem">
-                <PlaylistAddTwoTone className="sidebarIcon" />
+              </SidebarListItem>
+            </LinkStyled>
+            <LinkStyled to="/newTaskList">
+              <SidebarListItem>
+                <SidebarAddIcon/>
                 Add Task List
-              </li>
-            </Link>
-            <Link to="/newTask" className="link">
-              <li className="sidebarListItem">
-                <PlaylistAddTwoTone  className="sidebarIcon" />
+              </SidebarListItem>
+            </LinkStyled>
+            <LinkStyled to="/newTask">
+              <SidebarListItem>
+                <SidebarAddIcon/>
                 Add Task
-              </li>
-            </Link>
-          </ul>
-        </div>
-      </div>
-    </div>
+              </SidebarListItem>
+            </LinkStyled>
+          </SidebarList>
+        </SidebarMenu>
+      </SidebarWrapper>
+    </SidebarStyled>
   );
 }

@@ -1,6 +1,6 @@
-import "./newTask.css";
 import TaskForm from "../../components/taskForm/TaskForm";
 import { createTask } from "../../context/taskContext/taskApiCalls";
+import { Page } from "../../styles/Page.styled";
 
 export default function NewTask() {
   const save = (task, dispatch) => {
@@ -8,9 +8,9 @@ export default function NewTask() {
   }
 
   return (
-    <div className="newTask">
+    <Page>
       <h1>New Task</h1>
       <TaskForm save={save}/>
-    </div>
+    </Page>
   );
 }

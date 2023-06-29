@@ -1,7 +1,4 @@
-// To do: put data grid css in a global css file
-import "./taskListTable.css";
 import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
@@ -14,6 +11,8 @@ import * as XLSX from 'xlsx';
 import { TaskContext } from "../../context/taskContext/TaskContext";
 import { getTasks, getAllTasks } from "../../context/taskContext/taskApiCalls";
 import { v4 as uuidv4 } from 'uuid';
+import { ExportAllButton, ExportListButton, ImportInput, SeeTasksButton, TableActions, ImportButton } from "./TaskListTable.styled";
+import { DeleteButton, EditButton, Table } from "../../styles/Table.styles";
 
 export default function TaskListTable() {
   const { taskLists, dispatch } = useContext(TaskListContext);
@@ -173,16 +172,15 @@ export default function TaskListTable() {
             <Link
               to={{ pathname: "/tasks/" + params.row._id }}
             >
-              <button className="taskTableSeeTasks">See tasks</button>
+              <SeeTasksButton>See tasks</SeeTasksButton>
             </Link>
-            <button className="taskTableExport" onClick={() => handleExport(params.row._id)}>Export</button>
+            <ExportListButton onClick={() => handleExport(params.row._id)}>Export</ExportListButton>
             <Link
               to={{ pathname: "/taskList/" + params.row._id }}
             >
-              <button className="taskEdit">Edit</button>
+              <EditButton>Edit</EditButton>
             </Link>
-            <DeleteOutline
-              className="taskDelete"
+            <DeleteButton
               onClick={() => handleDelete(params.row._id)}
             />
           </>
@@ -273,22 +271,21 @@ export default function TaskListTable() {
   };
 
   return (
-    <div className="taskTable">
-      <div className="tableActions">
-        <button className="simpleButton exportButton" onClick={() => handleExportAll()}>
+    <Table>
+      <TableActions>
+        <ExportAllButton onClick={() => handleExportAll()}>
           Export All Lists
-        </button>
-        <label htmlFor="importInput" className="simpleButton importButton">
+        </ExportAllButton>
+        <ImportButton htmlFor="importInput">
           Import from .xlsx
-        </label>
-        <input 
+        </ImportButton>
+        <ImportInput 
           id="importInput" 
           type="file" 
-          className="importInput" 
           accept=".xlsx" 
           onChange={(e) => handleImport(e)}
         />
-      </div>
+      </TableActions>
       <DataGrid
         rows={taskLists}
         disableSelectionOnClick
@@ -296,6 +293,6 @@ export default function TaskListTable() {
         pageSize={8}
         getRowId={(r) => r._id}
       />
-    </div>
+    </Table>
   );
 }

@@ -1,6 +1,6 @@
-import "./newTaskList.css";
 import TaskListForm from "../../components/taskListForm/TaskListForm";
 import { createTaskList } from "../../context/taskListContext/taskListApiCalls";
+import { Page } from "../../styles/Page.styled";
 
 export default function NewTaskList() {
   const save = (taskList, dispatch) => {
@@ -8,9 +8,9 @@ export default function NewTaskList() {
   }
 
   return (
-    <div className="newTaskList">
+    <Page>
       <h1>New Task List</h1>
       <TaskListForm save={save}/>
-    </div>
+    </Page>
   );
 }

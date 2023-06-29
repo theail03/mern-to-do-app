@@ -1,7 +1,7 @@
-import "./task.css";
 import { useParams } from 'react-router-dom';
 import TaskForm from "../../components/taskForm/TaskForm";
 import { updateTask } from "../../context/taskContext/taskApiCalls";
+import { Page } from "../../styles/Page.styled";
 
 export default function Task() {
     const { taskId } = useParams();
@@ -11,9 +11,9 @@ export default function Task() {
     }
 
     return (
-        <div className="editTask">
+        <Page>
             <h1>Edit Task</h1>
             <TaskForm taskId={taskId} save={save}/>
-        </div>
+        </Page>
     );
 }

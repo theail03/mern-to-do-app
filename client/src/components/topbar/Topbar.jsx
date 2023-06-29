@@ -1,9 +1,15 @@
 import React from "react";
-import "./topbar.css";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { useHistory } from "react-router-dom";
 import { logoutUser } from "../../context/authContext/authApiCalls";
+import { 
+  Logo,
+  LogoutButton,
+  TopRight,
+  TopbarStyled, 
+  TopbarWrapper 
+} from "./Topbar.styled";
 
 export default function Topbar() {
   const { dispatch } = useContext(AuthContext);
@@ -14,17 +20,17 @@ export default function Topbar() {
   };
 
   return (
-    <div className="topbar">
-      <div className="topbarWrapper">
-        <div className="topLeft">
-          <span className="logo">TO-DO-APP</span>
+    <TopbarStyled>
+      <TopbarWrapper>
+        <div>
+          <Logo>TO-DO-APP</Logo>
         </div>
-        <div className="topRight">
-            <button className="simpleButton logoutButton" onClick={handleLogout}>
+        <TopRight>
+            <LogoutButton onClick={handleLogout}>
               Sign out
-            </button>
-        </div>
-      </div>
-    </div>
+            </LogoutButton>
+        </TopRight>
+      </TopbarWrapper>
+    </TopbarStyled>
   );
 }

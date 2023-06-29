@@ -7,7 +7,6 @@ import AddIcon from '@material-ui/icons/Add';
 import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
 import { v4 as uuidv4 } from 'uuid';
-import "./tagFields.css";
 
 function TagFields(props) {
   const [tagFields, setTagFields] = useState([]);

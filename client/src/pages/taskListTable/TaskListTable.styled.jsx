@@ -1,4 +1,7 @@
-.taskTableSeeTasks{
+import styled from 'styled-components';
+import { simpleButton } from '../../styles/SimpleButton.styled';
+
+export const SeeTasksButton = styled.button`
     border: none;
     border-radius: 10px;
     padding: 5px 10px;
@@ -6,9 +9,9 @@
     color: white;
     cursor: pointer;
     margin-right: 20px;
-}
+`;
 
-.taskTableExport{
+export const ExportListButton = styled.button`
     border: none;
     border-radius: 10px;
     padding: 5px 10px;
@@ -16,27 +19,29 @@
     color: white;
     cursor: pointer;
     margin-right: 20px;
-}
+`;
 
-.tableActions{
+export const TableActions = styled.div`
     display: flex;
     justify-content: flex-start;
     margin-left: 20px;
     margin-bottom: 20px;
-}
+`;
 
-.exportButton{
+export const ExportAllButton = styled.button`
+    ${simpleButton}
     background-color: lightpink;
     color: white;
     margin-right: 20px;
-}
+`;
 
-.importButton{
+export const ImportButton = styled.label`
+    ${simpleButton}
     background-color: lightskyblue;
     color: white;
     margin-right: 20px;
-}
+`;
 
-.importInput{
+export const ImportInput = styled.input`
     display: none;
-}
+`;

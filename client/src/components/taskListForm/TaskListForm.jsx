@@ -1,16 +1,24 @@
 import { useContext, useEffect, useState } from "react";
-import "./taskListForm.css";
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { getTaskList } from "../../context/taskListContext/taskListApiCalls";
 import TagFields from "../tagFields/TagFields";
-import CustomFields from "../customFields/customFields";
-import Input from '@material-ui/core/Input';
+import CustomFields from "../customFields/CustomFields";
 import FormLabel from '@material-ui/core/FormLabel';
 import { useHistory } from "react-router-dom";
+import { 
+  TagsAndCustomFields, 
+  TaskListFormStyled, 
+  TaskListFormLeft, 
+  TaskListFormRight, 
+  TaskListFormSection, 
+  TaskListSaveButton, 
+  TaskListTitleAndCreate, 
+  TaskListTitleInput 
+} from "./TaskListForm.styled";
 
 export default function TaskListForm(props) {
   const [taskList, setTaskList] = useState({ title: "", tags: [], customFields: [] });
-  const history = useHistory()
+  const history = useHistory();
 
   const { taskList: taskListFromContext, dispatch } = useContext(TaskListContext);
 
@@ -85,30 +93,29 @@ export default function TaskListForm(props) {
   };
 
   return (
-      <form className="taskListForm">
-        <div className="taskListFormSection">
+      <TaskListFormStyled>
+        <TaskListFormSection>
           <FormLabel>Title</FormLabel>
-          <div className="taskListTitleAndCreate">
-            <Input
-              className="taskListTitleInput"
+          <TaskListTitleAndCreate>
+            <TaskListTitleInput
               name="title"
               type="text"
               value={taskList.title}
               onChange={handleTitleChange}
             />
-            <button className="taskListSaveButton" onClick={handleSubmit}>
+            <TaskListSaveButton onClick={handleSubmit}>
               Save
-            </button>
-          </div>
-        </div>
-        <div className="tagsAndCustomFields">
-          <div className="taskListFormLeft">
+            </TaskListSaveButton>
+          </TaskListTitleAndCreate>
+        </TaskListFormSection>
+        <TagsAndCustomFields>
+          <TaskListFormLeft>
             <TagFields taskListId={props.taskListId} handleTagFieldsChange={handleTagFieldsChange} />
-          </div>
-          <div className="taskListFormRight">
+          </TaskListFormLeft>
+          <TaskListFormRight>
             <CustomFields taskListId={props.taskListId} handleCustomFieldsChange={handleCustomFieldsChange} />
-          </div>
-        </div>
-      </form>
+          </TaskListFormRight>
+        </TagsAndCustomFields>
+      </TaskListFormStyled>
   );
 }

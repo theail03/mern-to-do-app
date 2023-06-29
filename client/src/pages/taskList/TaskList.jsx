@@ -1,10 +1,10 @@
-import "./taskList.css";
 import { useParams } from 'react-router-dom';
 import TaskListForm from "../../components/taskListForm/TaskListForm";
 import { updateTaskListAndTasks } from "../../context/taskListContext/taskListApiCalls";
 import { useContext } from "react";
 import { TaskContext } from "../../context/taskContext/TaskContext";
 import { getTasks } from "../../context/taskContext/taskApiCalls";
+import { Page } from "../../styles/Page.styled";
 
 export default function TaskList() {
     const { taskListId } = useParams();
@@ -33,9 +33,9 @@ export default function TaskList() {
     }
 
     return (
-        <div className="editTaskList">
+        <Page>
             <h1>Edit Task List</h1>
             <TaskListForm taskListId={taskListId} save={save}/>
-        </div>
+        </Page>
     );
 }

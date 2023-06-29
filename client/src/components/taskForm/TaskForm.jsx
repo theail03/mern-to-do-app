@@ -1,18 +1,25 @@
 import { useContext, useEffect, useState } from "react";
-import "./taskForm.css";
 import { TaskContext } from "../../context/taskContext/TaskContext";
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { getTask } from "../../context/taskContext/taskApiCalls";
 import { getTaskLists } from "../../context/taskListContext/taskListApiCalls";
-import TagFields from "../tagFields/TagFields";
 import TaskCustomFields from "../taskCustomFields/TaskCustomFields";
-import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
 import { useHistory } from "react-router-dom";
 import Multiselect from 'multiselect-react-dropdown';
-import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { Container } from "@material-ui/core";
+import { 
+  SelectTaskList, 
+  TaskFormStyled, 
+  TaskFormLabel, 
+  TaskFormLeft, 
+  TaskFormRight, 
+  TaskFormSection, 
+  TaskInfo, 
+  TaskSaveButton, 
+  TaskTitleAndCreate, 
+  TaskTitleInput 
+} from "./TaskForm.styled";
 
 export default function TaskForm(props) {
   const [task, setTask] = useState({ title: "", tags: [], customFields: [], taskList: "" });
@@ -121,28 +128,26 @@ export default function TaskForm(props) {
   };
 
   return (
-      <form className="taskForm">
-        <div className="taskFormSection">
+      <TaskFormStyled>
+        <TaskFormSection>
           <FormLabel>Name</FormLabel>
-          <div className="taskTitleAndCreate">
-            <Input
-              className="taskTitleInput"
+          <TaskTitleAndCreate>
+            <TaskTitleInput
               name="title"
               type="text"
               value={task.title}
               onChange={handleTitleChange}
             />
-            <button className="taskSaveButton" onClick={handleSubmit}>
+            <TaskSaveButton onClick={handleSubmit}>
               Save
-            </button>
-          </div>
-        </div>
-        <div className="taskInfo">
-          <div className="taskFormLeft">    
-            <div className="taskFormSection">
-                <FormLabel className="taskFormLabel">Task List</FormLabel>
-                <Select 
-                    className="selectTaskList"
+            </TaskSaveButton>
+          </TaskTitleAndCreate>
+        </TaskFormSection>
+        <TaskInfo>
+          <TaskFormLeft>    
+            <TaskFormSection>
+                <TaskFormLabel>Task List</TaskFormLabel>
+                <SelectTaskList
                     name="taskList"
                     onChange={handleTaskListChange}
                     value={task.taskList}
@@ -150,10 +155,10 @@ export default function TaskForm(props) {
                     {taskLists.map(taskList => (
                         <MenuItem value={taskList._id}>{taskList.title}</MenuItem>
                     ))}
-                </Select>
-            </div>  
-            <div className="taskFormSection">
-                <FormLabel className="taskFormLabel">Tags</FormLabel>
+                </SelectTaskList>
+            </TaskFormSection>  
+            <TaskFormSection>
+                <TaskFormLabel>Tags</TaskFormLabel>
                 <Multiselect
                   // set selected values if tag id is in task.tags
                   selectedValues={tags.filter(i => task.tags.includes(i.id))}
@@ -164,12 +169,12 @@ export default function TaskForm(props) {
                   displayValue="tag"
                   placeholder="Choose tags"
                 />
-            </div>           
-          </div>
-          <div className="taskFormRight">
+            </TaskFormSection>           
+          </TaskFormLeft>
+          <TaskFormRight>
             <TaskCustomFields customFields={customFields} task={task} handleCustomFieldsChange={handleCustomFieldsChange} />
-          </div>
-        </div>
-      </form>
+          </TaskFormRight>
+        </TaskInfo>
+      </TaskFormStyled>
   );
 }

@@ -1,14 +1,6 @@
-.container{
-    display: flex;
-    margin-top: 10px;
-}
+import { css } from 'styled-components';
 
-.link{
-    text-decoration: none;
-    color: inherit;
-}
-
-.simpleButton {
+export const simpleButton = css`
     border: none;
     padding: 5px 10px;
     cursor: pointer;
@@ -17,4 +9,4 @@
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
     font-weight: 500;
-}
+`;

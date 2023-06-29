@@ -4,12 +4,17 @@ import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
-import Select from '@material-ui/core/Select';
-import Input from '@material-ui/core/Input';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormLabel from '@material-ui/core/FormLabel';
 import { v4 as uuidv4 } from 'uuid';
-import "./customFields.css";
+import { 
+  CustomField,
+  CustomFieldAttributes,
+  CustomFieldAttribute,
+  CustomFieldButtons,
+  CustomFieldInput,
+  CustomFieldSelect
+} from './CustomFields.styled';
 
 function CustomFields(props) {
   const [customFields, setCustomFields] = useState([]);
@@ -60,63 +65,59 @@ function CustomFields(props) {
             <AddIcon />
         </IconButton>
         { customFields.map(customField => (
-          <div className="customField" key={customField.id}>
-            <div className="customFieldAttributes">
-                <div className="customFieldAttribute">
+          <CustomField key={customField.id}>
+            <CustomFieldAttributes>
+                <CustomFieldAttribute>
                     <label>Type</label>
-                    <Select 
-                        className="customFieldInput"
+                    <CustomFieldSelect 
                         name="type"
                         value={customField.type}
                         onChange={event => handleChangeCustomField(customField.id, event)}
                     >
                         <MenuItem value={'string'}>String</MenuItem>
                         <MenuItem value={'integer'}>Integer</MenuItem>
-                    </Select>
-                </div>
-                <div className="customFieldAttribute">
+                    </CustomFieldSelect>
+                </CustomFieldAttribute>
+                <CustomFieldAttribute>
                     <label>Name</label>
-                    <Input
-                        className="customFieldInput"
+                    <CustomFieldInput
                         name="name"
                         type="text"
                         value={customField.name}
                         onChange={event => handleChangeCustomField(customField.id, event)}
                     />
-                </div>
+                </CustomFieldAttribute>
                 {/* if type is number add min and max attributes */}
                 {customField.type === 'integer' && ( <>
-                    <div className="customFieldAttribute">
+                    <CustomFieldAttribute>
                         <label>Min</label>
-                        <Input
-                            className="customFieldInput"
+                        <CustomFieldInput
                             name="min"
                             type="number"
                             value={customField.min}
                             onChange={event => handleChangeCustomField(customField.id, event)}
                         />
-                    </div>
-                    <div className="customFieldAttribute">
+                    </CustomFieldAttribute>
+                    <CustomFieldAttribute>
                         <label>Max</label>
-                        <Input
-                            className="customFieldInput"
+                        <CustomFieldInput
                             name="max"
                             type="number"
                             value={customField.max}
                             onChange={event => handleChangeCustomField(customField.id, event)}
                         />
-                    </div>    
+                    </CustomFieldAttribute>    
                 </> )}
-            </div>
-            <div className="customFieldButtons">
+            </CustomFieldAttributes>
+            <CustomFieldButtons>
                 <IconButton onClick={() => handleRemoveFields(customField.id)}>
                     <RemoveIcon />
                 </IconButton>
                 <IconButton onClick={handleAddFields}>
                     <AddIcon />
                 </IconButton>
-            </div>
-          </div>
+            </CustomFieldButtons>
+          </CustomField>
         )) }
     </Container>
   );
