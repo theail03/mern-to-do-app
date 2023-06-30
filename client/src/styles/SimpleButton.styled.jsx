@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const simpleButton = css`
     border: none;
@@ -9,4 +9,8 @@ export const simpleButton = css`
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
     font-weight: 500;
+`;
+
+export const SimpleButton = styled.button`
+    ${simpleButton}
 `;

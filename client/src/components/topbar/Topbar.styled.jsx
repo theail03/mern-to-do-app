@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { simpleButton } from '../../styles/SimpleButton.styled';
+import { SimpleButton } from '../../styles/SimpleButton.styled';
 
 export const TaskListFormStyled = styled.form`
     margin-top: 10px;
@@ -36,8 +36,7 @@ export const TopRight = styled.div`
     align-items: center;
 `;
 
-export const LogoutButton = styled.button`
-    ${simpleButton}
+export const LogoutButton = styled(SimpleButton)`
     background-color: red;
     color: white;
     margin-right: 20px;
