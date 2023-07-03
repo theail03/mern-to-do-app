@@ -58,6 +58,10 @@ export default function TaskListTable() {
 
   // export all task lists 
   const handleExportAll = async () => {
+    if (taskLists.length === 0) {
+      alert("There are no task lists to export.");
+      return;
+    }
     if (window.confirm("Are you sure you want to export all task lists?")) {
       await getAllTasks(dispatchTasks);
       setExportingAll(true); 
