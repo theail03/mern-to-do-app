@@ -3,7 +3,7 @@ module.exports = {
     if (req.isAuthenticated()) {
       return next();
     } else {
-      res.redirect('http://localhost:4000');
+      return res.status(401).json("You are not authenticated!");
     }
   }
 }
