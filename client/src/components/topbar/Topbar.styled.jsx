@@ -36,8 +36,8 @@ export const TopRight = styled.div`
     align-items: center;
 `;
 
-export const LogoutButton = styled(SimpleButton)`
-    background-color: red;
+export const AuthButton = styled(SimpleButton)`
+    background-color: ${(props) => props.backgroundColor};
     color: white;
     margin-right: 20px;
 `;

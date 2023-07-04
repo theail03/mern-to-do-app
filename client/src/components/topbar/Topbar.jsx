@@ -2,21 +2,31 @@ import React from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { useHistory } from "react-router-dom";
-import { logoutUser } from "../../context/authContext/authApiCalls";
+import { login, logoutUser } from "../../context/authContext/authApiCalls";
 import { 
   Logo,
-  LogoutButton,
+  AuthButton,
   TopRight,
   TopbarStyled, 
   TopbarWrapper 
 } from "./Topbar.styled";
 
 export default function Topbar() {
-  const { dispatch } = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext);
   const history = useHistory();
-  const handleLogout = () => {
-    logoutUser(dispatch);
+
+  const handleAuth = () => {
+    if (user) {
+      handleLogout();
+    } else {
+      login();
+    }
+  };
+
+  const handleLogout = async () => {
+    await logoutUser(dispatch);
     history.push("/");
+    history.go(0);
   };
 
   return (
@@ -26,9 +36,9 @@ export default function Topbar() {
           <Logo>TO-DO-APP</Logo>
         </div>
         <TopRight>
-            <LogoutButton onClick={handleLogout}>
-              Sign out
-            </LogoutButton>
+            <AuthButton backgroundColor={user ? "red" : "teal"} onClick={handleAuth}>
+              {user ? "Logout" : "Login with Google"}
+            </AuthButton>
         </TopRight>
       </TopbarWrapper>
     </TopbarStyled>

@@ -6,7 +6,6 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import Login from "./pages/login/Login";
 import { AuthContext } from "./context/authContext/AuthContext";
 import { useContext } from "react";
 import NewTaskList from "./pages/newTaskList/NewTaskList";
@@ -22,40 +21,37 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
-        {user ? (
-          <>
-            <Topbar />
-            <RouteContainer>
-              <Sidebar />
-              <Route exact path="/">
-                <TaskListTable />
-              </Route>
-              <Route path="/newTaskList">
-                <NewTaskList />
-              </Route>
-              <Route path="/taskList/:taskListId">
-                <TaskList />
-              </Route>
-              <Route path="/newTask">
-                <NewTask />
-              </Route>
-              <Route path="/task/:taskId">
-                <Task />
-              </Route>
-              <Route path="/tasks/:taskListId">
-                <TaskTable />
-              </Route>
-              <Route path="/taskLists">
-                <TaskListTable />
-              </Route>
-            </RouteContainer>
-          </>
-        ) : (
-          <Route exact path="/">
-            <Redirect to="/login" />
-          </Route>     
-        )}
+        <>
+          <Topbar />
+          <RouteContainer>
+            <Sidebar />
+            <Route exact path="/">
+              <TaskListTable />
+            </Route>
+            <Route path="/newTaskList">
+              <NewTaskList />
+            </Route>
+            <Route path="/taskList/:taskListId">
+              <TaskList />
+            </Route>
+            <Route path="/newTask">
+              <NewTask />
+            </Route>
+            <Route path="/task/:taskId">
+              <Task />
+            </Route>
+            <Route path="/tasks/:taskListId">
+              <TaskTable />
+            </Route>
+            <Route path="/taskLists">
+              <TaskListTable />
+            </Route>
+            {/* any other route redirect to home */}
+            <Route path="*">
+              <Redirect to="/" />
+            </Route>
+          </RouteContainer>
+        </>
       </Switch>
     </Router>
   );
