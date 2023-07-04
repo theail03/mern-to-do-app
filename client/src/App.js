@@ -34,7 +34,7 @@ function App() {
             <Route path="/taskList/:taskListId">
               <TaskList />
             </Route>
-            <Route path="/newTask">
+            <Route path="/newTask/:taskListId?">
               <NewTask />
             </Route>
             <Route path="/task/:taskId">

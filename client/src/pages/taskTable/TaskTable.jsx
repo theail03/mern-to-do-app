@@ -99,9 +99,13 @@ export default function TaskTable() {
   return (
     <Table>
       <TableActions>
-        <TableActionsButton backgroundColor="lightskyblue" onClick={() => {}}>
-          Create Task
-        </TableActionsButton>
+        <Link
+          to={{ pathname: "/newTask/" + taskListId }}
+        >
+          <TableActionsButton backgroundColor="lightskyblue" onClick={() => {}}>
+            Create Task
+          </TableActionsButton>
+        </Link>
       </TableActions>
       <DataGrid
         rows={tasks.map(transformTask)}

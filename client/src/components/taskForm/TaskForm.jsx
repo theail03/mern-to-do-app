@@ -68,6 +68,14 @@ export default function TaskForm(props) {
     if (props.taskId) {
       getTask(dispatch, props.taskId);
     }
+    if (props.taskListId) {
+      const taskList = taskLists.find(i => i._id === props.taskListId);
+      if (taskList) {
+        setTask({ ...task, taskList: props.taskListId, tags: [], customFields: taskList.customFields.map(i => { return { id: i.id, value: null} }) });
+        setTags(taskList.tags);
+        setCustomFields(taskList.customFields);
+      }
+    }
   }, []);
 
   useEffect(() => {
