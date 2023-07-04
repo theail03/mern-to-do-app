@@ -5,7 +5,7 @@ import { TaskContext } from "../../context/taskContext/TaskContext";
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { deleteTask, getTasks } from "../../context/taskContext/taskApiCalls";
 import { getTaskList } from "../../context/taskListContext/taskListApiCalls";
-import { DeleteButton, EditButton, Table } from "../../styles/Table.styles";
+import { DeleteButton, EditButton, Table, TableActions, TableActionsButton } from "../../styles/Table.styles";
 
 export default function TaskTable() {
   const { tasks, dispatch } = useContext(TaskContext);
@@ -98,6 +98,11 @@ export default function TaskTable() {
 
   return (
     <Table>
+      <TableActions>
+        <TableActionsButton backgroundColor="lightskyblue" onClick={() => {}}>
+          Create Task
+        </TableActionsButton>
+      </TableActions>
       <DataGrid
         rows={tasks.map(transformTask)}
         disableSelectionOnClick

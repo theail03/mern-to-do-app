@@ -11,8 +11,8 @@ import * as XLSX from 'xlsx';
 import { TaskContext } from "../../context/taskContext/TaskContext";
 import { getTasks, getAllTasks } from "../../context/taskContext/taskApiCalls";
 import { v4 as uuidv4 } from 'uuid';
-import { ExportAllButton, ExportListButton, ImportInput, SeeTasksButton, TableActions, ImportButton } from "./TaskListTable.styled";
-import { DeleteButton, EditButton, Table } from "../../styles/Table.styles";
+import { ExportListButton, ImportInput, SeeTasksButton, ImportButton } from "./TaskListTable.styled";
+import { DeleteButton, EditButton, Table, TableActions, TableActionsButton } from "../../styles/Table.styles";
 
 export default function TaskListTable() {
   const { taskLists, dispatch } = useContext(TaskListContext);
@@ -277,9 +277,9 @@ export default function TaskListTable() {
   return (
     <Table>
       <TableActions>
-        <ExportAllButton onClick={() => handleExportAll()}>
+        <TableActionsButton backgroundColor="lightpink" onClick={() => handleExportAll()}>
           Export All Lists
-        </ExportAllButton>
+        </TableActionsButton>
         <ImportButton htmlFor="importInput">
           Import from .xlsx
         </ImportButton>

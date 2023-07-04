@@ -15,19 +15,6 @@ export const ExportListButton = styled(SimpleButton)`
     margin-right: 20px;
 `;
 
-export const TableActions = styled.div`
-    display: flex;
-    justify-content: flex-start;
-    margin-left: 20px;
-    margin-bottom: 20px;
-`;
-
-export const ExportAllButton = styled(SimpleButton)`
-    background-color: lightpink;
-    color: white;
-    margin-right: 20px;
-`;
-
 export const ImportButton = styled.label`
     ${simpleButton}
     background-color: lightskyblue;

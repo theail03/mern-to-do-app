@@ -19,3 +19,16 @@ export const DeleteButton = styled(DeleteOutline)`
     color: red;
     cursor: pointer;
 `;
+
+export const TableActions = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20px;
+    margin-bottom: 20px;
+`;
+
+export const TableActionsButton = styled(SimpleButton)`
+    background-color: ${(props) => props.backgroundColor};
+    color: white;
+    margin-right: 20px;
+`;
