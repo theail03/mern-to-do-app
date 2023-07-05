@@ -5,13 +5,16 @@ import { useContext } from "react";
 import { TaskContext } from "../../context/taskContext/TaskContext";
 import { getTasksWithoutDispatch } from "../../context/taskContext/taskApiCalls";
 import { Page } from "../../styles/Page.styled";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import { getTasksWithoutDispatchDummy } from "../../context/taskContext/taskDummyCalls";
 
 export default function TaskList() {
     const { taskListId } = useParams();
     const { dispatch: dispatchTask } = useContext(TaskContext);
+    const { user } = useContext(AuthContext); 
 
     const save = async (taskList, dispatch) => {
-        const tasks = (await getTasksWithoutDispatch(taskListId)).data;
+        const tasks = user ? (await getTasksWithoutDispatch(taskListId)).data : getTasksWithoutDispatchDummy(taskListId);
         // remove tags and custom fields that are no longer in taskList from tasks
         tasks.forEach(task => {
             task.tags = task.tags.filter(tag => taskList.tags.map(tag => tag.id).includes(tag));

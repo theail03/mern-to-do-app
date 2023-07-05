@@ -13,6 +13,9 @@ import { getTasks, getAllTasks } from "../../context/taskContext/taskApiCalls";
 import { v4 as uuidv4 } from 'uuid';
 import { ExportListButton, ImportInput, SeeTasksButton, ImportButton } from "./TaskListTable.styled";
 import { DeleteButton, EditButton, Table, TableActions, TableActionsButton } from "../../styles/Table.styles";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import { getAllTasksDummy, getTasksDummy } from "../../context/taskContext/taskDummyCalls";
+import { getTaskListsDummy } from "../../context/taskListContext/taskListDummyCalls";
 
 export default function TaskListTable() {
   const { taskLists, dispatch } = useContext(TaskListContext);
@@ -20,9 +23,10 @@ export default function TaskListTable() {
   const [ exporting, setExporting ] = useState(false);
   const [ exportingAll, setExportingAll ] = useState(false);
   const [ exportTaskListId, setExportTaskListId ] = useState(null);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    getTaskLists(dispatch);
+    user ? getTaskLists(dispatch) : getTaskListsDummy(dispatch);
   }, []);
 
   const handleDelete = (id) => {
@@ -33,7 +37,7 @@ export default function TaskListTable() {
   // export a single task list 
   const handleExport = async (id) => {
     if (window.confirm("Are you sure you want to export this task list?")) {
-      await getTasks(dispatchTasks, id);
+      user ? await getTasks(dispatchTasks, id) : getTasksDummy(dispatchTasks, id);
       setExportTaskListId(id);
       setExporting(true); 
     }
@@ -63,7 +67,7 @@ export default function TaskListTable() {
       return;
     }
     if (window.confirm("Are you sure you want to export all task lists?")) {
-      await getAllTasks(dispatchTasks);
+      user ? await getAllTasks(dispatchTasks) : getAllTasksDummy(dispatchTasks);
       setExportingAll(true); 
     }
   };

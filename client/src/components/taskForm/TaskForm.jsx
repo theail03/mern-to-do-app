@@ -20,6 +20,9 @@ import {
   TaskTitleAndCreate, 
   TaskTitleInput 
 } from "./TaskForm.styled";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import { getTaskDummy } from "../../context/taskContext/taskDummyCalls";
+import { getTaskListsDummy } from "../../context/taskListContext/taskListDummyCalls";
 
 export default function TaskForm(props) {
   const [task, setTask] = useState({ title: "", tags: [], customFields: [], taskList: "" });
@@ -31,6 +34,8 @@ export default function TaskForm(props) {
   const { task: taskFromContext, dispatch } = useContext(TaskContext);
 
   const { taskLists, dispatch: dispatchTaskList } = useContext(TaskListContext);
+
+  const { user } = useContext(AuthContext);
 
   const handleTitleChange = (e) => {
     const value = e.target.value;
@@ -66,7 +71,7 @@ export default function TaskForm(props) {
 
   useEffect(() => {
     if (props.taskId) {
-      getTask(dispatch, props.taskId);
+      user ? getTask(dispatch, props.taskId) : getTaskDummy(dispatch, props.taskId);
     }
     if (props.taskListId) {
       const taskList = taskLists.find(i => i._id === props.taskListId);
@@ -79,7 +84,7 @@ export default function TaskForm(props) {
   }, []);
 
   useEffect(() => {
-    getTaskLists(dispatchTaskList);
+    user ? getTaskLists(dispatchTaskList) : getTaskListsDummy(dispatchTaskList);
   }, []);
 
   useEffect(() => {

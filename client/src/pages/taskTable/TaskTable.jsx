@@ -7,6 +7,9 @@ import { deleteTask, getTasks } from "../../context/taskContext/taskApiCalls";
 import { getTaskList } from "../../context/taskListContext/taskListApiCalls";
 import { DeleteButton, EditButton, Table, TableActions, TableActionsButton } from "../../styles/Table.styles";
 import Multiselect from 'multiselect-react-dropdown';
+import { AuthContext } from "../../context/authContext/AuthContext";
+import { getTasksDummy } from "../../context/taskContext/taskDummyCalls";
+import { getTaskListDummy } from "../../context/taskListContext/taskListDummyCalls";
 
 export default function TaskTable() {
   const { tasks, dispatch } = useContext(TaskContext);
@@ -15,6 +18,7 @@ export default function TaskTable() {
   const [ taskList, setTaskList ] = useState([]);
   const [ tableColumns, setTableColumns ] = useState([]);
   const [ tags, setTags ] = useState([]);
+  const { user } = useContext(AuthContext);
 
   const transformTask = (task) => {
     task.customFields.forEach(customField => {
@@ -33,11 +37,11 @@ export default function TaskTable() {
   }
 
   useEffect(() => {
-    getTasks(dispatch, taskListId);
+    user ? getTasks(dispatch, taskListId) : getTasksDummy(dispatch, taskListId);
   }, [dispatch, taskListId]);
 
   useEffect(() => {
-    getTaskList(dispatchTaskLists, taskListId);
+    user ? getTaskList(dispatchTaskLists, taskListId) : getTaskListDummy(dispatchTaskLists, taskListId);
   }, []);
 
   useEffect(() => {

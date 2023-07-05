@@ -15,12 +15,15 @@ import {
   TaskListTitleAndCreate, 
   TaskListTitleInput 
 } from "./TaskListForm.styled";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import { getTaskListDummy } from "../../context/taskListContext/taskListDummyCalls";
 
 export default function TaskListForm(props) {
   const [taskList, setTaskList] = useState({ title: "", tags: [], customFields: [] });
   const history = useHistory();
 
   const { taskList: taskListFromContext, dispatch } = useContext(TaskListContext);
+  const { user } = useContext(AuthContext);
 
   const handleTitleChange = (e) => {
     const value = e.target.value;
@@ -37,7 +40,7 @@ export default function TaskListForm(props) {
 
   useEffect(() => {
     if (props.taskListId) {
-      getTaskList(dispatch, props.taskListId);
+      user ? getTaskList(dispatch, props.taskListId) : getTaskListDummy(dispatch, props.taskListId);
     }
   }, []);
 
