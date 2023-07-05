@@ -14,6 +14,7 @@ export default function TaskTable() {
   const { taskList: taskListFromContext, dispatch: dispatchTaskLists } = useContext(TaskListContext);
   const [ taskList, setTaskList ] = useState([]);
   const [ tableColumns, setTableColumns ] = useState([]);
+  const [ tags, setTags ] = useState([]);
 
   const transformTask = (task) => {
     task.customFields.forEach(customField => {
@@ -70,6 +71,10 @@ export default function TaskTable() {
     deleteTask(id, dispatch);
   };
 
+  const handleTagsChange = (e) => {
+    setTags(e.map(tag => tag.id));
+  }
+
   const defaultColumns = [
     { field: "_id", headerName: "ID", width: 190 },
     { field: "title", headerName: "Title", width: 150 },
@@ -108,13 +113,23 @@ export default function TaskTable() {
           </TableActionsButton>
         </Link>
         <Multiselect
+          selectedValues={taskList.tags?.filter(taskListTag => tags.includes(taskListTag.id))}
+          onRemove={handleTagsChange}
+          onSelect={handleTagsChange}
+          options={taskList.tags}
           avoidHighlightFirstOption={true}
           displayValue="tag"
-          placeholder="Choose tags"
+          placeholder="Filter by tags"
         />
       </TableActions>
       <DataGrid
-        rows={tasks.map(transformTask)}
+        rows={tasks.filter(task => {
+          // filter tasks by tags
+          if (tags.length > 0) {
+            return tags.every(tag => task.tags.includes(tag));
+          }
+          return true;
+        }).map(transformTask)}
         disableSelectionOnClick
         columns={tableColumns}
         pageSize={8}
