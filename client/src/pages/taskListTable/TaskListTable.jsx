@@ -27,7 +27,7 @@ export default function TaskListTable() {
 
   useEffect(() => {
     user ? getTaskLists(dispatch) : getTaskListsDummy(dispatch);
-  }, []);
+  }, [user]);
 
   const handleDelete = (id) => {
     window.confirm("Are you sure you want to delete this task list?") &&
