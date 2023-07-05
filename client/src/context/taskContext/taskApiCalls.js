@@ -17,6 +17,14 @@ import {
   updateTaskSuccess
 } from "./TaskActions";
 
+// get all tasks from a list without dispatch
+export const getTasksWithoutDispatch = async (taskListId) => {
+  const res = await axios.get(`/tasks/taskList/${taskListId}`, {
+    withCredentials: true
+  });
+  return res;
+};
+
 // get all tasks from a list
 export const getTasks = async (dispatch, taskListId) => {
   dispatch(getTasksStart());

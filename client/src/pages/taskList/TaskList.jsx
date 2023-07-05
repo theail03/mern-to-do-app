@@ -3,16 +3,16 @@ import TaskListForm from "../../components/taskListForm/TaskListForm";
 import { updateTaskListAndTasks } from "../../context/taskListContext/taskListApiCalls";
 import { useContext } from "react";
 import { TaskContext } from "../../context/taskContext/TaskContext";
-import { getTasks } from "../../context/taskContext/taskApiCalls";
+import { getTasksWithoutDispatch } from "../../context/taskContext/taskApiCalls";
 import { Page } from "../../styles/Page.styled";
 
 export default function TaskList() {
     const { taskListId } = useParams();
-    const { tasks, dispatch: dispatchTask } = useContext(TaskContext);
+    const { dispatch: dispatchTask } = useContext(TaskContext);
 
     const save = async (taskList, dispatch) => {
-        await getTasks(dispatchTask, taskListId);
-        // rempve tags and custom fields that are no longer in taskList from tasks
+        const tasks = (await getTasksWithoutDispatch(taskListId)).data;
+        // remove tags and custom fields that are no longer in taskList from tasks
         tasks.forEach(task => {
             task.tags = task.tags.filter(tag => taskList.tags.map(tag => tag.id).includes(tag));
             task.customFields = task.customFields.filter(customField => 

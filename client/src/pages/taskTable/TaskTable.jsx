@@ -6,6 +6,7 @@ import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { deleteTask, getTasks } from "../../context/taskContext/taskApiCalls";
 import { getTaskList } from "../../context/taskListContext/taskListApiCalls";
 import { DeleteButton, EditButton, Table, TableActions, TableActionsButton } from "../../styles/Table.styles";
+import Multiselect from 'multiselect-react-dropdown';
 
 export default function TaskTable() {
   const { tasks, dispatch } = useContext(TaskContext);
@@ -106,6 +107,11 @@ export default function TaskTable() {
             Create Task
           </TableActionsButton>
         </Link>
+        <Multiselect
+          avoidHighlightFirstOption={true}
+          displayValue="tag"
+          placeholder="Choose tags"
+        />
       </TableActions>
       <DataGrid
         rows={tasks.map(transformTask)}
