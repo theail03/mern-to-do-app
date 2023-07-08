@@ -2,7 +2,7 @@ import axios from "axios";
 import { getUserFailure, getUserStart, getUserSuccess } from "./AuthActions";
 
 export const login = async () => {
-  window.open("http://localhost:8800/auth/google", "_self");
+  window.open(`${process.env.REACT_APP_API_URL}/auth/google`, "_self");
 };
 
 export const getUser = async (dispatch) => {

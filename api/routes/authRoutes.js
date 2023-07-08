@@ -10,9 +10,9 @@ router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 // @route   GET /auth/google/callback
 router.get(
   '/google/callback',
-  passport.authenticate('google', { failureRedirect: 'http://localhost:4000', session: true }),
+  passport.authenticate('google', { failureRedirect: process.env.CLIENT_URL, session: true }),
   (req, res) => {
-    res.redirect('http://localhost:4000');
+    res.redirect(process.env.CLIENT_URL);
   }
 );
 
