@@ -8,7 +8,7 @@ export const login = async () => {
 export const getUser = async (dispatch) => {
   dispatch(getUserStart());
   try {
-    const res = await axios.get("/auth/getuser", { 
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/getuser`, { 
       withCredentials: true 
     });
     dispatch(getUserSuccess(res.data));
@@ -20,7 +20,7 @@ export const getUser = async (dispatch) => {
 
 export const logoutUser = async (dispatch) => {
   try {
-    const res = await axios.get("/auth/logout", { 
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/logout`, { 
       withCredentials: true 
     });
     if (res.data === "done") {

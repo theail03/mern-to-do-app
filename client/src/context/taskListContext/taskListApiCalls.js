@@ -25,7 +25,7 @@ import {
 export const getTaskLists = async (dispatch) => {
   dispatch(getTaskListsStart());
   try {
-    const res = await axios.get("/taskLists", {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/taskLists`, {
       withCredentials: true
     });
     dispatch(getTaskListsSuccess(res.data));
@@ -38,7 +38,7 @@ export const getTaskLists = async (dispatch) => {
 export const getTaskList = async (dispatch, id) => {
   dispatch(getTaskListStart());
   try {
-    const res = await axios.get(`/taskLists/${id}`, {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/taskLists/${id}`, {
       withCredentials: true
     });
     dispatch(getTaskListSuccess(res.data));
@@ -49,7 +49,7 @@ export const getTaskList = async (dispatch, id) => {
 
 // create without dispatch
 export const createTaskListWithoutDispatch = async (taskList) => {
-  const res = await axios.post("/taskLists", taskList, {
+  const res = await axios.post(`${process.env.REACT_APP_API_URL}/taskLists`, taskList, {
     withCredentials: true
   });
   return res;
@@ -88,7 +88,7 @@ export const createTaskListWithTasks = async (taskList, dispatchTaskList, tasks,
 
 // update without dispatch
 export const updateTaskListWithoutDispatch = async (taskList) => {
-  const res = await axios.put(`/taskLists/${taskList._id}`, taskList, {
+  const res = await axios.put(`${process.env.REACT_APP_API_URL}/taskLists/${taskList._id}`, taskList, {
     withCredentials: true
   });
   return res;
@@ -123,7 +123,7 @@ export const updateTaskListAndTasks = async (taskList, dispatchTaskList, tasks, 
 export const deleteTaskList = async (id, dispatch) => {
   dispatch(deleteTaskListStart());
   try {
-    await axios.delete("/taskLists/" + id, {
+    await axios.delete(`${process.env.REACT_APP_API_URL}/taskLists/` + id, {
       withCredentials: true
     });
     dispatch(deleteTaskListSuccess(id));
