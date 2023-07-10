@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const session = require('express-session');
 const passport = require('passport');
+const cors = require('cors');
 const authRoute = require("./routes/authRoutes");
 const taskRoute = require("./routes/tasksRoutes");
 const taskListRoute = require("./routes/taskListsRoutes");
@@ -24,6 +25,13 @@ mongoose
   .catch((err) => {
     console.error(err);
   });
+
+// CORS
+const corsOptions = {
+  origin: [process.env.CLIENT_URL],
+};
+
+app.use(cors(corsOptions));
 
 // Sessions
 app.use(
