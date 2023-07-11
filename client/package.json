@@ -44,7 +44,7 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ],
-    "proxy": "http://to-do-app-api-xc72.onrender.com"
-  }
+    ]
+  },
+  "proxy": "https://to-do-app-api-xc72.onrender.com"
 }
