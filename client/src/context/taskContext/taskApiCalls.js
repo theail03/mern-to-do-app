@@ -21,7 +21,7 @@ import {
 export const getTasks = async (dispatch, taskListId) => {
   dispatch(getTasksStart());
   try {
-    const res = await axios.get(`/tasks/taskList/${taskListId}`, {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/tasks/taskList/${taskListId}`, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -36,7 +36,7 @@ export const getTasks = async (dispatch, taskListId) => {
 export const getAllTasks = async (dispatch) => {
   dispatch(getTasksStart());
   try {
-    const res = await axios.get(`/tasks`, {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/tasks`, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -51,7 +51,7 @@ export const getAllTasks = async (dispatch) => {
 export const getTask = async (dispatch, id) => {
   dispatch(getTaskStart());
   try {
-    const res = await axios.get(`/tasks/${id}`, {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/tasks/${id}`, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -66,7 +66,7 @@ export const getTask = async (dispatch, id) => {
 export const createTask = async (task, dispatch) => {
   dispatch(createTaskStart());
   try {
-    const res = await axios.post("/tasks", task, {
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/tasks`, task, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -81,7 +81,7 @@ export const createTask = async (task, dispatch) => {
 export const updateTask = async (task, dispatch) => {
   dispatch(updateTaskStart());
   try {
-    const res = await axios.put(`/tasks/${task._id}`, task, {
+    const res = await axios.put(`${process.env.REACT_APP_API_URL}/tasks/${task._id}`, task, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -96,7 +96,7 @@ export const updateTask = async (task, dispatch) => {
 export const deleteTask = async (id, dispatch) => {
   dispatch(deleteTaskStart());
   try {
-    await axios.delete("/tasks/" + id, {
+    await axios.delete(`${process.env.REACT_APP_API_URL}/tasks/` + id, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },

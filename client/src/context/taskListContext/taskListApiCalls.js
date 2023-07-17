@@ -25,7 +25,7 @@ import {
 export const getTaskLists = async (dispatch) => {
   dispatch(getTaskListsStart());
   try {
-    const res = await axios.get("/taskLists", {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/taskLists`, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -40,7 +40,7 @@ export const getTaskLists = async (dispatch) => {
 export const getTaskList = async (dispatch, id) => {
   dispatch(getTaskListStart());
   try {
-    const res = await axios.get(`/taskLists/${id}`, {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/taskLists/${id}`, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -55,7 +55,7 @@ export const getTaskList = async (dispatch, id) => {
 export const createTaskList = async (taskList, dispatch) => {
   dispatch(createTaskListStart());
   try {
-    const res = await axios.post("/taskLists", taskList, {
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/taskLists`, taskList, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -70,7 +70,7 @@ export const createTaskList = async (taskList, dispatch) => {
 export const createTaskListWithTasks = async (taskList, dispatchTaskList, tasks, dispatchTask) => {
   dispatchTaskList(createTaskListStart());
   try {
-    const res = await axios.post("/taskLists", taskList, {
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/taskLists`, taskList, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -92,7 +92,7 @@ export const createTaskListWithTasks = async (taskList, dispatchTaskList, tasks,
 
 // update without dispatch
 export const updateTaskListWithoutDispatch = async (taskList) => {
-  const res = await axios.put(`/taskLists/${taskList._id}`, taskList, {
+  const res = await axios.put(`${process.env.REACT_APP_API_URL}/taskLists/${taskList._id}`, taskList, {
     headers: {
       token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
     },
@@ -129,7 +129,7 @@ export const updateTaskListAndTasks = async (taskList, dispatchTaskList, tasks, 
 export const deleteTaskList = async (id, dispatch) => {
   dispatch(deleteTaskListStart());
   try {
-    await axios.delete("/taskLists/" + id, {
+    await axios.delete(`${process.env.REACT_APP_API_URL}/taskLists/` + id, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },

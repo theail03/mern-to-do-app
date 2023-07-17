@@ -16,7 +16,7 @@ export default function Register() {
     const password = passwordRef.current.value;
     const username = usernameRef.current.value;
     try {
-      await axios.post("auth/register", { email, username, password });
+      await axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, { email, username, password });
       history.push("/");
     } catch (err) {}
   };
