@@ -24,8 +24,7 @@ mongoose
 
 // CORS
 const corsOptions = {
-  origin: [process.env.CLIENT_URL],
-  credentials: true
+  origin: [process.env.CLIENT_URL]
 };
 
 app.use(cors(corsOptions));
