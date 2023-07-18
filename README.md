@@ -18,4 +18,4 @@ https://www.youtube.com/watch?v=SBvmnHTQIPY&ab_channel=TraversyMedia
 
 For Authorized redirect URIs in Google Cloud, try writing the URL using http instead of https, in case https doesn't work.
 
-The app uses cookies for authentication, so a custom domain with subdomains for both the API and the client is needed. Cookies from the application don't work in popular deployment sites like Render and Vercel.
+The app uses cookies for authentication, so a custom domain with subdomains for both the API and the client is needed. Cookies from the application don't work in popular deployment sites like Render and Vercel without using custom domains.
