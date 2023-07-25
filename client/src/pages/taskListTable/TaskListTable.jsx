@@ -12,7 +12,7 @@ import { TaskContext } from "../../context/taskContext/TaskContext";
 import { getTasks, getAllTasks } from "../../context/taskContext/taskApiCalls";
 import { v4 as uuidv4 } from 'uuid';
 import { ImportInput, ImportButton } from "./TaskListTable.styled";
-import { DeleteButton, EditButton, Table, TableActions, TableActionsButton, SeeButton, ExportButton } from "../../styles/Table.styles";
+import { DeleteButton, EditButton, Table, TableActions, TableActionsButton, SeeButton, ExportButton, AddButton } from "../../styles/Table.styles";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getAllTasksDummy, getTasksDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListsDummy } from "../../context/taskListContext/taskListDummyCalls";
@@ -173,10 +173,15 @@ export default function TaskListTable() {
     {
       field: "action",
       headerName: "Action",
-      width: 180,
+      width: 220,
       renderCell: (params) => {
         return (
           <>
+            <Link
+              to={{ pathname: "/newTask/" + params.row._id }}
+            >
+              <AddButton/>
+            </Link>
             <Link
               to={{ pathname: "/tasks/" + params.row._id }}
             >

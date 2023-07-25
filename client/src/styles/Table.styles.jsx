@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { DeleteOutline, EditOutlined, VisibilityOutlined, GetAppOutlined } from "@material-ui/icons";
+import { DeleteOutline, EditOutlined, VisibilityOutlined, GetAppOutlined, AddOutlined } from "@material-ui/icons";
 import { Page } from './Page.styled';
 import { SimpleButton } from './SimpleButton.styled';
 
@@ -13,6 +13,11 @@ const rowActionButton = css`
     // center the icon vertically
     vertical-align: middle;
     margin-right: 20px;
+`;
+
+export const AddButton = styled(AddOutlined)`
+    color: gray;
+    ${rowActionButton}
 `;
 
 export const SeeButton = styled(VisibilityOutlined)`
