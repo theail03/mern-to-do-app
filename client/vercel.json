@@ -1,8 +1,0 @@
-{
-    "rewrites": [
-        {
-            "source":"/app-api/:path*",
-            "destination":"https://to-do-app-api-six.vercel.app/:path*"
-        }
-    ]
-}
