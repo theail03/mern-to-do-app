@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { DeleteOutline } from "@material-ui/icons";
+import styled, { css } from 'styled-components';
+import { DeleteOutline, EditOutlined, VisibilityOutlined, GetAppOutlined } from "@material-ui/icons";
 import { Page } from './Page.styled';
 import { SimpleButton } from './SimpleButton.styled';
 
@@ -8,16 +8,31 @@ export const Table = styled(Page)`
     margin-bottom: 25px;
 `;
 
-export const EditButton = styled(SimpleButton)`
-    border-radius: 10px;
-    background-color: #3bb077;
-    color: white;
+const rowActionButton = css`
+    cursor: pointer;
+    // center the icon vertically
+    vertical-align: middle;
     margin-right: 20px;
+`;
+
+export const SeeButton = styled(VisibilityOutlined)`
+    color: blue;
+    ${rowActionButton}
+`;
+
+export const ExportButton = styled(GetAppOutlined)`
+    color: purple;
+    ${rowActionButton}
+`;
+
+export const EditButton = styled(EditOutlined)`
+    color: #3bb077;
+    ${rowActionButton}
 `;
 
 export const DeleteButton = styled(DeleteOutline)`
     color: red;
-    cursor: pointer;
+    ${rowActionButton}
 `;
 
 export const TableActions = styled.div`

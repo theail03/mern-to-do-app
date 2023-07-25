@@ -11,8 +11,8 @@ import * as XLSX from 'xlsx';
 import { TaskContext } from "../../context/taskContext/TaskContext";
 import { getTasks, getAllTasks } from "../../context/taskContext/taskApiCalls";
 import { v4 as uuidv4 } from 'uuid';
-import { ExportListButton, ImportInput, SeeTasksButton, ImportButton } from "./TaskListTable.styled";
-import { DeleteButton, EditButton, Table, TableActions, TableActionsButton } from "../../styles/Table.styles";
+import { ImportInput, ImportButton } from "./TaskListTable.styled";
+import { DeleteButton, EditButton, Table, TableActions, TableActionsButton, SeeButton, ExportButton } from "../../styles/Table.styles";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getAllTasksDummy, getTasksDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListsDummy } from "../../context/taskListContext/taskListDummyCalls";
@@ -173,24 +173,29 @@ export default function TaskListTable() {
     {
       field: "action",
       headerName: "Action",
-      width: 270,
+      width: 180,
       renderCell: (params) => {
         return (
           <>
             <Link
               to={{ pathname: "/tasks/" + params.row._id }}
             >
-              <SeeTasksButton>See tasks</SeeTasksButton>
+              <SeeButton/>
             </Link>
-            <ExportListButton onClick={() => handleExport(params.row._id)}>Export</ExportListButton>
+            {/* the <span> tags are for keeping the icons aligned */}
+            <span>
+              <ExportButton onClick={() => handleExport(params.row._id)}>Export</ExportButton>
+            </span>
             <Link
               to={{ pathname: "/taskList/" + params.row._id }}
             >
-              <EditButton>Edit</EditButton>
+               <EditButton/>
             </Link>
-            <DeleteButton
-              onClick={() => handleDelete(params.row._id)}
-            />
+            <span>
+              <DeleteButton
+                onClick={() => handleDelete(params.row._id)}
+              />
+            </span>
           </>
         );
       },

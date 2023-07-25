@@ -88,7 +88,7 @@ export default function TaskTable() {
     {
       field: "action",
       headerName: "Action",
-      width: 150,
+      width: 120,
       renderCell: (params) => {
         return (
           <>
@@ -97,9 +97,12 @@ export default function TaskTable() {
             >
               <EditButton>Edit</EditButton>
             </Link>
-            <DeleteButton
-              onClick={() => handleDelete(params.row._id)}
-            />
+            {/* the <span> tags are for keeping the icons aligned */}
+            <span>
+              <DeleteButton
+                onClick={() => handleDelete(params.row._id)}
+              />
+            </span>
           </>
         );
       },
