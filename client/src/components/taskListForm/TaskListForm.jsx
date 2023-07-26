@@ -89,6 +89,10 @@ export default function TaskListForm(props) {
     else if (customFields.some(i => customFieldNameRestrictions.includes(i))) {
       alert("The following custom field names are not allowed: title, tags, createdAt, updatedAt");
     }
+    // don't allow title to be longer than 31 characters to prevent sheetjs error
+    else if (taskList.title.length > 31) {
+      alert("Please make sure the title is less than 32 characters");
+    }
     else {
       props.save(taskList, dispatch);
       history.push("/");
