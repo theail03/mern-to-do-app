@@ -36,13 +36,15 @@ export default function TaskTable() {
     return task;
   }
 
-  useEffect(() => {
-    user ? getTasks(dispatch, taskListId) : getTasksDummy(dispatch, taskListId);
-  }, [dispatch, taskListId]);
-
-  useEffect(() => {
-    user ? getTaskList(dispatchTaskLists, taskListId) : getTaskListDummy(dispatchTaskLists, taskListId);
-  }, [dispatchTaskLists, taskListId]);
+  useEffect(async () => {
+    if (user) {
+      await getTasks(dispatch, taskListId);
+      getTaskList(dispatchTaskLists, taskListId);
+    } else {
+      getTasksDummy(dispatch, taskListId);
+      getTaskListDummy(dispatchTaskLists, taskListId);
+    }
+  }, []);
 
   useEffect(() => {
     if (taskListFromContext) {
