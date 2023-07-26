@@ -42,7 +42,7 @@ export default function TaskTable() {
 
   useEffect(() => {
     user ? getTaskList(dispatchTaskLists, taskListId) : getTaskListDummy(dispatchTaskLists, taskListId);
-  }, []);
+  }, [dispatchTaskLists, taskListId]);
 
   useEffect(() => {
     if (taskListFromContext) {
