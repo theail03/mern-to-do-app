@@ -38,6 +38,7 @@ export default function TaskTable() {
 
   useEffect(async () => {
     if (user) {
+      // the await is necessary to avoid an error where the user gets logged out in vercel when 2 api calls are made at the same time
       await getTasks(dispatch, taskListId);
       getTaskList(dispatchTaskLists, taskListId);
     } else {
