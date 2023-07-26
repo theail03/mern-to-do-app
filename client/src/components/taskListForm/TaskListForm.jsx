@@ -38,9 +38,9 @@ export default function TaskListForm(props) {
     setTaskList({ ...taskList, customFields: customFields});
   };
 
-  useEffect(() => {
+  useEffect(async () => {
     if (props.taskListId) {
-      user ? getTaskList(dispatch, props.taskListId) : getTaskListDummy(dispatch, props.taskListId);
+      user ? await getTaskList(dispatch, props.taskListId) : getTaskListDummy(dispatch, props.taskListId);
     }
   }, []);
 

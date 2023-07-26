@@ -25,8 +25,8 @@ export default function TaskListTable() {
   const [ exportTaskListId, setExportTaskListId ] = useState(null);
   const { user } = useContext(AuthContext);
 
-  useEffect(() => {
-    user ? getTaskLists(dispatch) : getTaskListsDummy(dispatch);
+  useEffect(async () => {
+    user ? await getTaskLists(dispatch) : getTaskListsDummy(dispatch);
   }, [user]);
 
   const handleDelete = (id) => {

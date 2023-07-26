@@ -15,11 +15,11 @@ export default function Topbar() {
   const { user, dispatch } = useContext(AuthContext);
   const history = useHistory();
 
-  const handleAuth = () => {
+  const handleAuth = async () => {
     if (user) {
-      handleLogout();
+      await handleLogout();
     } else {
-      login();
+      await login();
     }
   };
 

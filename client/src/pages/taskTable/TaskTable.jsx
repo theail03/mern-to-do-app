@@ -40,7 +40,7 @@ export default function TaskTable() {
     if (user) {
       // the await is necessary to avoid an error where the user gets logged out in vercel when 2 api calls are made at the same time
       await getTasks(dispatch, taskListId);
-      getTaskList(dispatchTaskLists, taskListId);
+      await getTaskList(dispatchTaskLists, taskListId);
     } else {
       getTasksDummy(dispatch, taskListId);
       getTaskListDummy(dispatchTaskLists, taskListId);

@@ -69,9 +69,10 @@ export default function TaskForm(props) {
     setTask({ ...task, tags: e.map(i => i.id)});
   }
 
-  useEffect(() => {
+  useEffect(async () => {
+    user ? await getTaskLists(dispatchTaskList) : getTaskListsDummy(dispatchTaskList);
     if (props.taskId) {
-      user ? getTask(dispatch, props.taskId) : getTaskDummy(dispatch, props.taskId);
+      user ? await getTask(dispatch, props.taskId) : getTaskDummy(dispatch, props.taskId);
     }
     if (props.taskListId) {
       const taskList = taskLists.find(i => i._id === props.taskListId);
@@ -81,10 +82,6 @@ export default function TaskForm(props) {
         setCustomFields(taskList.customFields);
       }
     }
-  }, []);
-
-  useEffect(() => {
-    user ? getTaskLists(dispatchTaskList) : getTaskListsDummy(dispatchTaskList);
   }, []);
 
   useEffect(() => {
