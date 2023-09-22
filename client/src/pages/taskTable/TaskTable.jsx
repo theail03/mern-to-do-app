@@ -5,7 +5,7 @@ import { TaskContext } from "../../context/taskContext/TaskContext";
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { deleteTask, getTasks } from "../../context/taskContext/taskApiCalls";
 import { getTaskList } from "../../context/taskListContext/taskListApiCalls";
-import { DeleteButton, EditButton, Table, TableActions, TableActionsButton } from "../../styles/Table.styles";
+import { DeleteButton, EditButton, SeeButton, Table, TableActions, TableActionsButton } from "../../styles/Table.styles";
 import Multiselect from 'multiselect-react-dropdown';
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getTasksDummy } from "../../context/taskContext/taskDummyCalls";
@@ -127,10 +127,15 @@ export default function TaskTable() {
     {
       field: "action",
       headerName: "Action",
-      width: 120,
+      width: 140,
       renderCell: (params) => {
         return (
           <>
+            <Link
+              to={{ pathname: "/taskView/" + params.row._id }}
+            >
+              <SeeButton/>
+            </Link>
             <Link
               to={{ pathname: "/task/" + params.row._id }}
             >
