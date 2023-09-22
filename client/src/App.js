@@ -40,6 +40,9 @@ function App() {
             <Route path="/task/:taskId">
               <Task />
             </Route>
+            <Route path="/taskView/:taskId">
+              <Task viewOnly={true} />
+            </Route>
             <Route path="/tasks/:taskListId">
               <TaskTable />
             </Route>

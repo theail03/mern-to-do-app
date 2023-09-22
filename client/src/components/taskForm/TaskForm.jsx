@@ -147,10 +147,13 @@ export default function TaskForm(props) {
               type="text"
               value={task.title}
               onChange={handleTitleChange}
+              disabled={props.viewOnly}
             />
-            <TaskSaveButton onClick={handleSubmit}>
-              Save
-            </TaskSaveButton>
+            { !props.viewOnly && 
+              <TaskSaveButton onClick={handleSubmit}>
+                Save
+              </TaskSaveButton>
+            }
           </TaskTitleAndCreate>
         </TaskFormSection>
         <TaskInfo>
@@ -161,6 +164,7 @@ export default function TaskForm(props) {
                     name="taskList"
                     onChange={handleTaskListChange}
                     value={task.taskList}
+                    disabled={props.viewOnly}
                 >
                     {taskLists.map(taskList => (
                         <MenuItem value={taskList._id}>{taskList.title}</MenuItem>
@@ -178,11 +182,17 @@ export default function TaskForm(props) {
                   avoidHighlightFirstOption={true}
                   displayValue="tag"
                   placeholder="Choose tags"
+                  disable={props.viewOnly}
                 />
             </TaskFormSection>           
           </TaskFormLeft>
           <TaskFormRight>
-            <TaskCustomFields customFields={customFields} task={task} handleCustomFieldsChange={handleCustomFieldsChange} />
+            <TaskCustomFields 
+              customFields={customFields} 
+              task={task} 
+              handleCustomFieldsChange={handleCustomFieldsChange} 
+              viewOnly={props.viewOnly}
+            />
           </TaskFormRight>
         </TaskInfo>
       </TaskFormStyled>

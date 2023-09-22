@@ -20,6 +20,7 @@ function TaskCustomFields(props) {
                   type={customField.type === 'integer' ? 'number' : 'text'} 
                   value={props.task.customFields.find(i => i.id === customField.id)?.value}
                   onChange={event => props.handleCustomFieldsChange(customField.id, event)}
+                  disabled={props.viewOnly}
               />
           </TaskCustomField>
         )) }

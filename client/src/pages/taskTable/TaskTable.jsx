@@ -92,7 +92,7 @@ export default function TaskTable() {
     { field: "_id", headerName: "ID", width: 190,
       renderCell: (params) => {
         return (
-          <TooltipCell data={params.row._id} cellType="text"/>
+          <TooltipCell data={params.row._id} cellType="link" pathname={"/taskView/" + params.row._id}/>
         );
       }
     },
