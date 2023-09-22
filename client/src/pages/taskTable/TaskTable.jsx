@@ -10,6 +10,7 @@ import Multiselect from 'multiselect-react-dropdown';
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getTasksDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListDummy } from "../../context/taskListContext/taskListDummyCalls";
+import TooltipCell from "../../components/tooltipCell/TooltipCell";
 
 export default function TaskTable() {
   const { tasks, dispatch } = useContext(TaskContext);
@@ -61,7 +62,12 @@ export default function TaskTable() {
           return {
             field: customField.id,
             headerName: customField.name,
-            width: 200
+            width: 200,
+            renderCell: (params) => {
+              return (
+                <TooltipCell data={params.row[customField.id]} />
+              );
+            }
           };
         });
         // set the columns for the DataGrid based on default columns and custom fields
@@ -83,11 +89,41 @@ export default function TaskTable() {
   }
 
   const defaultColumns = [
-    { field: "_id", headerName: "ID", width: 190 },
-    { field: "title", headerName: "Title", width: 150 },
-    { field: "tagNames", headerName: "Tags", width: 200 },
-    { field: "createdAt", headerName: "Created At", width: 200 },
-    { field: "updatedAt", headerName: "Updated At", width: 200 },
+    { field: "_id", headerName: "ID", width: 190,
+      renderCell: (params) => {
+        return (
+          <TooltipCell data={params.row._id} />
+        );
+      }
+    },
+    { field: "title", headerName: "Title", width: 150,
+      renderCell: (params) => {
+        return (
+          <TooltipCell data={params.row.title} />
+        );
+      }
+    },
+    { field: "tagNames", headerName: "Tags", width: 200,
+      renderCell: (params) => {
+        return (
+          <TooltipCell data={params.row.tagNames} />
+        );
+      }
+    },
+    { field: "createdAt", headerName: "Created At", width: 200,
+      renderCell: (params) => {
+        return (
+          <TooltipCell data={params.row.createdAt} />
+        );
+      }
+    },
+    { field: "updatedAt", headerName: "Updated At", width: 200,
+      renderCell: (params) => {
+        return (
+          <TooltipCell data={params.row.updatedAt} />
+        );
+      }
+    },
     {
       field: "action",
       headerName: "Action",

@@ -16,6 +16,7 @@ import { DeleteButton, EditButton, Table, TableActions, TableActionsButton, SeeB
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getAllTasksDummy, getTasksDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListsDummy } from "../../context/taskListContext/taskListDummyCalls";
+import TooltipCell from "../../components/tooltipCell/TooltipCell";
 
 export default function TaskListTable() {
   const { taskLists, dispatch } = useContext(TaskListContext);
@@ -166,10 +167,34 @@ export default function TaskListTable() {
   };
 
   const columns = [
-    { field: "_id", headerName: "ID", width: 190 },
-    { field: "title", headerName: "Title", width: 150 },
-    { field: "createdAt", headerName: "Created At", width: 200 },
-    { field: "updatedAt", headerName: "Updated At", width: 200 },
+    { field: "_id", headerName: "ID", width: 190,
+      renderCell: (params) => {
+        return (
+          <TooltipCell data={params.row._id} />
+        );
+      }
+    },
+    { field: "title", headerName: "Title", width: 150,
+      renderCell: (params) => {
+        return (
+          <TooltipCell data={params.row.title} />
+        );
+      }
+    },
+    { field: "createdAt", headerName: "Created At", width: 200,
+      renderCell: (params) => {
+        return (
+          <TooltipCell data={params.row.createdAt} />
+        );
+      }
+    },
+    { field: "updatedAt", headerName: "Updated At", width: 200,
+      renderCell: (params) => {
+        return (
+          <TooltipCell data={params.row.updatedAt} />
+        );
+      }
+    },
     {
       field: "action",
       headerName: "Action",
