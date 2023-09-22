@@ -92,35 +92,35 @@ export default function TaskTable() {
     { field: "_id", headerName: "ID", width: 190,
       renderCell: (params) => {
         return (
-          <TooltipCell data={params.row._id} />
+          <TooltipCell data={params.row._id} cellType="text"/>
         );
       }
     },
     { field: "title", headerName: "Title", width: 150,
       renderCell: (params) => {
         return (
-          <TooltipCell data={params.row.title} />
+          <TooltipCell data={params.row.title} cellType="text" />
         );
       }
     },
     { field: "tagNames", headerName: "Tags", width: 200,
       renderCell: (params) => {
         return (
-          <TooltipCell data={params.row.tagNames} />
+          <TooltipCell data={params.row.tagNames} cellType="text" />
         );
       }
     },
     { field: "createdAt", headerName: "Created At", width: 200,
       renderCell: (params) => {
         return (
-          <TooltipCell data={params.row.createdAt} />
+          <TooltipCell data={params.row.createdAt} cellType="text" />
         );
       }
     },
     { field: "updatedAt", headerName: "Updated At", width: 200,
       renderCell: (params) => {
         return (
-          <TooltipCell data={params.row.updatedAt} />
+          <TooltipCell data={params.row.updatedAt} cellType="text" />
         );
       }
     },
