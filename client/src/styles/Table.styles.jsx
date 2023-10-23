@@ -5,7 +5,8 @@ import { SimpleButton } from './SimpleButton.styled';
 
 export const Table = styled(Page)`
     margin-right: 25px;
-    margin-bottom: 25px;
+    margin-top: 25px;
+    margin-bottom: 75px;
 `;
 
 const rowActionButton = css`
