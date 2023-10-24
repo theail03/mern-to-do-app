@@ -23,6 +23,7 @@ import {
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getTaskDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListsDummy } from "../../context/taskListContext/taskListDummyCalls";
+import { multiselectStyles } from "../../constants/Theme";
 
 export default function TaskForm(props) {
   const [task, setTask] = useState({ title: "", tags: [], customFields: [], taskList: "" });
@@ -183,6 +184,7 @@ export default function TaskForm(props) {
                   displayValue="tag"
                   placeholder="Choose tags"
                   disable={props.viewOnly}
+                  style={multiselectStyles}
                 />
             </TaskFormSection>           
           </TaskFormLeft>

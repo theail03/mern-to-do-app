@@ -3,7 +3,7 @@ import { DeleteOutline, EditOutlined, VisibilityOutlined, GetAppOutlined, AddOut
 import { Page } from './Page.styled';
 import { SimpleButton } from './SimpleButton.styled';
 import  { DataGrid } from "@material-ui/data-grid";
-import { color2 } from '../constants/Theme';
+import { colors } from '../constants/Theme';
 import { withStyles } from '@material-ui/core';
 
 export const Table = styled(Page)`
@@ -61,7 +61,7 @@ export const DataGridStyled = withStyles({
     row: {
         // change color of <a> tags in rows
         '& a': {
-            color: color2,
+            color: colors.color2,
         },
     },
 })(DataGrid);

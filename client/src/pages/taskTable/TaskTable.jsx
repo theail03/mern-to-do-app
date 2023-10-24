@@ -10,6 +10,7 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import { getTasksDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListDummy } from "../../context/taskListContext/taskListDummyCalls";
 import TooltipCell from "../../components/tooltipCell/TooltipCell";
+import { multiselectStyles } from "../../constants/Theme";
 
 export default function TaskTable() {
   const { tasks, dispatch } = useContext(TaskContext);
@@ -170,6 +171,7 @@ export default function TaskTable() {
           avoidHighlightFirstOption={true}
           displayValue="tag"
           placeholder="Filter by tags"
+          style={multiselectStyles}
         />
       </TableActions>
       <DataGridStyled
