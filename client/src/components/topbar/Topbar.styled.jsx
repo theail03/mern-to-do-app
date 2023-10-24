@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { SimpleButton } from '../../styles/SimpleButton.styled';
 import { colors } from '../../constants/Theme';
 
 export const TaskListFormStyled = styled.form`
@@ -36,10 +35,4 @@ export const Logo = styled.span`
 export const TopRight = styled.div`
     display: flex;
     align-items: center;
-`;
-
-export const AuthButton = styled(SimpleButton)`
-    background-color: ${(props) => props.backgroundColor};
-    color: ${colors.color3};
-    margin-right: 20px;
 `;

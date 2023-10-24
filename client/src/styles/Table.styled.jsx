@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import { DeleteOutline, EditOutlined, VisibilityOutlined, GetAppOutlined, AddOutlined } from "@material-ui/icons";
 import { Page } from './Page.styled';
-import { SimpleButton } from './SimpleButton.styled';
 import  { DataGrid } from "@material-ui/data-grid";
 import { colors } from '../constants/Theme';
 import { withStyles } from '@material-ui/core';
@@ -13,34 +12,30 @@ export const Table = styled(Page)`
 `;
 
 const rowActionButton = css`
+    color: ${colors.color2};
     cursor: pointer;
     // center the icon vertically
     vertical-align: middle;
     margin-right: 20px;
 `;
 
-export const AddButton = styled(AddOutlined)`
-    color: ${colors.color2};
+export const AddButton = styled(AddOutlined)` 
     ${rowActionButton}
 `;
 
 export const SeeButton = styled(VisibilityOutlined)`
-    color: ${colors.color2};
     ${rowActionButton}
 `;
 
 export const ExportButton = styled(GetAppOutlined)`
-    color: ${colors.color2};
     ${rowActionButton}
 `;
 
 export const EditButton = styled(EditOutlined)`
-    color: ${colors.color2};
     ${rowActionButton}
 `;
 
 export const DeleteButton = styled(DeleteOutline)`
-    color: ${colors.color2};
     ${rowActionButton}
 `;
 
@@ -49,12 +44,6 @@ export const TableActions = styled.div`
     justify-content: flex-start;
     margin-left: 20px;
     margin-bottom: 20px;
-`;
-
-export const TableActionsButton = styled(SimpleButton)`
-    background-color: ${(props) => props.backgroundColor};
-    color: ${colors.color3};
-    margin-right: 20px;
 `;
 
 export const DataGridStyled = withStyles({

@@ -11,12 +11,13 @@ import { TaskContext } from "../../context/taskContext/TaskContext";
 import { getTasks, getAllTasks } from "../../context/taskContext/taskApiCalls";
 import { v4 as uuidv4 } from 'uuid';
 import { ImportInput, ImportButton } from "./TaskListTable.styled";
-import { DeleteButton, EditButton, Table, TableActions, TableActionsButton, SeeButton, ExportButton, AddButton, DataGridStyled } from "../../styles/Table.styled";
+import { DeleteButton, EditButton, Table, TableActions, SeeButton, ExportButton, AddButton, DataGridStyled } from "../../styles/Table.styled";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getAllTasksDummy, getTasksDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListsDummy } from "../../context/taskListContext/taskListDummyCalls";
 import TooltipCell from "../../components/tooltipCell/TooltipCell";
 import { colors } from "../../constants/Theme";
+import { SimpleButton } from "../../styles/SimpleButton.styled";
 
 export default function TaskListTable() {
   const { taskLists, dispatch } = useContext(TaskListContext);
@@ -316,10 +317,10 @@ export default function TaskListTable() {
   return (
     <Table>
       <TableActions>
-        <TableActionsButton backgroundColor={colors.color5} onClick={() => handleExportAll()}>
+        <SimpleButton backgroundColor={colors.color5} onClick={() => handleExportAll()}>
           Export All Lists
-        </TableActionsButton>
-        <ImportButton htmlFor="importInput">
+        </SimpleButton>
+        <ImportButton backgroundColor={colors.color5} htmlFor="importInput">
           Import from .xlsx
         </ImportButton>
         <ImportInput 

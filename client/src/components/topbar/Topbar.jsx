@@ -5,12 +5,12 @@ import { useHistory } from "react-router-dom";
 import { login, logoutUser } from "../../context/authContext/authApiCalls";
 import { 
   Logo,
-  AuthButton,
   TopRight,
   TopbarStyled, 
   TopbarWrapper 
 } from "./Topbar.styled";
 import { colors } from "../../constants/Theme";
+import { SimpleButton } from "../../styles/SimpleButton.styled";
 
 export default function Topbar() {
   const { user, dispatch } = useContext(AuthContext);
@@ -37,9 +37,9 @@ export default function Topbar() {
           <Logo>ToDoApp</Logo>
         </div>
         <TopRight>
-            <AuthButton backgroundColor={colors.color2} onClick={handleAuth}>
+            <SimpleButton backgroundColor={colors.color2} onClick={handleAuth}>
               {user ? "Log out" : "Log in with Google"}
-            </AuthButton>
+            </SimpleButton>
         </TopRight>
       </TopbarWrapper>
     </TopbarStyled>
