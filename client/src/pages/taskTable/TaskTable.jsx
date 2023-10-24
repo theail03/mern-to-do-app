@@ -33,7 +33,7 @@ export default function TaskTable() {
       if (taskList.tags) {
         const tagNames = taskList.tags.filter(tag => task.tags.includes(tag.id));
         // append tag names to task
-        task.tagNames = tagNames.map(tag => tag.tag);
+        task.tagNames = tagNames.map(tag => tag.tag).join(", ");
       }
     }
     return task;
