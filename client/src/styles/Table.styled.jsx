@@ -5,12 +5,6 @@ import  { DataGrid } from "@material-ui/data-grid";
 import { colors } from '../constants/Theme';
 import { withStyles } from '@material-ui/core';
 
-export const Table = styled(Page)`
-    margin-right: 25px;
-    margin-top: 25px;
-    margin-bottom: 75px;
-`;
-
 // Function that accepts an Icon and returns a styled icon
 const createStyledIcon = (Icon) => styled(Icon)`
     color: ${colors.color2};

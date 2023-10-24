@@ -18,6 +18,7 @@ import { getTaskListsDummy } from "../../context/taskListContext/taskListDummyCa
 import TooltipCell from "../../components/tooltipCell/TooltipCell";
 import { colors } from "../../constants/Theme";
 import { SimpleButton } from "../../styles/SimpleButton.styled";
+import { Page } from "../../styles/Page.styled";
 
 export default function TaskListTable() {
   const { taskLists, dispatch } = useContext(TaskListContext);
@@ -315,7 +316,7 @@ export default function TaskListTable() {
   };
 
   return (
-    <Table>
+    <Page>
       <TableActions>
         <SimpleButton backgroundColor={colors.color5} onClick={() => handleExportAll()}>
           Export All Lists
@@ -337,6 +338,6 @@ export default function TaskListTable() {
         pageSize={8}
         getRowId={(r) => r._id}
       />
-    </Table>
+    </Page>
   );
 }

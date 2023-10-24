@@ -4,7 +4,7 @@ import { TaskContext } from "../../context/taskContext/TaskContext";
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { deleteTask, getTasks } from "../../context/taskContext/taskApiCalls";
 import { getTaskList } from "../../context/taskListContext/taskListApiCalls";
-import { DataGridStyled, DeleteButton, EditButton, SeeButton, Table, TableActions, TableActionsButton } from "../../styles/Table.styled";
+import { DataGridStyled, DeleteButton, EditButton, SeeButton, TableActions } from "../../styles/Table.styled";
 import Multiselect from 'multiselect-react-dropdown';
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getTasksDummy } from "../../context/taskContext/taskDummyCalls";
@@ -12,6 +12,7 @@ import { getTaskListDummy } from "../../context/taskListContext/taskListDummyCal
 import TooltipCell from "../../components/tooltipCell/TooltipCell";
 import { colors, multiselectStyles } from "../../constants/Theme";
 import { SimpleButton } from "../../styles/SimpleButton.styled";
+import { Page } from "../../styles/Page.styled";
 
 export default function TaskTable() {
   const { tasks, dispatch } = useContext(TaskContext);
@@ -155,7 +156,7 @@ export default function TaskTable() {
   ];
 
   return (
-    <Table>
+    <Page>
       <TableActions>
         <Link
           to={{ pathname: "/newTask/" + taskListId }}
@@ -188,6 +189,6 @@ export default function TaskTable() {
         pageSize={8}
         getRowId={(r) => r._id}
       />
-    </Table>
+    </Page>
   );
 }
