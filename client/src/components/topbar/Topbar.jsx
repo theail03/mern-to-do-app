@@ -10,6 +10,7 @@ import {
   TopbarStyled, 
   TopbarWrapper 
 } from "./Topbar.styled";
+import { colors } from "../../constants/Theme";
 
 export default function Topbar() {
   const { user, dispatch } = useContext(AuthContext);
@@ -33,11 +34,11 @@ export default function Topbar() {
     <TopbarStyled>
       <TopbarWrapper>
         <div>
-          <Logo>TO-DO-APP</Logo>
+          <Logo>ToDoApp</Logo>
         </div>
         <TopRight>
-            <AuthButton backgroundColor={user ? "red" : "teal"} onClick={handleAuth}>
-              {user ? "Logout" : "Login with Google"}
+            <AuthButton backgroundColor={colors.color2} onClick={handleAuth}>
+              {user ? "Log out" : "Log in with Google"}
             </AuthButton>
         </TopRight>
       </TopbarWrapper>

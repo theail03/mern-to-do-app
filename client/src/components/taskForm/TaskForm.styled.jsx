@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import FormLabel from '@material-ui/core/FormLabel';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
+import { colors } from '../../constants/Theme';
 
 export const TaskFormLabel = styled(FormLabel)`
     width: 100px;
@@ -26,7 +27,7 @@ export const TaskFormSection = styled.div`
     margin-bottom: 10px;
 
     & > label {
-        color: gray;
+        color: ${colors.color1};
         font-weight: 1;
         margin-bottom: 0px;
     }
@@ -46,8 +47,8 @@ export const TaskSaveButton = styled.button`
     padding: 7px 10px;
     border: none;
     border-radius: 10px;
-    background-color: darkblue;
-    color: white;
+    background-color: ${colors.color5};
+    color: ${colors.color3};
     font-weight: 600;
     cursor: pointer;
     align-self: center;

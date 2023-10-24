@@ -16,6 +16,7 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import { getAllTasksDummy, getTasksDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListsDummy } from "../../context/taskListContext/taskListDummyCalls";
 import TooltipCell from "../../components/tooltipCell/TooltipCell";
+import { colors } from "../../constants/Theme";
 
 export default function TaskListTable() {
   const { taskLists, dispatch } = useContext(TaskListContext);
@@ -315,7 +316,7 @@ export default function TaskListTable() {
   return (
     <Table>
       <TableActions>
-        <TableActionsButton backgroundColor="lightpink" onClick={() => handleExportAll()}>
+        <TableActionsButton backgroundColor={colors.color5} onClick={() => handleExportAll()}>
           Export All Lists
         </TableActionsButton>
         <ImportButton htmlFor="importInput">

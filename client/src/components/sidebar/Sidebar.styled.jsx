@@ -3,18 +3,19 @@ import {
     List,
     PlaylistAddTwoTone,
   } from "@material-ui/icons";
+import { colors } from '../../constants/Theme';
 
 export const SidebarStyled = styled.div`
     flex: 1;
     height: calc(100vh - 50px);
-    background-color: rgb(251, 251, 255);
+    background-color: ${colors.color5};
     position: sticky;
     top: 50px;
 `;
 
 export const SidebarWrapper = styled.div`
     padding: 20px;
-    color: #555;
+    color: ${colors.color4};
 `;
 
 export const SidebarMenu = styled.div`
@@ -23,7 +24,7 @@ export const SidebarMenu = styled.div`
 
 export const SidebarTitle = styled.h3`
     font-size: 13px;
-    color: rgb(187, 186, 186);
+    color: ${colors.color3};
 `;
 
 export const SidebarList = styled.ul`
@@ -39,7 +40,7 @@ export const SidebarListItem = styled.li`
     border-radius: 10px;
 
     &:hover {
-        background-color: rgb(240, 240, 255);
+        background-color: ${colors.color2};
     }
 `;
 

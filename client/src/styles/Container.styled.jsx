@@ -3,7 +3,6 @@ import Container from '@material-ui/core/Container';
 
 const container = css`
     display: flex;
-    margin-top: 10px;
 `;
 
 export const ContainerStyled = styled(Container)`

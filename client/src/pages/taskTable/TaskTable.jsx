@@ -10,7 +10,7 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import { getTasksDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListDummy } from "../../context/taskListContext/taskListDummyCalls";
 import TooltipCell from "../../components/tooltipCell/TooltipCell";
-import { multiselectStyles } from "../../constants/Theme";
+import { colors, multiselectStyles } from "../../constants/Theme";
 
 export default function TaskTable() {
   const { tasks, dispatch } = useContext(TaskContext);
@@ -159,7 +159,7 @@ export default function TaskTable() {
         <Link
           to={{ pathname: "/newTask/" + taskListId }}
         >
-          <TableActionsButton backgroundColor="lightskyblue" onClick={() => {}}>
+          <TableActionsButton backgroundColor={colors.color5 } onClick={() => {}}>
             Create Task
           </TableActionsButton>
         </Link>

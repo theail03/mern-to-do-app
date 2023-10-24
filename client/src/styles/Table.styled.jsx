@@ -20,27 +20,27 @@ const rowActionButton = css`
 `;
 
 export const AddButton = styled(AddOutlined)`
-    color: gray;
+    color: ${colors.color2};
     ${rowActionButton}
 `;
 
 export const SeeButton = styled(VisibilityOutlined)`
-    color: blue;
+    color: ${colors.color2};
     ${rowActionButton}
 `;
 
 export const ExportButton = styled(GetAppOutlined)`
-    color: purple;
+    color: ${colors.color2};
     ${rowActionButton}
 `;
 
 export const EditButton = styled(EditOutlined)`
-    color: #3bb077;
+    color: ${colors.color2};
     ${rowActionButton}
 `;
 
 export const DeleteButton = styled(DeleteOutline)`
-    color: red;
+    color: ${colors.color2};
     ${rowActionButton}
 `;
 
@@ -53,7 +53,7 @@ export const TableActions = styled.div`
 
 export const TableActionsButton = styled(SimpleButton)`
     background-color: ${(props) => props.backgroundColor};
-    color: white;
+    color: ${colors.color3};
     margin-right: 20px;
 `;
 

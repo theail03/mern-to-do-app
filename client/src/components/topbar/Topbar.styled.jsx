@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { SimpleButton } from '../../styles/SimpleButton.styled';
+import { colors } from '../../constants/Theme';
 
 export const TaskListFormStyled = styled.form`
     margin-top: 10px;
@@ -11,7 +12,7 @@ export const TaskListFormStyled = styled.form`
 export const TopbarStyled = styled.div`
     width: 100%;
     height: 50px;
-    background-color: white;
+    background-color: ${colors.color2};
     position: sticky;
     top: 0;
     z-index: 999;
@@ -28,7 +29,8 @@ export const TopbarWrapper = styled.div`
 export const Logo = styled.span`
     font-weight: bold;
     font-size: 30px;
-    color: blue;
+    color: ${colors.color4};
+    cursor: pointer;
 `;
 
 export const TopRight = styled.div`
@@ -38,6 +40,6 @@ export const TopRight = styled.div`
 
 export const AuthButton = styled(SimpleButton)`
     background-color: ${(props) => props.backgroundColor};
-    color: white;
+    color: ${colors.color3};
     margin-right: 20px;
 `;
