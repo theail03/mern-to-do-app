@@ -16,14 +16,14 @@ import {
   TaskFormRight, 
   TaskFormSection, 
   TaskInfo, 
-  TaskSaveButton, 
   TaskTitleAndCreate, 
   TaskTitleInput 
 } from "./TaskForm.styled";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getTaskDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListsDummy } from "../../context/taskListContext/taskListDummyCalls";
-import { multiselectStyles } from "../../constants/Theme";
+import { colors, multiselectStyles } from "../../constants/Theme";
+import { SimpleButton } from "../../styles/SimpleButton.styled";
 
 export default function TaskForm(props) {
   const [task, setTask] = useState({ title: "", tags: [], customFields: [], taskList: "" });
@@ -151,9 +151,9 @@ export default function TaskForm(props) {
               disabled={props.viewOnly}
             />
             { !props.viewOnly && 
-              <TaskSaveButton onClick={handleSubmit}>
+              <SimpleButton backgroundColor={colors.color5} onClick={handleSubmit}>
                 Save
-              </TaskSaveButton>
+              </SimpleButton>
             }
           </TaskTitleAndCreate>
         </TaskFormSection>

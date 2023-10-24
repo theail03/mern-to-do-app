@@ -30,19 +30,6 @@ export const TaskListFormSection = styled.div`
     }
 `;
 
-export const TaskListSaveButton = styled.button`
-    height: 30px;
-    margin-top: 10px;
-    padding: 7px 10px;
-    border: none;
-    border-radius: 10px;
-    background-color: ${colors.color5};
-    color: ${colors.color3};
-    font-weight: 600;
-    cursor: pointer;
-    align-self: center;
-`;
-
 export const TaskListTitleAndCreate = styled.div`
     display: flex;
     justify-content: space-between;
