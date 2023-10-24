@@ -4,7 +4,7 @@ import { TaskContext } from "../../context/taskContext/TaskContext";
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { deleteTask, getTasks } from "../../context/taskContext/taskApiCalls";
 import { getTaskList } from "../../context/taskListContext/taskListApiCalls";
-import { DataGridStyled, DeleteButton, EditButton, SeeButton, Table, TableActions, TableActionsButton } from "../../styles/Table.styles";
+import { DataGridStyled, DeleteButton, EditButton, SeeButton, Table, TableActions, TableActionsButton } from "../../styles/Table.styled";
 import Multiselect from 'multiselect-react-dropdown';
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getTasksDummy } from "../../context/taskContext/taskDummyCalls";

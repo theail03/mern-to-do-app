@@ -11,7 +11,7 @@ import { TaskContext } from "../../context/taskContext/TaskContext";
 import { getTasks, getAllTasks } from "../../context/taskContext/taskApiCalls";
 import { v4 as uuidv4 } from 'uuid';
 import { ImportInput, ImportButton } from "./TaskListTable.styled";
-import { DeleteButton, EditButton, Table, TableActions, TableActionsButton, SeeButton, ExportButton, AddButton, DataGridStyled } from "../../styles/Table.styles";
+import { DeleteButton, EditButton, Table, TableActions, TableActionsButton, SeeButton, ExportButton, AddButton, DataGridStyled } from "../../styles/Table.styled";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getAllTasksDummy, getTasksDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListsDummy } from "../../context/taskListContext/taskListDummyCalls";
