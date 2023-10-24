@@ -1,4 +1,3 @@
-import { DataGrid } from "@material-ui/data-grid";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
@@ -12,7 +11,7 @@ import { TaskContext } from "../../context/taskContext/TaskContext";
 import { getTasks, getAllTasks } from "../../context/taskContext/taskApiCalls";
 import { v4 as uuidv4 } from 'uuid';
 import { ImportInput, ImportButton } from "./TaskListTable.styled";
-import { DeleteButton, EditButton, Table, TableActions, TableActionsButton, SeeButton, ExportButton, AddButton } from "../../styles/Table.styles";
+import { DeleteButton, EditButton, Table, TableActions, TableActionsButton, SeeButton, ExportButton, AddButton, DataGridStyled } from "../../styles/Table.styles";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getAllTasksDummy, getTasksDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListsDummy } from "../../context/taskListContext/taskListDummyCalls";
@@ -329,7 +328,7 @@ export default function TaskListTable() {
           onChange={(e) => handleImport(e)}
         />
       </TableActions>
-      <DataGrid
+      <DataGridStyled
         rows={taskLists}
         disableSelectionOnClick
         columns={columns}

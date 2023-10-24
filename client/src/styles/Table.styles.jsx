@@ -2,6 +2,9 @@ import styled, { css } from 'styled-components';
 import { DeleteOutline, EditOutlined, VisibilityOutlined, GetAppOutlined, AddOutlined } from "@material-ui/icons";
 import { Page } from './Page.styled';
 import { SimpleButton } from './SimpleButton.styled';
+import  { DataGrid } from "@material-ui/data-grid";
+import { color2 } from '../constants/Theme';
+import { withStyles } from '@material-ui/core';
 
 export const Table = styled(Page)`
     margin-right: 25px;
@@ -53,3 +56,12 @@ export const TableActionsButton = styled(SimpleButton)`
     color: white;
     margin-right: 20px;
 `;
+
+export const DataGridStyled = withStyles({
+    row: {
+        // change color of <a> tags in rows
+        '& a': {
+            color: color2,
+        },
+    },
+})(DataGrid);

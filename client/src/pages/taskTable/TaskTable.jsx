@@ -1,11 +1,10 @@
-import { DataGrid } from "@material-ui/data-grid";
 import { Link, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { TaskContext } from "../../context/taskContext/TaskContext";
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { deleteTask, getTasks } from "../../context/taskContext/taskApiCalls";
 import { getTaskList } from "../../context/taskListContext/taskListApiCalls";
-import { DeleteButton, EditButton, SeeButton, Table, TableActions, TableActionsButton } from "../../styles/Table.styles";
+import { DataGridStyled, DeleteButton, EditButton, SeeButton, Table, TableActions, TableActionsButton } from "../../styles/Table.styles";
 import Multiselect from 'multiselect-react-dropdown';
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getTasksDummy } from "../../context/taskContext/taskDummyCalls";
@@ -173,7 +172,7 @@ export default function TaskTable() {
           placeholder="Filter by tags"
         />
       </TableActions>
-      <DataGrid
+      <DataGridStyled
         rows={tasks.filter(task => {
           // filter tasks by tags
           if (tags.length > 0) {
