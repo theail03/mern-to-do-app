@@ -11,7 +11,8 @@ export const Table = styled(Page)`
     margin-bottom: 75px;
 `;
 
-const rowActionButton = css`
+// Function that accepts an Icon and returns a styled icon
+const createStyledIcon = (Icon) => styled(Icon)`
     color: ${colors.color2};
     cursor: pointer;
     // center the icon vertically
@@ -19,25 +20,11 @@ const rowActionButton = css`
     margin-right: 20px;
 `;
 
-export const AddButton = styled(AddOutlined)` 
-    ${rowActionButton}
-`;
-
-export const SeeButton = styled(VisibilityOutlined)`
-    ${rowActionButton}
-`;
-
-export const ExportButton = styled(GetAppOutlined)`
-    ${rowActionButton}
-`;
-
-export const EditButton = styled(EditOutlined)`
-    ${rowActionButton}
-`;
-
-export const DeleteButton = styled(DeleteOutline)`
-    ${rowActionButton}
-`;
+export const AddButton = createStyledIcon(AddOutlined);
+export const SeeButton = createStyledIcon(VisibilityOutlined);
+export const ExportButton = createStyledIcon(GetAppOutlined);
+export const EditButton = createStyledIcon(EditOutlined);
+export const DeleteButton = createStyledIcon(DeleteOutline);
 
 export const TableActions = styled.div`
     display: flex;
