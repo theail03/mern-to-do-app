@@ -29,7 +29,7 @@ export const Logo = styled.span`
     font-weight: bold;
     font-size: 30px;
     color: ${colors.color4};
-    cursor: pointer;
+    cursor: default;
 `;
 
 export const TopRight = styled.div`
