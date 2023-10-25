@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Input from '@material-ui/core/Input';
-import { colors } from '../../constants/Theme';
 
 export const TaskListFormStyled = styled.form`
     margin-top: 10px;
@@ -14,12 +13,6 @@ export const TaskListFormSection = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
-
-    & > label {
-        color: ${colors.color1};
-        font-weight: 1;
-        margin-bottom: 0px;
-    }
 
     & > input {
         padding: 10px;

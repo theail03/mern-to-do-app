@@ -3,7 +3,6 @@ import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { getTaskList } from "../../context/taskListContext/taskListApiCalls";
 import TagFields from "../tagFields/TagFields";
 import CustomFields from "../customFields/CustomFields";
-import FormLabel from '@material-ui/core/FormLabel';
 import { useHistory } from "react-router-dom";
 import { 
   TagsAndCustomFields, 
@@ -18,6 +17,7 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import { getTaskListDummy } from "../../context/taskListContext/taskListDummyCalls";
 import { colors } from "../../constants/Theme";
 import { SimpleButton } from "../../styles/SimpleButton.styled";
+import { FormLabelStyled } from "../../styles/FormLabel.styled";
 
 export default function TaskListForm(props) {
   const [taskList, setTaskList] = useState({ title: "", tags: [], customFields: [] });
@@ -103,7 +103,7 @@ export default function TaskListForm(props) {
   return (
       <TaskListFormStyled>
         <TaskListFormSection>
-          <FormLabel>Title</FormLabel>
+          <FormLabelStyled>Title</FormLabelStyled>
           <TaskListTitleAndCreate>
             <TaskListTitleInput
               name="title"

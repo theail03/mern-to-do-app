@@ -7,6 +7,8 @@ export const colors = {
     color5: '#2B4B63'
 };
 
+export const primaryFont = 'Source Sans Pro, sans-serif';
+
 export const multiselectStyles = {
     chips: {
         background: colors.color2

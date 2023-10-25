@@ -4,7 +4,6 @@ import { TaskListContext } from "../../context/taskListContext/TaskListContext";
 import { getTask } from "../../context/taskContext/taskApiCalls";
 import { getTaskLists } from "../../context/taskListContext/taskListApiCalls";
 import TaskCustomFields from "../taskCustomFields/TaskCustomFields";
-import FormLabel from '@material-ui/core/FormLabel';
 import { useHistory } from "react-router-dom";
 import Multiselect from 'multiselect-react-dropdown';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -24,6 +23,7 @@ import { getTaskDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListsDummy } from "../../context/taskListContext/taskListDummyCalls";
 import { colors, multiselectStyles } from "../../constants/Theme";
 import { SimpleButton } from "../../styles/SimpleButton.styled";
+import { FormLabelStyled } from "../../styles/FormLabel.styled";
 
 export default function TaskForm(props) {
   const [task, setTask] = useState({ title: "", tags: [], customFields: [], taskList: "" });
@@ -141,7 +141,7 @@ export default function TaskForm(props) {
   return (
       <TaskFormStyled>
         <TaskFormSection>
-          <FormLabel>Name</FormLabel>
+          <FormLabelStyled>Name</FormLabelStyled>
           <TaskTitleAndCreate>
             <TaskTitleInput
               name="title"

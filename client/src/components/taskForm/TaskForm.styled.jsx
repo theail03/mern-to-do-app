@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import FormLabel from '@material-ui/core/FormLabel';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
-import { colors } from '../../constants/Theme';
+import { FormLabelStyled } from '../../styles/FormLabel.styled';
 
-export const TaskFormLabel = styled(FormLabel)`
+export const TaskFormLabel = styled(FormLabelStyled)`
     width: 100px;
     height: 20px;
 `;
@@ -25,12 +24,6 @@ export const TaskFormSection = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
-
-    & > label {
-        color: ${colors.color1};
-        font-weight: 1;
-        margin-bottom: 0px;
-    }
 
     & > input {
         padding: 10px;

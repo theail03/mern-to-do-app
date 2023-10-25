@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Input from '@material-ui/core/Input';
-import FormLabel from '@material-ui/core/FormLabel';
+import { FormLabelStyled } from '../../styles/FormLabel.styled';
 
 export const TaskCustomField = styled.div`
     display: flex; 
@@ -23,6 +23,6 @@ export const TaskCustomFieldInput = styled(Input)`
     margin-bottom: 10px;
 `;
 
-export const TaskCustomFieldsLabel = styled(FormLabel)`
+export const TaskCustomFieldsLabel = styled(FormLabelStyled)`
     height: 25px;
 `;

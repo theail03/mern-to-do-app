@@ -5,7 +5,6 @@ import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormLabel from '@material-ui/core/FormLabel';
 import { v4 as uuidv4 } from 'uuid';
 import { 
   CustomField,
@@ -15,6 +14,7 @@ import {
   CustomFieldInput,
   CustomFieldSelect
 } from './CustomFields.styled';
+import { FormLabelStyled } from '../../styles/FormLabel.styled';
 
 function CustomFields(props) {
   const [customFields, setCustomFields] = useState([]);
@@ -60,7 +60,7 @@ function CustomFields(props) {
 
   return (
     <Container>
-      <FormLabel>Custom Fields</FormLabel>
+      <FormLabelStyled>Custom Fields</FormLabelStyled>
         <IconButton onClick={handleAddFields}>
             <AddIcon />
         </IconButton>
