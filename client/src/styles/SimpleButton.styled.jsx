@@ -7,7 +7,8 @@ export const simpleButton = css`
     margin-right: 20px;
 
     border: none;
-    padding: 5px 10px;
+    height: 28px;
+    padding: 0px 10px;
     cursor: pointer;
     
     /* font */
