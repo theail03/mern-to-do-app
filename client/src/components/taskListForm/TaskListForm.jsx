@@ -111,7 +111,7 @@ export default function TaskListForm(props) {
               value={taskList.title}
               onChange={handleTitleChange}
             />
-            <SimpleButton backgroundColor={colors.color5} onClick={handleSubmit}>
+            <SimpleButton backgroundColor={colors.color2} onClick={handleSubmit}>
               Save
             </SimpleButton>
           </TaskListTitleAndCreate>

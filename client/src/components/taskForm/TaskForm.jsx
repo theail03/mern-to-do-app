@@ -151,7 +151,7 @@ export default function TaskForm(props) {
               disabled={props.viewOnly}
             />
             { !props.viewOnly && 
-              <SimpleButton backgroundColor={colors.color5} onClick={handleSubmit}>
+              <SimpleButton backgroundColor={colors.color2} onClick={handleSubmit}>
                 Save
               </SimpleButton>
             }

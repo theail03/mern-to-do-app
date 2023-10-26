@@ -318,11 +318,11 @@ export default function TaskListTable() {
   return (
     <Page>
       <TableActions>
-        <SimpleButton backgroundColor={colors.color5} onClick={() => handleExportAll()}>
+        <SimpleButton backgroundColor={colors.color2} onClick={() => handleExportAll()}>
           Export All Lists
         </SimpleButton>
-        <ImportButton backgroundColor={colors.color5} htmlFor="importInput">
-          Import from .xlsx
+        <ImportButton backgroundColor={colors.color2} htmlFor="importInput">
+          Import From .xlsx
         </ImportButton>
         <ImportInput 
           id="importInput" 

@@ -161,7 +161,7 @@ export default function TaskTable() {
         <Link
           to={{ pathname: "/newTask/" + taskListId }}
         >
-          <SimpleButton backgroundColor={colors.color5} onClick={() => {}}>
+          <SimpleButton backgroundColor={colors.color2} onClick={() => {}}>
             Create Task
           </SimpleButton>
         </Link>
