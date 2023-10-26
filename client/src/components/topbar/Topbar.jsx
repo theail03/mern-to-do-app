@@ -11,6 +11,8 @@ import {
 } from "./Topbar.styled";
 import { colors } from "../../constants/Theme";
 import { SimpleButton } from "../../styles/SimpleButton.styled";
+import SimpleMenu from "../simpleMenu/SimpleMenu";
+import { MenuItem } from "@material-ui/core";
 
 export default function Topbar() {
   const { user, dispatch } = useContext(AuthContext);
@@ -37,9 +39,15 @@ export default function Topbar() {
           <Logo>ToDoApp</Logo>
         </div>
         <TopRight>
-            <SimpleButton backgroundColor={colors.color2} onClick={handleAuth}>
-              {user ? "Log out" : "Log in with Google"}
-            </SimpleButton>
+            {user ? 
+              <SimpleMenu buttonText={user.email}>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              </SimpleMenu> 
+              : 
+              <SimpleButton backgroundColor={colors.color2} onClick={handleAuth}>
+                Log in with Google
+              </SimpleButton>
+            }
         </TopRight>
       </TopbarWrapper>
     </TopbarStyled>

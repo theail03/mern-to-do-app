@@ -13,6 +13,9 @@ export const simpleButton = css`
     /* font */
     font-size: 14px;
     font-weight: 500;
+
+    display: flex;
+    align-items: center;
 `;
 
 export const SimpleButton = styled.button`
