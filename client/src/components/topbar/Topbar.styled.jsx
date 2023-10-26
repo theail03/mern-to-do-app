@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../constants/Theme';
+import { MenuItem } from "@material-ui/core";
+import { withStyles } from '@material-ui/core';
 
 export const TaskListFormStyled = styled.form`
     margin-top: 10px;
@@ -36,3 +38,13 @@ export const TopRight = styled.div`
     display: flex;
     align-items: center;
 `;
+
+export const MenuItemStyled = withStyles({
+    root: {
+      fontFamily: '"Source Sans Pro", sans-serif',
+      padding: '4px 16px', // Adjust this value to decrease the padding as needed
+      '&:hover': {
+        backgroundColor: colors.color4,
+      }
+    }
+  })(MenuItem);

@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { login, logoutUser } from "../../context/authContext/authApiCalls";
 import { 
   Logo,
+  MenuItemStyled,
   TopRight,
   TopbarStyled, 
   TopbarWrapper 
@@ -12,7 +13,6 @@ import {
 import { colors } from "../../constants/Theme";
 import { SimpleButton } from "../../styles/SimpleButton.styled";
 import SimpleMenu from "../simpleMenu/SimpleMenu";
-import { MenuItem } from "@material-ui/core";
 
 export default function Topbar() {
   const { user, dispatch } = useContext(AuthContext);
@@ -41,7 +41,7 @@ export default function Topbar() {
         <TopRight>
             {user ? 
               <SimpleMenu buttonText={user.email}>
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                <MenuItemStyled onClick={handleLogout}>Logout</MenuItemStyled>
               </SimpleMenu> 
               : 
               <SimpleButton backgroundColor={colors.color2} onClick={handleAuth}>

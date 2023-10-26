@@ -27,6 +27,8 @@ export default function SimpleMenu(props) {
       </SimpleButton>
       <Menu
         id="fade-menu"
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         anchorEl={anchorEl}
         keepMounted
         open={open}
