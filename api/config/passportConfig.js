@@ -16,13 +16,20 @@ module.exports = function (passport) {
           firstName: profile.name.givenName,
           lastName: profile.name.familyName,
           image: profile.photos[0].value,
+          email: profile.emails[0].value
         }
 
         try {
           let user = await User.findOne({ googleId: profile.id });
 
           if (user) {
-            done(null, user);
+            // Update user using MongoDB _id
+            const updatedUser = await User.findByIdAndUpdate(
+              user._id,           // MongoDB _id of the user
+              { $set: newUser },  // Update
+              { new: true }       // Option to return the modified document
+            );
+            done(null, updatedUser);
           } else {
             user = await User.create(newUser);
             done(null, user);
