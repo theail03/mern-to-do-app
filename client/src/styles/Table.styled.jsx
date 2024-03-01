@@ -20,8 +20,7 @@ export const DeleteButton = createStyledIcon(Delete, "red");
 
 export const TableActions = styled.div`
     display: flex;
-    justify-content: flex-start;
-    margin-left: 20px;
+    justify-content: flex-end;
     margin-bottom: 20px;
 `;
 

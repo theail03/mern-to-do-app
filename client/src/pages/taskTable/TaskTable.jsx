@@ -158,14 +158,8 @@ export default function TaskTable() {
 
   return (
     <Page>
+      <h1>{taskList.title}</h1>
       <TableActions>
-        <LinkStyled
-          to={{ pathname: "/newTask/" + taskListId }}
-        >
-          <ActionButton onClick={() => {}}>
-            Create Task
-          </ActionButton>
-        </LinkStyled>
         <Multiselect
           selectedValues={taskList.tags?.filter(taskListTag => tags.includes(taskListTag.id))}
           onRemove={handleTagsChange}
@@ -176,6 +170,13 @@ export default function TaskTable() {
           placeholder="Filter by tags"
           style={multiselectStyles}
         />
+        <LinkStyled
+          to={{ pathname: "/newTask/" + taskListId }}
+        >
+          <ActionButton marginLeft="10px" marginRight="0px" onClick={() => {}}>
+            Create Task
+          </ActionButton>
+        </LinkStyled>
       </TableActions>
       <DataGridStyled
         rows={tasks.filter(task => {
