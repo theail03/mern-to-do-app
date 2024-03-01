@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { MenuItem } from "@material-ui/core";
 import { withStyles } from '@material-ui/core';
+import { shadowStyles } from '../../constants/Theme';
 
 export const TopbarStyled = styled.div`
     width: 100%;
@@ -9,6 +10,7 @@ export const TopbarStyled = styled.div`
     position: sticky;
     top: 0;
     z-index: 999;
+    ${shadowStyles}
 `;
   
 export const TopbarWrapper = styled.div`
