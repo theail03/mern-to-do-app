@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { DeleteOutline, EditOutlined, VisibilityOutlined, GetAppOutlined, AddOutlined } from "@material-ui/icons";
+import { Delete, Edit, Visibility, GetApp, Add } from "@material-ui/icons";
 import  { DataGrid } from "@material-ui/data-grid";
 import { withStyles } from '@material-ui/core';
 
@@ -12,11 +12,11 @@ const createStyledIcon = (Icon, color) => styled(Icon)`
     margin-right: 20px;
 `;
 
-export const AddButton = createStyledIcon(AddOutlined);
-export const SeeButton = createStyledIcon(VisibilityOutlined);
-export const ExportButton = createStyledIcon(GetAppOutlined);
-export const EditButton = createStyledIcon(EditOutlined);
-export const DeleteButton = createStyledIcon(DeleteOutline, "red");
+export const AddButton = createStyledIcon(Add);
+export const SeeButton = createStyledIcon(Visibility);
+export const ExportButton = createStyledIcon(GetApp);
+export const EditButton = createStyledIcon(Edit);
+export const DeleteButton = createStyledIcon(Delete, "red");
 
 export const TableActions = styled.div`
     display: flex;
