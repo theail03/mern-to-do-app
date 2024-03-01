@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import Input from '@material-ui/core/Input';
+import { boxStyles } from '../../constants/Theme';
 
 export const TaskListFormStyled = styled.form`
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    ${boxStyles}
 `;
 
 export const TaskListFormSection = styled.div`

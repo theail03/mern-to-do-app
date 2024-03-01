@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
 import { FormLabelStyled } from '../../styles/FormLabel.styled';
+import { boxStyles } from "../../constants/Theme.jsx";
 
 export const TaskFormLabel = styled(FormLabelStyled)`
     width: 100px;
@@ -17,6 +18,7 @@ export const TaskFormStyled = styled.form`
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    ${boxStyles}
 `;
 
 export const TaskFormSection = styled.div`
