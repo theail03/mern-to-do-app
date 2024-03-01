@@ -16,8 +16,8 @@ import {
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getTaskListDummy } from "../../context/taskListContext/taskListDummyCalls";
 import { colors } from "../../constants/Theme";
-import { SimpleButton } from "../../styles/SimpleButton.styled";
 import { FormLabelStyled } from "../../styles/FormLabel.styled";
+import { SaveButton } from "../../styles/SaveButton.styled";
 
 export default function TaskListForm(props) {
   const [taskList, setTaskList] = useState({ title: "", tags: [], customFields: [] });
@@ -111,9 +111,9 @@ export default function TaskListForm(props) {
               value={taskList.title}
               onChange={handleTitleChange}
             />
-            <SimpleButton backgroundColor={colors.color2} onClick={handleSubmit}>
+            <SaveButton backgroundColor={colors.color2} onClick={handleSubmit}>
               Save
-            </SimpleButton>
+            </SaveButton>
           </TaskListTitleAndCreate>
         </TaskListFormSection>
         <TagsAndCustomFields>

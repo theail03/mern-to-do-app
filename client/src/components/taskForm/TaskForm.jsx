@@ -21,9 +21,9 @@ import {
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getTaskDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListsDummy } from "../../context/taskListContext/taskListDummyCalls";
-import { colors, multiselectStyles } from "../../constants/Theme";
-import { SimpleButton } from "../../styles/SimpleButton.styled";
+import { multiselectStyles } from "../../constants/Theme";
 import { FormLabelStyled } from "../../styles/FormLabel.styled";
+import { SaveButton } from "../../styles/SaveButton.styled";
 
 export default function TaskForm(props) {
   const [task, setTask] = useState({ title: "", tags: [], customFields: [], taskList: "" });
@@ -151,9 +151,9 @@ export default function TaskForm(props) {
               disabled={props.viewOnly}
             />
             { !props.viewOnly && 
-              <SimpleButton backgroundColor={colors.color2} onClick={handleSubmit}>
+              <SaveButton onClick={handleSubmit}>
                 Save
-              </SimpleButton>
+              </SaveButton>
             }
           </TaskTitleAndCreate>
         </TaskFormSection>

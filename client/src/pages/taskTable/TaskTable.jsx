@@ -10,9 +10,10 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import { getTasksDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListDummy } from "../../context/taskListContext/taskListDummyCalls";
 import TooltipCell from "../../components/tooltipCell/TooltipCell";
-import { colors, multiselectStyles } from "../../constants/Theme";
-import { SimpleButton } from "../../styles/SimpleButton.styled";
+import { multiselectStyles } from "../../constants/Theme";
 import { Page } from "../../styles/Page.styled";
+import { LinkStyled } from "../../styles/Link.styled";
+import { ActionButton } from "../../styles/ActionButton.styled";
 
 export default function TaskTable() {
   const { tasks, dispatch } = useContext(TaskContext);
@@ -158,13 +159,13 @@ export default function TaskTable() {
   return (
     <Page>
       <TableActions>
-        <Link
+        <LinkStyled
           to={{ pathname: "/newTask/" + taskListId }}
         >
-          <SimpleButton backgroundColor={colors.color2} onClick={() => {}}>
+          <ActionButton onClick={() => {}}>
             Create Task
-          </SimpleButton>
-        </Link>
+          </ActionButton>
+        </LinkStyled>
         <Multiselect
           selectedValues={taskList.tags?.filter(taskListTag => tags.includes(taskListTag.id))}
           onRemove={handleTagsChange}

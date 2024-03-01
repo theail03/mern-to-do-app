@@ -3,17 +3,10 @@ import { colors } from '../../constants/Theme';
 import { MenuItem } from "@material-ui/core";
 import { withStyles } from '@material-ui/core';
 
-export const TaskListFormStyled = styled.form`
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-`;
-
 export const TopbarStyled = styled.div`
     width: 100%;
     height: 50px;
-    background-color: ${colors.color2};
+    background-color: white;
     position: sticky;
     top: 0;
     z-index: 999;
@@ -30,7 +23,7 @@ export const TopbarWrapper = styled.div`
 export const Logo = styled.span`
     font-weight: bold;
     font-size: 30px;
-    color: ${colors.color4};
+    color: darkblue;
     cursor: default;
 `;
 

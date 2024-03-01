@@ -11,12 +11,11 @@ export const primaryFont = 'Source Sans Pro, sans-serif';
 
 export const multiselectStyles = {
     chips: {
-        background: colors.color2
+        background: "gray",
     },
     option: {
-        background: colors.color3,
-        color: colors.color1
-        
+        background: "inherit",
+        color: "inherit"  
     }
 };
   

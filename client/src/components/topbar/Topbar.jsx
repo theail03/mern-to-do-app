@@ -10,8 +10,7 @@ import {
   TopbarStyled, 
   TopbarWrapper 
 } from "./Topbar.styled";
-import { colors } from "../../constants/Theme";
-import { SimpleButton } from "../../styles/SimpleButton.styled";
+import { MenuButton } from "../../styles/MenuButton.styled";
 import SimpleMenu from "../simpleMenu/SimpleMenu";
 
 export default function Topbar() {
@@ -44,9 +43,9 @@ export default function Topbar() {
                 <MenuItemStyled onClick={handleLogout}>Logout</MenuItemStyled>
               </SimpleMenu> 
               : 
-              <SimpleButton backgroundColor={colors.color2} onClick={handleAuth}>
+              <MenuButton onClick={handleAuth}>
                 Log in with Google
-              </SimpleButton>
+              </MenuButton>
             }
         </TopRight>
       </TopbarWrapper>

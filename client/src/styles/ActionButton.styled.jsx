@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
-import { colors } from '../constants/Theme';
 
-export const simpleButton = css`
-    background-color: ${(props) => props.backgroundColor};
-    color: ${colors.color3};
+export const actionButton = css`
+    background-color: teal;
+    color: white;
     margin-right: 20px;
 
     border: none;
+    border-radius: 5px;
     height: 28px;
     padding: 0px 10px;
     cursor: pointer;
@@ -19,6 +19,6 @@ export const simpleButton = css`
     align-items: center;
 `;
 
-export const SimpleButton = styled.button`
-    ${simpleButton}
+export const ActionButton = styled.button`
+    ${actionButton}
 `;
