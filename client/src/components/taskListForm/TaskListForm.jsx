@@ -15,7 +15,6 @@ import {
 } from "./TaskListForm.styled";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { getTaskListDummy } from "../../context/taskListContext/taskListDummyCalls";
-import { colors } from "../../constants/Theme";
 import { FormLabelStyled } from "../../styles/FormLabel.styled";
 import { SaveButton } from "../../styles/SaveButton.styled";
 
@@ -111,7 +110,7 @@ export default function TaskListForm(props) {
               value={taskList.title}
               onChange={handleTitleChange}
             />
-            <SaveButton backgroundColor={colors.color2} onClick={handleSubmit}>
+            <SaveButton onClick={handleSubmit}>
               Save
             </SaveButton>
           </TaskListTitleAndCreate>

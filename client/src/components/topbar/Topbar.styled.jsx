@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '../../constants/Theme';
 import { MenuItem } from "@material-ui/core";
 import { withStyles } from '@material-ui/core';
 
@@ -36,8 +35,5 @@ export const MenuItemStyled = withStyles({
     root: {
       fontFamily: '"Source Sans Pro", sans-serif',
       padding: '4px 16px', // Adjust this value to decrease the padding as needed
-      '&:hover': {
-        backgroundColor: colors.color4,
-      }
     }
   })(MenuItem);
