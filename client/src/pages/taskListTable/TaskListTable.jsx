@@ -321,7 +321,7 @@ export default function TaskListTable() {
         <ActionButton onClick={() => handleExportAll()}>
           Export All Lists
         </ActionButton>
-        <ImportButton marginRight="0px" htmlFor="importInput">
+        <ImportButton htmlFor="importInput">
           Import From .xlsx
         </ImportButton>
         <ImportInput 

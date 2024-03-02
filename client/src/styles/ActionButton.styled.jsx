@@ -3,8 +3,6 @@ import styled, { css } from 'styled-components';
 export const actionButton = css`
     background-color: teal;
     color: white;
-    margin-left: ${props => props.marginLeft || "0px"};
-    margin-right: ${props => props.marginRight || "10px"};
 
     border: none;
     border-radius: 5px;

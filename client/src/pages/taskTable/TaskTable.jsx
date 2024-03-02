@@ -173,7 +173,7 @@ export default function TaskTable() {
         <LinkStyled
           to={{ pathname: "/newTask/" + taskListId }}
         >
-          <ActionButton marginLeft="10px" marginRight="0px" onClick={() => {}}>
+          <ActionButton onClick={() => {}}>
             Create Task
           </ActionButton>
         </LinkStyled>
