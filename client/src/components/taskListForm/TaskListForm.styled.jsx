@@ -27,7 +27,6 @@ export const TaskListFormSection = styled.div`
 export const TaskListTitleAndCreate = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 50%;
     gap: 20px;
 `;
 
