@@ -11,7 +11,6 @@ export const TaskListFormStyled = styled.form`
 `;
 
 export const TaskListFormSection = styled.div`
-    width: 400px;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -28,11 +27,12 @@ export const TaskListFormSection = styled.div`
 export const TaskListTitleAndCreate = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 500px;
+    width: 50%;
+    gap: 20px;
 `;
 
 export const TaskListTitleInput = styled(Input)`
-    width: 400px;
+    flex: 1;
 `;
 
 export const TaskListFormLeft = styled.div`
@@ -45,4 +45,5 @@ export const TaskListFormRight = styled.div`
 
 export const TagsAndCustomFields = styled.div`
     display: flex;
+    gap: 20px;
 `;
