@@ -10,7 +10,6 @@ export const TaskFormLabel = styled(FormLabelStyled)`
 `;
 
 export const SelectTaskList = styled(Select)`
-    width: 200px;
 `;
 
 export const TaskFormStyled = styled.form`
@@ -22,7 +21,6 @@ export const TaskFormStyled = styled.form`
 `;
 
 export const TaskFormSection = styled.div`
-    width: 400px;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -39,20 +37,22 @@ export const TaskFormSection = styled.div`
 export const TaskTitleAndCreate = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 500px;
+    gap: 20px;
 `;
 
 export const TaskTitleInput = styled(Input)`
-    width: 400px;
+    flex: 1;
 `;
 
 export const TaskFormLeft = styled.div`
-    width: 440px;
+    flex: 1;
 `;
 
 export const TaskFormRight = styled.div`
+    flex: 1;
 `;
 
 export const TaskInfo = styled.div`
     display: flex;
+    gap: 20px;
 `;
