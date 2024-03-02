@@ -10,6 +10,7 @@ export const CustomField = styled.div`
 export const CustomFieldAttributes = styled.div`
     display: flex;
     flex-direction: column;
+    flex: 1;
 `;
 
 export const CustomFieldAttribute = styled.div`
@@ -26,7 +27,7 @@ export const CustomFieldButtons = styled.div`
 `;
 
 const inputStyles = css`
-    width: 300px;
+    flex: 1;
     margin-bottom: 10px;
 `;
 

@@ -52,7 +52,12 @@ function TagFields(props) {
             <AddIcon />
         </IconButton>
         { tagFields.map(tagField => (
-          <div key={tagField.id}>
+          <div key={tagField.id}
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center' 
+            }}
+          >
             <TagInput
               name="tag"
               type="text"
