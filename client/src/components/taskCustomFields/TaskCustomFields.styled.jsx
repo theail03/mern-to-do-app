@@ -19,7 +19,7 @@ export const TaskCustomFieldsStyled = styled.div`
 `;
 
 export const TaskCustomFieldInput = styled(Input)`
-    width: 200px;
+    flex: 1;
     margin-bottom: 10px;
 `;
 
