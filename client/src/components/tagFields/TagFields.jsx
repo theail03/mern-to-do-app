@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { TaskListContext } from '../../context/taskListContext/TaskListContext';
-import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
@@ -47,7 +46,7 @@ function TagFields(props) {
   }, [tagFields]);
 
   return (
-    <Container>
+    <>
       <FormLabelStyled>Tags</FormLabelStyled>
         <IconButton onClick={handleAddFields}>
             <AddIcon />
@@ -68,7 +67,7 @@ function TagFields(props) {
             </IconButton>
           </div>
         )) }
-    </Container>
+    </>
   );
 }
 

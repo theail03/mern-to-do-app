@@ -1,5 +1,4 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
 import {
   TaskCustomField,
   TaskCustomFieldsStyled,
@@ -9,7 +8,7 @@ import {
 
 function TaskCustomFields(props) {
   return (
-    <Container>
+    <>
       <TaskCustomFieldsLabel>Custom Fields</TaskCustomFieldsLabel>
       <TaskCustomFieldsStyled>
         { props.customFields.map(customField => (
@@ -25,7 +24,7 @@ function TaskCustomFields(props) {
           </TaskCustomField>
         )) }
       </TaskCustomFieldsStyled>
-    </Container>
+    </>
   );
 }
 

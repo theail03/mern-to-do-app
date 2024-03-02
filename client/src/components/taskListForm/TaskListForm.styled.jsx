@@ -28,21 +28,19 @@ export const TaskListFormSection = styled.div`
 export const TaskListTitleAndCreate = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 300px;
+    width: 500px;
 `;
 
 export const TaskListTitleInput = styled(Input)`
-    width: 200px;
-`;
-
-export const TaskListFormLeft = styled.div`
     width: 400px;
 `;
 
+export const TaskListFormLeft = styled.div`
+    width: 440px;
+`;
+
 export const TaskListFormRight = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    width: 440px;
 `;
 
 export const TagsAndCustomFields = styled.div`

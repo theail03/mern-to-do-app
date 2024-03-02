@@ -51,9 +51,6 @@ export const TaskFormLeft = styled.div`
 `;
 
 export const TaskFormRight = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 `;
 
 export const TaskInfo = styled.div`
