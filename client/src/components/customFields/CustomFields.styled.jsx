@@ -5,7 +5,6 @@ import Select from '@material-ui/core/Select';
 export const CustomField = styled.div`
     display: flex;
     margin-bottom: 25px;
-    justify-content: space-between;
 `;
 
 export const CustomFieldAttributes = styled.div`
@@ -27,7 +26,7 @@ export const CustomFieldButtons = styled.div`
 `;
 
 const inputStyles = css`
-    width: 200px;
+    width: 300px;
     margin-bottom: 10px;
 `;
 

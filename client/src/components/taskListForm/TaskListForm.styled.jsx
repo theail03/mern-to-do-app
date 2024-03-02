@@ -36,11 +36,11 @@ export const TaskListTitleInput = styled(Input)`
 `;
 
 export const TaskListFormLeft = styled.div`
-    width: 440px;
+    flex: 1;
 `;
 
 export const TaskListFormRight = styled.div`
-    width: 440px;
+    flex: 1;
 `;
 
 export const TagsAndCustomFields = styled.div`
