@@ -83,5 +83,4 @@ export const dummyTaskLists = [
     updatedAt: "2023-07-07T12:45:30.678Z",
     __v: 0,
   },
-  // ... Additional task lists
 ];
