@@ -32,7 +32,6 @@ export const DataGridStyled = styled(DataGrid)`
         .MuiDataGrid-row {
             a {
                 color: inherit;
-                text-decoration: none;
             }
         }
     }
