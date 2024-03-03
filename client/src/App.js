@@ -22,7 +22,8 @@ function App() {
     <Router>
       <Switch>
         <>
-        <Topbar toggleSidebar={toggleSidebar} />
+          <Topbar toggleSidebar={toggleSidebar} />
+          {/* RouteContainer is a flex container */}
           <RouteContainer>
             <Sidebar isOpen={isSidebarOpen} />
             <Route exact path="/">
