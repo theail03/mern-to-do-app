@@ -28,6 +28,11 @@ export const Logo = styled.span`
     cursor: default;
 `;
 
+export const TopLeft = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
 export const TopRight = styled.div`
     display: flex;
     align-items: center;

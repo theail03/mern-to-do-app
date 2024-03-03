@@ -6,12 +6,15 @@ import { login, logoutUser } from "../../context/authContext/authApiCalls";
 import { 
   Logo,
   MenuItemStyled,
+  TopLeft,
   TopRight,
   TopbarStyled, 
   TopbarWrapper 
 } from "./Topbar.styled";
 import { MenuButton } from "../../styles/MenuButton.styled";
 import SimpleMenu from "../simpleMenu/SimpleMenu";
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 export default function Topbar() {
   const { user, dispatch } = useContext(AuthContext);
@@ -31,12 +34,18 @@ export default function Topbar() {
     history.go(0);
   };
 
+  const handleMenuToggle = () => {
+  }
+
   return (
     <TopbarStyled>
       <TopbarWrapper>
-        <div>
+        <TopLeft>
+          <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuToggle}>
+            <MenuIcon />
+          </IconButton>
           <Logo>ToDoApp</Logo>
-        </div>
+        </TopLeft>
         <TopRight>
             {user ? 
               <SimpleMenu buttonText={user.email}>
