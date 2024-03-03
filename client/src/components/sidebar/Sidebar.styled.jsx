@@ -10,6 +10,7 @@ export const SidebarStyled = styled.div`
     background-color: rgb(251, 251, 255);
     position: sticky;
     top: 50px;
+    z-index: 1;    
 `;
 
 export const SidebarWrapper = styled.div`
