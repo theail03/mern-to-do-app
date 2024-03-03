@@ -6,8 +6,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import { AuthContext } from "./context/authContext/AuthContext";
-import { useContext } from "react";
+import { useState } from 'react';
 import NewTaskList from "./pages/newTaskList/NewTaskList";
 import TaskList from "./pages/taskList/TaskList";
 import NewTask from "./pages/newTask/NewTask";
@@ -17,14 +16,15 @@ import TaskListTable from "./pages/taskListTable/TaskListTable";
 import { RouteContainer } from "./styles/Container.styled";
 
 function App() {
-  const { user } = useContext(AuthContext);
+  const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
   return (
     <Router>
       <Switch>
         <>
-          <Topbar />
+        <Topbar toggleSidebar={toggleSidebar} />
           <RouteContainer>
-            <Sidebar />
+            <Sidebar isOpen={isSidebarOpen} />
             <Route exact path="/">
               <TaskListTable />
             </Route>

@@ -16,7 +16,7 @@ import SimpleMenu from "../simpleMenu/SimpleMenu";
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-export default function Topbar() {
+export default function Topbar({ toggleSidebar }) {
   const { user, dispatch } = useContext(AuthContext);
   const history = useHistory();
 
@@ -34,14 +34,11 @@ export default function Topbar() {
     history.go(0);
   };
 
-  const handleMenuToggle = () => {
-  }
-
   return (
     <TopbarStyled>
       <TopbarWrapper>
         <TopLeft>
-          <IconButton edge="start" color="#555" aria-label="menu" onClick={handleMenuToggle}>
+          <IconButton edge="start" color="#555" aria-label="menu" onClick={toggleSidebar}>
             <MenuIcon />
           </IconButton>
           <Logo>ToDoApp</Logo>

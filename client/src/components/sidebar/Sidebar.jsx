@@ -10,8 +10,8 @@ import {
 } from "./Sidebar.styled";
 import { LinkStyled } from "../../styles/Link.styled";
 
-export default function Sidebar() {
-  return (
+export default function Sidebar({ isOpen }) {
+  return isOpen ? (
     <SidebarStyled>
       <SidebarWrapper>
         <SidebarMenu>
@@ -39,5 +39,5 @@ export default function Sidebar() {
         </SidebarMenu>
       </SidebarWrapper>
     </SidebarStyled>
-  );
+  ) : null;
 }
