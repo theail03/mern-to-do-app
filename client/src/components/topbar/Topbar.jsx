@@ -41,7 +41,7 @@ export default function Topbar() {
     <TopbarStyled>
       <TopbarWrapper>
         <TopLeft>
-          <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuToggle}>
+          <IconButton edge="start" color="#555" aria-label="menu" onClick={handleMenuToggle}>
             <MenuIcon />
           </IconButton>
           <Logo>ToDoApp</Logo>
