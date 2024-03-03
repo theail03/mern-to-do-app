@@ -45,4 +45,8 @@ export const TaskListFormRight = styled.div`
 export const TagsAndCustomFields = styled.div`
     display: flex;
     gap: 20px;
+
+    @media (max-width: 992px) {
+        flex-direction: column;
+    }
 `;

@@ -55,4 +55,8 @@ export const TaskFormRight = styled.div`
 export const TaskInfo = styled.div`
     display: flex;
     gap: 20px;
+
+    @media (max-width: 992px) {
+        flex-direction: column;
+    }
 `;
