@@ -25,11 +25,15 @@ export const TableActions = styled.div`
     margin-bottom: 20px;
 `;
 
-export const DataGridStyled = withStyles({
-    row: {
-        // change color of <a> tags in rows
-        '& a': {
-            color: 'inherit',
-        },
-    },
-})(DataGrid);
+export const DataGridStyled = styled(DataGrid)`
+    && {
+        height: auto; 
+        min-height: 500px; // Minimum height to display the content properly
+        .MuiDataGrid-row {
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+    }
+`;
