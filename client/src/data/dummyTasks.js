@@ -1,174 +1,200 @@
 export const dummyTasks = [
-    {
-        "tags": [
-            "e56965b2-1591-41f2-bba6-dd90ba38a2d9"
-        ],
-        "customFields": [
-            {
-                "id": "1c765f66-24d0-49ad-8e62-b852a15e0563",
-                "value": "hard dummy task"
-            }
-        ],
-        "_id": "64a5e5a5c1bd50871c2a1e30",
-        "title": "dummy task 9",
-        "taskList": "64a5deabc1bd50871c2a1cde",
-        "createdAt": "2023-07-05T21:50:29.769Z",
-        "updatedAt": "2023-07-05T21:50:29.769Z",
-        "__v": 0
-    },
-    {
-        "tags": [
-            "c30fdf9e-6843-4d1d-8d48-ea1948e73a7c"
-        ],
-        "customFields": [
-            {
-                "id": "1c765f66-24d0-49ad-8e62-b852a15e0563",
-                "value": "description for dummy task 8"
-            }
-        ],
-        "_id": "64a5e592c1bd50871c2a1e21",
-        "title": "dummy task 8",
-        "taskList": "64a5deabc1bd50871c2a1cde",
-        "createdAt": "2023-07-05T21:50:10.298Z",
-        "updatedAt": "2023-07-05T21:50:10.298Z",
-        "__v": 0
-    },
-    {
-        "tags": [
-            "080a64ae-1438-426c-8184-6fdb0281c6f0"
-        ],
-        "customFields": [
-            {
-                "id": "1c765f66-24d0-49ad-8e62-b852a15e0563",
-                "value": "dummy task 7 description"
-            }
-        ],
-        "_id": "64a5e573c1bd50871c2a1e0b",
-        "title": "dummy task 7",
-        "taskList": "64a5deabc1bd50871c2a1cde",
-        "createdAt": "2023-07-05T21:49:39.166Z",
-        "updatedAt": "2023-07-05T21:49:39.166Z",
-        "__v": 0
-    },
-    {
-        "tags": [],
-        "customFields": [
-            {
-                "id": "46a51cb9-367c-4a70-89da-b383a5091321",
-                "value": "dummy description for dummy task 6"
-            },
-            {
-                "id": "7c4a03a9-9ff3-4804-947d-a2b25a80a5b4",
-                "value": 6
-            }
-        ],
-        "_id": "64a5e125c1bd50871c2a1dd6",
-        "title": "dummy task 6",
-        "taskList": "64a5dec9c1bd50871c2a1ce4",
-        "createdAt": "2023-07-05T21:31:17.379Z",
-        "updatedAt": "2023-07-05T21:31:17.379Z",
-        "__v": 0
-    },
-    {
-        "tags": [],
-        "customFields": [
-            {
-                "id": "46a51cb9-367c-4a70-89da-b383a5091321",
-                "value": "this is dummy task 5"
-            },
-            {
-                "id": "7c4a03a9-9ff3-4804-947d-a2b25a80a5b4",
-                "value": 4
-            }
-        ],
-        "_id": "64a5e10dc1bd50871c2a1dc7",
-        "title": "dummy task 5",
-        "taskList": "64a5dec9c1bd50871c2a1ce4",
-        "createdAt": "2023-07-05T21:30:53.725Z",
-        "updatedAt": "2023-07-05T21:30:53.725Z",
-        "__v": 0
-    },
-    {
-        "tags": [],
-        "customFields": [
-            {
-                "id": "46a51cb9-367c-4a70-89da-b383a5091321",
-                "value": "this is dummy task 4"
-            },
-            {
-                "id": "7c4a03a9-9ff3-4804-947d-a2b25a80a5b4",
-                "value": 8
-            }
-        ],
-        "_id": "64a5e101c1bd50871c2a1dbc",
-        "title": "dummy task 4",
-        "taskList": "64a5dec9c1bd50871c2a1ce4",
-        "createdAt": "2023-07-05T21:30:41.280Z",
-        "updatedAt": "2023-07-05T21:30:41.280Z",
-        "__v": 0
-    },
-    {
-        "tags": [
-            "5ac6a76c-dd71-4729-afd2-a88f45565e89",
-            "11f30a40-b6cf-4b61-a50f-ee208c677043"
-        ],
-        "customFields": [
-            {
-                "id": "213333a1-0cb0-4386-92f7-c4c0738b5266",
-                "value": "this is dummy task 4"
-            },
-            {
-                "id": "3e35d6c6-b081-4493-8186-c7166c011c4e",
-                "value": 4
-            }
-        ],
-        "_id": "64a5dfe9c1bd50871c2a1d57",
-        "title": "dummy task 3",
-        "taskList": "64a5df1cc1bd50871c2a1ce9",
-        "createdAt": "2023-07-05T21:26:02.046Z",
-        "updatedAt": "2023-07-05T21:30:13.193Z",
-        "__v": 0
-    },
-    {
-        "tags": [
-            "3cc2b753-be3f-409e-acd3-98e10ff07656"
-        ],
-        "customFields": [
-            {
-                "id": "213333a1-0cb0-4386-92f7-c4c0738b5266",
-                "value": "this is dummy task 3"
-            },
-            {
-                "id": "3e35d6c6-b081-4493-8186-c7166c011c4e",
-                "value": 2
-            }
-        ],
-        "_id": "64a5df6dc1bd50871c2a1d0a",
-        "title": "dummy task 2",
-        "taskList": "64a5df1cc1bd50871c2a1ce9",
-        "createdAt": "2023-07-05T21:23:57.569Z",
-        "updatedAt": "2023-07-05T21:30:13.201Z",
-        "__v": 0
-    },
-    {
-        "tags": [
-            "5ac6a76c-dd71-4729-afd2-a88f45565e89"
-        ],
-        "customFields": [
-            {
-                "id": "213333a1-0cb0-4386-92f7-c4c0738b5266",
-                "value": "this is a dummy task"
-            },
-            {
-                "id": "3e35d6c6-b081-4493-8186-c7166c011c4e",
-                "value": 3
-            }
-        ],
-        "_id": "64a5df41c1bd50871c2a1cf4",
-        "title": "dummy task 1",
-        "taskList": "64a5df1cc1bd50871c2a1ce9",
-        "createdAt": "2023-07-05T21:23:13.939Z",
-        "updatedAt": "2023-07-05T21:30:13.202Z",
-        "__v": 0
-    }
+  // Tasks for Task List 1
+  {
+    _id: "task1",
+    title: "Paint Living Room",
+    taskList: "tasklist1",
+    customFields: [
+      { id: "cf1", value: "Choose a vibrant color" }, // Notes
+      { id: "cf2", value: 3 }, // Importance
+    ],
+    tags: ["tag1", "tag2"],
+    createdAt: "2023-07-05T21:50:29.769Z",
+    updatedAt: "2023-07-05T21:50:29.769Z",
+    __v: 0,
+  },
+  {
+    _id: "task2",
+    title: "Replace Hallway Tiles",
+    taskList: "tasklist1",
+    customFields: [
+      { id: "cf1", value: "Check tile availability at local store" }, // Notes
+      { id: "cf2", value: 2 }, // Importance
+    ],
+    tags: ["tag2"],
+    createdAt: "2023-07-06T09:00:00.000Z",
+    updatedAt: "2023-07-06T09:30:00.000Z",
+    __v: 0,
+  },
+  {
+    _id: "task3",
+    title: "Fix Leaky Kitchen Faucet",
+    taskList: "tasklist1",
+    customFields: [
+      { id: "cf1", value: "May need new washer" }, // Notes
+      { id: "cf2", value: 4 }, // Importance
+    ],
+    tags: ["tag1"],
+    createdAt: "2023-07-06T10:15:30.000Z",
+    updatedAt: "2023-07-06T11:00:30.000Z",
+    __v: 0,
+  },
+  {
+    _id: "task4",
+    title: "Assemble Guest Bedroom Furniture",
+    taskList: "tasklist1",
+    customFields: [
+      { id: "cf1", value: "Instruction manual in the box" }, // Notes
+      { id: "cf2", value: 3 }, // Importance
+    ],
+    tags: ["tag3"],
+    createdAt: "2023-07-06T12:45:30.000Z",
+    updatedAt: "2023-07-06T13:30:45.000Z",
+    __v: 0,
+  },
+  {
+    _id: "task5",
+    title: "Install Living Room Curtains",
+    taskList: "tasklist1",
+    customFields: [
+      { id: "cf1", value: "Need to confirm measurements" }, // Notes
+      { id: "cf2", value: 2 }, // Importance
+    ],
+    tags: ["tag2", "tag3"],
+    createdAt: "2023-07-06T14:00:00.000Z",
+    updatedAt: "2023-07-06T14:50:00.000Z",
+    __v: 0,
+  },
+  // Tasks for Task List 2
+  {
+    _id: "task6",
+    title: "Draft Quarterly Report",
+    taskList: "tasklist2",
+    customFields: [
+      { id: "cf3", value: "2023-08-01" }, // Deadline
+      { id: "cf4", value: 3 }, // Priority
+    ],
+    tags: ["tag4", "tag5"],
+    createdAt: "2023-07-06T11:00:00.000Z",
+    updatedAt: "2023-07-06T11:30:00.000Z",
+    __v: 0,
+  },
+  {
+    _id: "task7",
+    title: "Organize Team Building Event",
+    taskList: "tasklist2",
+    customFields: [
+      { id: "cf3", value: "2023-09-15" }, // Deadline
+      { id: "cf4", value: 2 }, // Priority
+    ],
+    tags: ["tag4", "tag6"],
+    createdAt: "2023-07-07T09:00:00.000Z",
+    updatedAt: "2023-07-07T10:00:00.000Z",
+    __v: 0,
+  },
+  {
+    _id: "task8",
+    title: "Update Project Timeline",
+    taskList: "tasklist2",
+    customFields: [
+      { id: "cf3", value: "2023-07-15" }, // Deadline
+      { id: "cf4", value: 1 }, // Priority
+    ],
+    tags: ["tag4"],
+    createdAt: "2023-07-08T14:00:00.000Z",
+    updatedAt: "2023-07-08T15:00:00.000Z",
+    __v: 0,
+  },
+  {
+    _id: "task9",
+    title: "Review Budget Allocation",
+    taskList: "tasklist2",
+    customFields: [
+      { id: "cf3", value: "2023-07-20" }, // Deadline
+      { id: "cf4", value: 3 }, // Priority
+    ],
+    tags: ["tag4", "tag5"],
+    createdAt: "2023-07-09T16:00:00.000Z",
+    updatedAt: "2023-07-09T17:00:00.000Z",
+    __v: 0,
+  },
+  {
+    _id: "task10",
+    title: "Finalize Vendor Contracts",
+    taskList: "tasklist2",
+    customFields: [
+      { id: "cf3", value: "2023-08-05" }, // Deadline
+      { id: "cf4", value: 2 }, // Priority
+    ],
+    tags: ["tag4", "tag6"],
+    createdAt: "2023-07-10T13:00:00.000Z",
+    updatedAt: "2023-07-10T14:00:00.000Z",
+    __v: 0,
+  },
+  // Tasks for Task List 3
+  {
+    _id: "task11",
+    title: "Morning Yoga Routine",
+    taskList: "tasklist3",
+    customFields: [
+      { id: "cf5", value: 20 }, // Progress as a percentage
+      { id: "cf6", value: "Feeling more flexible and balanced" }, // Health Notes
+    ],
+    tags: ["tag7", "tag8"],
+    createdAt: "2023-07-11T07:00:00.000Z",
+    updatedAt: "2023-07-11T08:00:00.000Z",
+    __v: 0,
+  },
+  {
+    _id: "task12",
+    title: "Weekly 10k Run",
+    taskList: "tasklist3",
+    customFields: [
+      { id: "cf5", value: 50 }, // Progress as a percentage
+      { id: "cf6", value: "Improved time by 2 minutes" }, // Health Notes
+    ],
+    tags: ["tag7", "tag9"],
+    createdAt: "2023-07-12T06:00:00.000Z",
+    updatedAt: "2023-07-12T07:30:00.000Z",
+    __v: 0,
+  },
+  {
+    _id: "task13",
+    title: "Strength Training Session",
+    taskList: "tasklist3",
+    customFields: [
+      { id: "cf5", value: 30 }, // Progress as a percentage
+      { id: "cf6", value: "Increased weight for all sets" }, // Health Notes
+    ],
+    tags: ["tag8", "tag9"],
+    createdAt: "2023-07-13T17:00:00.000Z",
+    updatedAt: "2023-07-13T18:30:00.000Z",
+    __v: 0,
+  },
+  {
+    _id: "task14",
+    title: "Healthy Meal Prep",
+    taskList: "tasklist3",
+    customFields: [
+      { id: "cf5", value: 60 }, // Progress as a percentage
+      { id: "cf6", value: "Prepared meals with balanced macros" }, // Health Notes
+    ],
+    tags: ["tag7"],
+    createdAt: "2023-07-14T12:00:00.000Z",
+    updatedAt: "2023-07-14T13:00:00.000Z",
+    __v: 0,
+  },
+  {
+    _id: "task15",
+    title: "Hydration Tracking",
+    taskList: "tasklist3",
+    customFields: [
+      { id: "cf5", value: 80 }, // Progress as a percentage
+      { id: "cf6", value: "Drank 3 liters of water daily" }, // Health Notes
+    ],
+    tags: ["tag7", "tag8"],
+    createdAt: "2023-07-15T09:00:00.000Z",
+    updatedAt: "2023-07-15T10:30:00.000Z",
+    __v: 0,
+  },
 ];

@@ -16,9 +16,8 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import { getAllTasksDummy, getTasksDummy } from "../../context/taskContext/taskDummyCalls";
 import { getTaskListsDummy } from "../../context/taskListContext/taskListDummyCalls";
 import TooltipCell from "../../components/tooltipCell/TooltipCell";
-import { colors } from "../../constants/Theme";
-import { SimpleButton } from "../../styles/SimpleButton.styled";
 import { Page } from "../../styles/Page.styled";
+import { ActionButton } from "../../styles/ActionButton.styled";
 
 export default function TaskListTable() {
   const { taskLists, dispatch } = useContext(TaskListContext);
@@ -317,11 +316,12 @@ export default function TaskListTable() {
 
   return (
     <Page>
+      <h1>Task Lists</h1>
       <TableActions>
-        <SimpleButton backgroundColor={colors.color2} onClick={() => handleExportAll()}>
+        <ActionButton onClick={() => handleExportAll()}>
           Export All Lists
-        </SimpleButton>
-        <ImportButton backgroundColor={colors.color2} htmlFor="importInput">
+        </ActionButton>
+        <ImportButton htmlFor="importInput">
           Import From .xlsx
         </ImportButton>
         <ImportInput 

@@ -2,20 +2,21 @@ import styled, { css } from 'styled-components';
 import {
     List,
     PlaylistAddTwoTone,
+    LineStyle,
   } from "@material-ui/icons";
-import { colors } from '../../constants/Theme';
 
 export const SidebarStyled = styled.div`
     flex: 1;
     height: calc(100vh - 50px);
-    background-color: ${colors.color5};
+    background-color: rgb(251, 251, 255);
     position: sticky;
     top: 50px;
+    z-index: 1;    
 `;
 
 export const SidebarWrapper = styled.div`
     padding: 20px;
-    color: ${colors.color4};
+    color: #555;
 `;
 
 export const SidebarMenu = styled.div`
@@ -24,7 +25,7 @@ export const SidebarMenu = styled.div`
 
 export const SidebarTitle = styled.h3`
     font-size: 13px;
-    color: ${colors.color3};
+    color: rgb(187, 186, 186);
 `;
 
 export const SidebarList = styled.ul`
@@ -40,7 +41,7 @@ export const SidebarListItem = styled.li`
     border-radius: 10px;
 
     &:hover {
-        background-color: ${colors.color2};
+        background-color: rgb(240, 240, 255);
     }
 `;
 
@@ -54,6 +55,10 @@ export const SidebarListIcon = styled(List)`
 `;
 
 export const SidebarAddIcon = styled(PlaylistAddTwoTone)`
+    ${sidebarIcon}
+`;
+
+export const SidebarHomeIcon = styled(LineStyle)`
     ${sidebarIcon}
 `;
   

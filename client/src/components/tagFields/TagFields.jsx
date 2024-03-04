@@ -1,12 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { TaskListContext } from '../../context/taskListContext/TaskListContext';
-import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
-import Input from '@material-ui/core/Input';
 import { v4 as uuidv4 } from 'uuid';
 import { FormLabelStyled } from '../../styles/FormLabel.styled';
+import { TagInput } from './TagFields.styled';
 
 function TagFields(props) {
   const [tagFields, setTagFields] = useState([]);
@@ -47,14 +46,19 @@ function TagFields(props) {
   }, [tagFields]);
 
   return (
-    <Container>
+    <>
       <FormLabelStyled>Tags</FormLabelStyled>
         <IconButton onClick={handleAddFields}>
             <AddIcon />
         </IconButton>
         { tagFields.map(tagField => (
-          <div key={tagField.id}>
-            <Input
+          <div key={tagField.id}
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center' 
+            }}
+          >
+            <TagInput
               name="tag"
               type="text"
               value={tagField.tag}
@@ -68,7 +72,7 @@ function TagFields(props) {
             </IconButton>
           </div>
         )) }
-    </Container>
+    </>
   );
 }
 

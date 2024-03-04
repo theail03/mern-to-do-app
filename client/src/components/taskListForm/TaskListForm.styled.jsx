@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 import Input from '@material-ui/core/Input';
+import { boxStyles } from '../../constants/Theme';
 
 export const TaskListFormStyled = styled.form`
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    ${boxStyles}
 `;
 
 export const TaskListFormSection = styled.div`
-    width: 400px;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -26,23 +27,26 @@ export const TaskListFormSection = styled.div`
 export const TaskListTitleAndCreate = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 300px;
+    gap: 20px;
 `;
 
 export const TaskListTitleInput = styled(Input)`
-    width: 200px;
+    flex: 1;
 `;
 
 export const TaskListFormLeft = styled.div`
-    width: 400px;
+    flex: 1;
 `;
 
 export const TaskListFormRight = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex: 1;
 `;
 
 export const TagsAndCustomFields = styled.div`
     display: flex;
+    gap: 20px;
+
+    @media (max-width: 992px) {
+        flex-direction: column;
+    }
 `;

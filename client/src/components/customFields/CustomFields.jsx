@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { TaskListContext } from "../../context/taskListContext/TaskListContext";
-import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
@@ -59,7 +58,7 @@ function CustomFields(props) {
   }, [customFields]);
 
   return (
-    <Container>
+    <>
       <FormLabelStyled>Custom Fields</FormLabelStyled>
         <IconButton onClick={handleAddFields}>
             <AddIcon />
@@ -119,7 +118,7 @@ function CustomFields(props) {
             </CustomFieldButtons>
           </CustomField>
         )) }
-    </Container>
+    </>
   );
 }
 

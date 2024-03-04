@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { simpleButton } from '../../styles/SimpleButton.styled';
+import { actionButton } from '../../styles/ActionButton.styled';
 
 export const ImportButton = styled.label`
-    ${simpleButton}
+    ${actionButton}
 `;
 
 export const ImportInput = styled.input`

@@ -1,22 +1,25 @@
-// Theme.jsx
-export const colors = {
-    color1: '#353535',
-    color2: '#3C6E71',
-    color3: '#FFFFFF',
-    color4: '#D9D9D9',
-    color5: '#2B4B63'
-};
+import { css } from 'styled-components';
 
+// Theme.jsx
 export const primaryFont = 'Source Sans Pro, sans-serif';
+
+export const shadowStyles = css`
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+`;
+
+export const boxStyles = css`
+    padding: 20px;
+    ${shadowStyles}
+`;
 
 export const multiselectStyles = {
     chips: {
-        background: colors.color2
+        background: "gray",
     },
     option: {
-        background: colors.color3,
-        color: colors.color1
-        
+        background: "inherit",
+        color: "inherit"  
     }
 };
   

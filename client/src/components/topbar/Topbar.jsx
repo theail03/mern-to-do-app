@@ -6,15 +6,18 @@ import { login, logoutUser } from "../../context/authContext/authApiCalls";
 import { 
   Logo,
   MenuItemStyled,
+  TopLeft,
   TopRight,
   TopbarStyled, 
   TopbarWrapper 
 } from "./Topbar.styled";
-import { colors } from "../../constants/Theme";
-import { SimpleButton } from "../../styles/SimpleButton.styled";
+import { MenuButton } from "../../styles/MenuButton.styled";
 import SimpleMenu from "../simpleMenu/SimpleMenu";
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import { LinkStyled } from "../../styles/Link.styled";
 
-export default function Topbar() {
+export default function Topbar({ toggleSidebar }) {
   const { user, dispatch } = useContext(AuthContext);
   const history = useHistory();
 
@@ -35,18 +38,25 @@ export default function Topbar() {
   return (
     <TopbarStyled>
       <TopbarWrapper>
-        <div>
-          <Logo>ToDoApp</Logo>
-        </div>
+        <TopLeft>
+          <IconButton edge="start" color="#555" aria-label="menu" onClick={toggleSidebar}>
+            <MenuIcon />
+          </IconButton>
+          <LinkStyled
+              to={{ pathname: "/" }}
+          >
+            <Logo>ToDoApp</Logo>
+          </LinkStyled>
+        </TopLeft>
         <TopRight>
             {user ? 
               <SimpleMenu buttonText={user.email}>
                 <MenuItemStyled onClick={handleLogout}>Logout</MenuItemStyled>
               </SimpleMenu> 
               : 
-              <SimpleButton backgroundColor={colors.color2} onClick={handleAuth}>
+              <MenuButton onClick={handleAuth}>
                 Log in with Google
-              </SimpleButton>
+              </MenuButton>
             }
         </TopRight>
       </TopbarWrapper>
