@@ -14,25 +14,25 @@ export default function Home() {
         </Box>
         <ResponsiveRow>
           <Box>
-            <BoxTitle>Tags and Filtering</BoxTitle>
-            <BoxContent>Tags help you categorize your tasks for streamlined management. Assign tags by topic, urgency, or project, and then filter to view only what you need. It's an effective way to keep your tasks organized and prioritized.
+            <BoxTitle>Task Lists and Customization</BoxTitle>
+            <BoxContent>Start by creating a task list in ToDoApp, which acts like a container for your tasks. You can then customize this list by adding tags relevant to your activities, like 'Home', 'Work', or 'Urgent'. Next, define custom fields that are specific to your needs—perhaps a 'Due Date' for deadlines or 'Priority' to indicate urgency. This level of customization is what sets ToDoApp apart; you're not limited to predefined fields like in other apps. Once your list is set up, you're all ready to begin adding tasks.
             </BoxContent>
           </Box>
           <Box>
-            <BoxTitle>Custom Fields</BoxTitle>
-            <BoxContent>With custom fields, you can capture all the details important to your tasks. Whether it's a 'Due Date', a 'Priority Level', or 'Progress', these fields can be added to each task list, giving you the power to track and manage according to your personal or professional metrics.
+            <BoxTitle>Task Management and Data Portability</BoxTitle>
+            <BoxContent>Managing your tasks within each list is just the beginning. ToDoApp also allows you to export your task lists to a file, making it easy to transfer your data or keep a backup. Importing tasks from a file is just as simple, ensuring you can move your task management between devices and platforms with ease. Even in Visitor Mode, you can export the sample tasks to see how data portability works in practice.
             </BoxContent>
           </Box>
         </ResponsiveRow>
         <ResponsiveRow>
           <Box>
-            <BoxTitle>Full Experience with Sign-In</BoxTitle>
-            <BoxContent>When you're ready for the full ToDoApp experience, simply sign in with your Google account. All the tasks you add, the tags you create, and the custom fields you set up will be saved and synchronized across your devices. Signing in means your to-dos stay up-to-date and accessible wherever you are.
+            <BoxTitle>Unique Flexibility</BoxTitle>
+            <BoxContent>ToDoApp offers a unique flexibility that you won't find in most task management apps. Here, you're not stuck with a fixed set of task attributes. Instead, you define what information is important to track for each task, making ToDoApp versatile enough to adapt to any project or lifestyle. Whether for personal use or professional projects, ToDoApp molds to fit your approach to task management.
             </BoxContent>
           </Box>
           <Box>
-            <BoxTitle>More Than Just Tasks</BoxTitle>
-            <BoxContent>ToDoApp is more than a task manager — it's a productivity booster designed to adapt to your workflow. With a focus on customization and user-friendly design, you'll find managing your daily to-dos not just easy, but enjoyable.
+            <BoxTitle>Getting the Most Out of ToDoApp</BoxTitle>
+            <BoxContent>While Visitor Mode offers a snapshot of ToDoApp’s capabilities, signing in unlocks the full array of features. As a signed-in user, you can save your task lists, ensure they sync across devices, and continue your productivity journey without interruption. Experience the full benefits of custom task management and see how ToDoApp can transform your daily routine.
             </BoxContent>
           </Box>
         </ResponsiveRow>
