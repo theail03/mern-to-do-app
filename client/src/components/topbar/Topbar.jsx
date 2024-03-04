@@ -15,6 +15,7 @@ import { MenuButton } from "../../styles/MenuButton.styled";
 import SimpleMenu from "../simpleMenu/SimpleMenu";
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { LinkStyled } from "../../styles/Link.styled";
 
 export default function Topbar({ toggleSidebar }) {
   const { user, dispatch } = useContext(AuthContext);
@@ -41,7 +42,11 @@ export default function Topbar({ toggleSidebar }) {
           <IconButton edge="start" color="#555" aria-label="menu" onClick={toggleSidebar}>
             <MenuIcon />
           </IconButton>
-          <Logo>ToDoApp</Logo>
+          <LinkStyled
+              to={{ pathname: "/" }}
+          >
+            <Logo>ToDoApp</Logo>
+          </LinkStyled>
         </TopLeft>
         <TopRight>
             {user ? 

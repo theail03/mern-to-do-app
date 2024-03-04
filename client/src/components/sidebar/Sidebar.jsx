@@ -7,6 +7,7 @@ import {
   SidebarListItem,
   SidebarListIcon,
   SidebarAddIcon,
+  SidebarHomeIcon,
 } from "./Sidebar.styled";
 import { LinkStyled } from "../../styles/Link.styled";
 
@@ -17,6 +18,12 @@ export default function Sidebar({ isOpen }) {
         <SidebarMenu>
           <SidebarTitle>Menu</SidebarTitle>
           <SidebarList>
+            <LinkStyled to="/">
+              <SidebarListItem>
+                <SidebarHomeIcon/>
+                Home
+              </SidebarListItem>
+            </LinkStyled>
             <LinkStyled to="/taskLists">
               <SidebarListItem>
                 <SidebarListIcon/>

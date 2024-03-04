@@ -25,7 +25,7 @@ export const Logo = styled.span`
     font-weight: bold;
     font-size: 30px;
     color: darkblue;
-    cursor: default;
+    cursor: pointer;
 `;
 
 export const TopLeft = styled.div`

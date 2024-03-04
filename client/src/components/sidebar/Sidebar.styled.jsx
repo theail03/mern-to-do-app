@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import {
     List,
     PlaylistAddTwoTone,
+    LineStyle,
   } from "@material-ui/icons";
 
 export const SidebarStyled = styled.div`
@@ -54,6 +55,10 @@ export const SidebarListIcon = styled(List)`
 `;
 
 export const SidebarAddIcon = styled(PlaylistAddTwoTone)`
+    ${sidebarIcon}
+`;
+
+export const SidebarHomeIcon = styled(LineStyle)`
     ${sidebarIcon}
 `;
   

@@ -14,6 +14,7 @@ import Task from "./pages/task/Task";
 import TaskTable from "./pages/taskTable/TaskTable";
 import TaskListTable from "./pages/taskListTable/TaskListTable";
 import { RouteContainer } from "./styles/Container.styled";
+import Home from "./pages/home/Home";
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
@@ -27,7 +28,7 @@ function App() {
           <RouteContainer>
             <Sidebar isOpen={isSidebarOpen} />
             <Route exact path="/">
-              <TaskListTable />
+              <Home />
             </Route>
             <Route path="/newTaskList">
               <NewTaskList />
