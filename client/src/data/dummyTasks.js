@@ -3,7 +3,7 @@ export const dummyTasks = [
   {
     _id: "task1",
     title: "Paint Living Room",
-    taskList: "tl1",
+    taskList: "tasklist1",
     customFields: [
       { id: "cf1", value: "Choose a vibrant color" }, // Notes
       { id: "cf2", value: 3 }, // Importance
@@ -16,7 +16,7 @@ export const dummyTasks = [
   {
     _id: "task2",
     title: "Replace Hallway Tiles",
-    taskList: "tl1",
+    taskList: "tasklist1",
     customFields: [
       { id: "cf1", value: "Check tile availability at local store" }, // Notes
       { id: "cf2", value: 2 }, // Importance
@@ -29,7 +29,7 @@ export const dummyTasks = [
   {
     _id: "task3",
     title: "Fix Leaky Kitchen Faucet",
-    taskList: "tl1",
+    taskList: "tasklist1",
     customFields: [
       { id: "cf1", value: "May need new washer" }, // Notes
       { id: "cf2", value: 4 }, // Importance
@@ -42,7 +42,7 @@ export const dummyTasks = [
   {
     _id: "task4",
     title: "Assemble Guest Bedroom Furniture",
-    taskList: "tl1",
+    taskList: "tasklist1",
     customFields: [
       { id: "cf1", value: "Instruction manual in the box" }, // Notes
       { id: "cf2", value: 3 }, // Importance
@@ -55,7 +55,7 @@ export const dummyTasks = [
   {
     _id: "task5",
     title: "Install Living Room Curtains",
-    taskList: "tl1",
+    taskList: "tasklist1",
     customFields: [
       { id: "cf1", value: "Need to confirm measurements" }, // Notes
       { id: "cf2", value: 2 }, // Importance
@@ -69,7 +69,7 @@ export const dummyTasks = [
   {
     _id: "task6",
     title: "Draft Quarterly Report",
-    taskList: "tl2",
+    taskList: "tasklist2",
     customFields: [
       { id: "cf3", value: "2023-08-01" }, // Deadline
       { id: "cf4", value: 3 }, // Priority
@@ -82,7 +82,7 @@ export const dummyTasks = [
   {
     _id: "task7",
     title: "Organize Team Building Event",
-    taskList: "tl2",
+    taskList: "tasklist2",
     customFields: [
       { id: "cf3", value: "2023-09-15" }, // Deadline
       { id: "cf4", value: 2 }, // Priority
@@ -95,7 +95,7 @@ export const dummyTasks = [
   {
     _id: "task8",
     title: "Update Project Timeline",
-    taskList: "tl2",
+    taskList: "tasklist2",
     customFields: [
       { id: "cf3", value: "2023-07-15" }, // Deadline
       { id: "cf4", value: 1 }, // Priority
@@ -108,7 +108,7 @@ export const dummyTasks = [
   {
     _id: "task9",
     title: "Review Budget Allocation",
-    taskList: "tl2",
+    taskList: "tasklist2",
     customFields: [
       { id: "cf3", value: "2023-07-20" }, // Deadline
       { id: "cf4", value: 3 }, // Priority
@@ -121,7 +121,7 @@ export const dummyTasks = [
   {
     _id: "task10",
     title: "Finalize Vendor Contracts",
-    taskList: "tl2",
+    taskList: "tasklist2",
     customFields: [
       { id: "cf3", value: "2023-08-05" }, // Deadline
       { id: "cf4", value: 2 }, // Priority
@@ -135,7 +135,7 @@ export const dummyTasks = [
   {
     _id: "task11",
     title: "Morning Yoga Routine",
-    taskList: "tl3",
+    taskList: "tasklist3",
     customFields: [
       { id: "cf5", value: 20 }, // Progress as a percentage
       { id: "cf6", value: "Feeling more flexible and balanced" }, // Health Notes
@@ -148,7 +148,7 @@ export const dummyTasks = [
   {
     _id: "task12",
     title: "Weekly 10k Run",
-    taskList: "tl3",
+    taskList: "tasklist3",
     customFields: [
       { id: "cf5", value: 50 }, // Progress as a percentage
       { id: "cf6", value: "Improved time by 2 minutes" }, // Health Notes
@@ -161,7 +161,7 @@ export const dummyTasks = [
   {
     _id: "task13",
     title: "Strength Training Session",
-    taskList: "tl3",
+    taskList: "tasklist3",
     customFields: [
       { id: "cf5", value: 30 }, // Progress as a percentage
       { id: "cf6", value: "Increased weight for all sets" }, // Health Notes
@@ -174,7 +174,7 @@ export const dummyTasks = [
   {
     _id: "task14",
     title: "Healthy Meal Prep",
-    taskList: "tl3",
+    taskList: "tasklist3",
     customFields: [
       { id: "cf5", value: 60 }, // Progress as a percentage
       { id: "cf6", value: "Prepared meals with balanced macros" }, // Health Notes
@@ -187,7 +187,7 @@ export const dummyTasks = [
   {
     _id: "task15",
     title: "Hydration Tracking",
-    taskList: "tl3",
+    taskList: "tasklist3",
     customFields: [
       { id: "cf5", value: 80 }, // Progress as a percentage
       { id: "cf6", value: "Drank 3 liters of water daily" }, // Health Notes

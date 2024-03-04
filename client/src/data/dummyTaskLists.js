@@ -1,7 +1,7 @@
 export const dummyTaskLists = [
   // Task List 1
   {
-    _id: "tl1",
+    _id: "tasklist1",
     title: "Home Renovation",
     user: "user1",
     customFields: [
@@ -29,7 +29,7 @@ export const dummyTaskLists = [
   },
   // Task List 2
   {
-    _id: "tl2",
+    _id: "tasklist2",
     title: "Work Project",
     user: "user2",
     customFields: [
@@ -57,7 +57,7 @@ export const dummyTaskLists = [
   },
   // Task List 3
   {
-    _id: "tl3",
+    _id: "tasklist3",
     title: "Fitness Goals",
     user: "user3",
     customFields: [
