@@ -16,6 +16,7 @@ import SimpleMenu from "../simpleMenu/SimpleMenu";
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { LinkStyled } from "../../styles/Link.styled";
+import googleSignInImage from "../../assets/btn_google_signin_dark_normal_web.png";
 
 export default function Topbar({ toggleSidebar }) {
   const { user, dispatch } = useContext(AuthContext);
@@ -51,11 +52,11 @@ export default function Topbar({ toggleSidebar }) {
         <TopRight>
             {user ? 
               <SimpleMenu buttonText={user.email}>
-                <MenuItemStyled onClick={handleLogout}>Logout</MenuItemStyled>
+                <MenuItemStyled onClick={handleLogout}>Sign out</MenuItemStyled>
               </SimpleMenu> 
               : 
               <MenuButton onClick={handleAuth}>
-                Log in with Google
+                <img src={googleSignInImage} alt="Sign in with Google" />
               </MenuButton>
             }
         </TopRight>
